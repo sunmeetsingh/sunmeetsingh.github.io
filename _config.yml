@@ -7,7 +7,7 @@ google_analytics: "G-CK9PF3RYND"
 
 # Build settings
 markdown: kramdown
-theme: minima   # optional, only if you want to use the minima theme
+# theme: minima   # optional, only if you want to use the minima theme
 plugins:
   - jekyll-feed # safe plugins GitHub Pages supports
 
