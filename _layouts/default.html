@@ -1,119 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
+    <title>{{ page.title }}</title>
+    <meta name="description"
+        content="Sunmeet Singh — engineering leader, angel investor, and builder at the intersection of commerce and AI.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    {% if site.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', '{{ site.google_analytics }}');
+    </script>
+    {% endif %}
+
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
+        /* ── Reset & Base ─────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            background-color: #0d1b2a;
-            color: #f4d03f;
+            background: #0a0e17;
+            color: #e0ddd8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ── Animated Starfield Background ────────────────────── */
+        .starfield {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
             overflow: hidden;
+            pointer-events: none;
         }
-        .container {
-            text-align: center;
-            max-width: 600px;
-            padding: 20px;
-            background: rgba(13, 27, 42, 0.9);
-            border: 2px solid #1b263b;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+
+        .starfield::before,
+        .starfield::after {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+            background-image:
+                radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at 25% 45%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 40% 15%, rgba(255, 255, 255, 0.9) 0%, transparent 100%),
+                radial-gradient(1px 1px at 55% 60%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 70% 35%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 85% 75%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 15% 80%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 60% 90%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at 90% 10%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 35% 70%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 5% 55%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 75% 50%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 50% 30%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 20% 5%, rgba(255, 255, 255, 0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at 95% 85%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 45% 95%, rgba(255, 255, 255, 0.7) 0%, transparent 100%);
+            animation: drift 120s linear infinite;
+        }
+
+        .starfield::after {
+            background-image:
+                radial-gradient(1px 1px at 12% 30%, rgba(244, 208, 63, 0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 48% 22%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 67% 55%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 82% 42%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 28% 88%, rgba(244, 208, 63, 0.2) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 93% 18%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 55% 72%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 38% 48%, rgba(255, 255, 255, 0.6) 0%, transparent 100%);
+            animation: drift 180s linear infinite reverse;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translateX(0) translateY(0);
+            }
+
+            to {
+                transform: translateX(-50px) translateY(-30px);
+            }
+        }
+
+        .ambient-glow {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 80%, rgba(244, 208, 63, 0.03) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(100, 130, 200, 0.04) 0%, transparent 70%);
+        }
+
+        /* ── Main Container ───────────────────────────────────── */
+        .page-wrapper {
             position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 680px;
+            padding: 60px 24px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+
+        /* ── Glass Card (shared) ──────────────────────────────── */
+        .glass-card {
+            background: rgba(15, 20, 35, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(244, 208, 63, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out both;
         }
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+
+        .glass-card:nth-child(2) {
+            animation-delay: 0.1s;
         }
-        a {
-            display: inline-block;
-            margin: 10px;
-            padding: 15px;
-            text-decoration: none;
-            color: #f4d03f;
-            background: transparent;
-            border-radius: 5px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            transition: transform 0.3s ease;
+
+        .glass-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
-        a:hover {
-            transform: scale(1.1);
+
+        .glass-card:nth-child(4) {
+            animation-delay: 0.3s;
         }
-        .icon {
-            width: 24px;
-            height: 24px;
-            fill: #f4d03f;
-            vertical-align: middle;
+
+        .glass-card:nth-child(5) {
+            animation-delay: 0.4s;
         }
-        .icon-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .icon-link .icon-label {
-            font-size: 1.1rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .banner {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #ff6f61;
-            text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61;
-        }
-        .stars {
+
+        .glass-card::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://source.unsplash.com/1600x900/?stars,galaxy') no-repeat center center/cover;
-            z-index: -1;
-            filter: brightness(0.5);
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(244, 208, 63, 0.15), transparent);
         }
-        .marvin {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 80px;
-            animation: float 4s ease-in-out infinite;
-            height: 42px;
-            width: auto;
-        }
-        @keyframes float {
-            0%, 100% {
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ── Header / Identity Card ───────────────────────────── */
+        .header-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .profile-photo {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(244, 208, 63, 0.15);
+            flex-shrink: 0;
+            transition: border-color 0.4s ease;
+        }
+
+        .profile-photo:hover {
+            border-color: rgba(244, 208, 63, 0.4);
+        }
+
+        .identity {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .banner {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #ff6f61;
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(255, 111, 97, 0.4), 0 0 40px rgba(255, 111, 97, 0.15);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(255, 111, 97, 0.4), 0 0 40px rgba(255, 111, 97, 0.15);
+            }
+
             50% {
-                transform: translateY(-10px);
+                text-shadow: 0 0 25px rgba(255, 111, 97, 0.6), 0 0 50px rgba(255, 111, 97, 0.25);
+            }
+        }
+
+        .site-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #f4d03f;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .site-subtitle {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(224, 221, 216, 0.5);
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Section Label ────────────────────────────────────── */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(244, 208, 63, 0.5);
+            margin-bottom: 16px;
+        }
+
+        /* ── Bio ─────────────────────────────────────────────── */
+        .bio {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: rgba(224, 221, 216, 0.82);
+        }
+
+        .bio p {
+            margin-bottom: 14px;
+        }
+
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Investment Thesis ────────────────────────────────── */
+        .looking-for {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(224, 221, 216, 0.72);
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: rgba(244, 208, 63, 0.7);
+            background: rgba(244, 208, 63, 0.06);
+            border: 1px solid rgba(244, 208, 63, 0.1);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(244, 208, 63, 0.12);
+            color: #f4d03f;
+            border-color: rgba(244, 208, 63, 0.2);
+        }
+
+        /* ── Lifestyle Section ────────────────────────────────── */
+        .lifestyle-note {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: rgba(224, 221, 216, 0.6);
+            margin-bottom: 16px;
+        }
+
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .interest-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: rgba(224, 221, 216, 0.72);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .interest-item:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.12);
+            color: #e0ddd8;
+        }
+
+        .interest-item .emoji {
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        /* ── Links Section ────────────────────────────────────── */
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .link-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #e0ddd8;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.01em;
+        }
+
+        .link-pill:hover {
+            background: rgba(244, 208, 63, 0.08);
+            border-color: rgba(244, 208, 63, 0.2);
+            color: #f4d03f;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-pill svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ── Languages ────────────────────────────────────────── */
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            color: rgba(224, 221, 216, 0.35);
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .lang {
+            letter-spacing: 0.08em;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .lang-label {
+            color: rgba(224, 221, 216, 0.45);
+            font-weight: 500;
+        }
+
+        /* ── Marvin ───────────────────────────────────────────── */
+        .marvin-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 10;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .marvin-container img {
+            width: 48px;
+            height: auto;
+            opacity: 0.5;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 0px transparent);
+        }
+
+        .marvin-container:hover img {
+            opacity: 0.9;
+            filter: drop-shadow(0 0 12px rgba(244, 208, 63, 0.3));
+            transform: scale(1.15);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* ── Footer / 42 Easter Egg ───────────────────────────── */
+        .footer-42 {
+            text-align: center;
+            padding: 24px 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-42 span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(244, 208, 63, 0.12);
+            letter-spacing: 0.3em;
+            transition: color 0.5s ease;
+            cursor: default;
+            user-select: none;
+        }
+
+        .footer-42:hover span {
+            color: rgba(244, 208, 63, 0.4);
+        }
+
+        /* ── Responsive ───────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .page-wrapper {
+                padding: 32px 16px 24px;
+                gap: 12px;
+            }
+
+            .glass-card {
+                padding: 28px 22px;
+                border-radius: 16px;
+            }
+
+            .header-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .profile-photo {
+                width: 72px;
+                height: 72px;
+            }
+
+            .site-title {
+                font-size: 1.6rem;
+            }
+
+            .banner {
+                font-size: 0.65rem;
+            }
+
+            .links {
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .link-pill {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .tags {
+                gap: 6px;
+            }
+
+            .tag {
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
+
+            .interests-grid {
+                gap: 6px;
+            }
+
+            .interest-item {
+                font-size: 0.78rem;
+                padding: 6px 14px;
+            }
+
+            .marvin-container {
+                bottom: 16px;
+                right: 16px;
+            }
+
+            .marvin-container img {
+                width: 36px;
+            }
+        }
+
+        /* ── Reduced Motion ───────────────────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+
+            .starfield::before,
+            .starfield::after {
+                animation: none;
+            }
+
+            .banner {
+                animation: none;
+            }
+
+            .marvin-container {
+                animation: none;
+            }
+
+            .glass-card {
+                animation: none;
+                opacity: 1;
             }
         }
     </style>
-  {% if jekyll.environment == "production" and site.google_analytics and site.google_analytics != "" %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.google_analytics }}');
-  </script>
-  {% endif %}
 </head>
+
 <body>
-    <div class="stars"></div>
-    {{ content }}
-    <img class="marvin" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAFnJJREFUeF7tWwuMXOV1Pvd957XPsT1rTMCEmCWB1iilwlJo7IpWtKISNvbaax7yIiJBIC1OGlIIBFYkkFhxiNqYR6Fa1PLKYnv9iqiUtOtUJJjYUNNADdiujR94be96d2dn5r7vrc75///Ond3Zhw2ESO2GzcyO53HP95/zne88RoL/4z/S79r+np4e0zTNgqIoTZIUNOHn+z4cVhTb7ujoGvhdX88nCkBfX1+T67qLVVX+chTBQkmCyyRZzksS+1i8ifBOBBBFIYRR5EMYvRtJ8G4Qhr+So2BnR8eNez9JUD52AHp7e7OSFK6SVXWlBNJiWZFVVVFAlhWQZBkkSQZZxo+VGAAcgSiMGAhhBGEYgB8EEAYBBEFwDKJoo++Hz3d2du75uMH42ADo7e0tKIr0LUmW16iq0qSqGqiKCjIZL4OislsEQAIJ7cf/OADMDcKIGR8GIRoe/3q+B77vQxQEu4LA/8HKlau3fFxAfGQA0M2DyPuWLMt367phqooGqqYCnjqCgCfPgJBBVVVQ+H1Z4h7AQQiCEMLAB9/H0/fJePQAuu/74HkeeIEHvoNgeHt9313b2Xnzzo8KxEcCoLf3xeWqpj+ma/o8TdNB01XQNI0MVRUdNFMHw9DB0HQChcJAksgT2Pnz+GckwD2Anb7nueA4Dji2C67nQhB44LkeA8J1wfFcCH33Oc+L1q5evXrwXIE4JwAwzhVVekzVtNsM3SCjNV0HTdVBN3RIpVKQMk1QNY2fOHd/Mjr5kWHMgoIM8d8jCCEKEYgQ/MAD23bAsiywbYtAcD2Hbh3HRqCOBb7XtXLljb84FxDOGoC+vhcvjCS1T9fMhWisrumg6yYYpgGZTAZM0wQN419D95eJ+Kb6EYbzxMCcAh9k/wdIjugRCITjuFAul6BStsBBEBz0Egs9xfcD796VKzp/eLYgnBUAGzdubJc1qd80zIKuG2DoeOIpyGbTkE5lmBfQqSuU4wTZ4UUlYWCm8Z8IgJICS4yJ62fPCCP8jSBCYgx9OnnLsaBUHIOKXQHXdsBxbXBsB3zP/fGKFavWng0IMwagt7d3oWao/Skz1YQnb+gmpNJpyGYzYBop0HUdFE1jLC/VGlxrWPLyIuIEYTy7y8iR5wgCCsMBQSCixBTp++T+5VIZxkpj4Ng28YWNgHjusx3LV3XNFIQZAYAnr+lyv2GkCrphkMGZbIaM1w2TSE5W0fiE4eQB0//EAFBWYARJiZJEEiVKCMgDAghD5AQGAoYFGm1VKlAsFsGyKmDbNoHguTP3hGmvcfv2F/JBZLxm6ubFumlCykxDNpeDbCZNxiMHyKpadfEaw6v5vh4UeLoCAKYRJMD0SCDwvykMkBDx12fp0UeP8AMIwgBc1yXji6NFKFdKFAoVqwK+636to2PVT6Y7gmkB2Lxl0ysp07gWYz2dSkGuoQHSqTQYJhpvgqziiTFdWw3l2vtxfIsnxPoXQOIEQAqRjGcAII8onECjKCJlSOmRgyB0AgIj3F8CGU4PDsJocQSciuXbvrNkdcfqV6cCYUoA+vo23a0Z2mPo8qk0Mz6TzoBhpIgA45OPjRfxywFJUnsc20jwMQVybPjJc+JE0YQKUk1kEOEBCARyAIYCghBROEREhE1NDSCBAvv3vw8nTw1gOBxWpPIVS5d2jUwGwqQA9G7tvdhU9N+aRsrEvJ7LNbA0l0qBYZigCLcXxidv42KnqvnrhgDGdsSKInR/ejbnAjx9SUb9wB4PKB3yEPCRD0S9gASJKjICXVehtbUVrHIF3tn3NgwMDCBZPrli+co7zhqArds2v6IbxrWmkYZcQxay2RzFPwJAcY+uyw3FE2XEzYgMGZwVPIzLq0xfexn4unG+QKmTAMH/ofHxZyAXMCKkOoELJXwMtQJmCSTM1uZmykjlcgX2vvUmnDp9ClzbWrRq1U276oFQ1wP6+l5erOp6PxqMbJ/LNVL8m6k0KTw6fXRPlK+MpcgQcXrxrUhwNaFQvQwRCvWBqOUVeg6mQqwaEYhEWhQA4L+nUiY0NzaSZw0PD8PuN16HsWJp54rlK5bMGIBt2zb3a4a5GMUNxlUqnaHTT2cyoKsaVXbiZPAkBFMLw5HMmENUT3C8FwiD8HkCAAKEx4TwqipfMlWIJTMBgQIp8On5BAoeAV6KFEFLcxOgRMfS+uDBA/DOvnfArthLOjs7JxRPEzxg07aXrtKV1GtoPKa7XDZLJ5/JZCFlGEzs1CE0BEKksbjhgXGcDIFqA4AAEiDEt+Ix8iimAdh/zHi6R0UTV4fC/XkxhdghHyBBtzQ1kZdiHbHr9V/D4NDQv664YcVfjPeCCQBs2bGpx9BSa9LpDDQ2YsrLAN5HAlRR7THGissaJtursRynRMzldYhRXMAE47mLMwOZocIjxocKnix5AgIlACLn4a+DCBqyWTo8fOzQoUPwX7/dC7blzu/s7DycBKEGAKzyzLR+OpVKmw25HGSQ+FIod5EATZCxlueMLQgOwUBiEj/k9gnjWReoSoh08uz4Y/5IGiwAoPfkrbIYYO76BHfAQoHuc68QnkLhIwERomEYMDY2Bq/t+jUUx0a/u+KGlQ9MCsDmrS+vMvTUiyh0GhsbSevj6eeyOdB0I05JImXx/EUnIVo7wmA6fW78ZAAgEGQ8nSR2g7hRSS/gp5x0fzJ0EgAQVUqLUQiaokA+3wpRCPDGm3vg+MDRd5df33HppABs2bapxzRSa3INOchmG/jpZyn+UZkxw0Wa4l1NSYpdlbxCnL64naImEC4rQBCeEN8mAEGACaQkT3DSpNjn/EAA4F9RRI0TQ9fICz448gEc+eDwhDCoCYGt2/oOpTPpC5niy0I6nSYBlDJTsWHJ+AdOcnGsYtkrNH0CgMlESMwf/PRrvCHhEcL4pKF4qlEUkOfVAMCJkDKFH0DZKoEURjA8MgyDQ6dRInd1dHQ+G4esuLNu3bpC++cXnMhmctDQyE4fQcjlcqT8kPUovSUIUAAQX2CymOEpcDIRlCRD1gytDQP2mCBCERrVkx4PAIWFAIOnSnxP26pApVKG0tgYjBRHwXWcn9ywdPnXJgDwyCOPXHfJJQu252e30qlj6sPYz2aygP2+aQHg5BZXc586AKyPYDsWVMplqFRKMDIyCidPnNzV1dW1aAIAmza9fLdVsR+b/9kLSfCkUoz8slmMf3VqAHjTAl36o4RAkgiTXjGTEKjnAZggbMcGCwGwSpQN9r93cPCrX71j1gQAtm3f/OjwmbG/W3DJxcT+CEBDNkf5H9Nf7AE1JChX+/tCDvPYF0DEGaMOEdSQYDIMBOHxsKgCMAMSTHAAAuC6DpTLZbCsMowVx+DQ/xzCrnWqq6vLjlM53tm2o69ndKS0ZsGCz1GDk9IfVoDpDLWzaZAxSRYgzZaoB5IpMMkbSQzGE2AsgAQXCFEzozTI0ymXwyILYEZwfZc8oGyV4czgIJwZOoP2xIIozgLbdmzpsS1nzdy2uZBrZJVfAzY/EABJps5lnAKTwkY0LfiF1wihBA+Ml5wxABy48RoACZB1hYXgYeIJa4CphBDqZMomHAzPx04y84Djxz6EMArABXd+51KmCOPr2vGzLT1RJK/JZjLQkm8FMwGAwgGgMpeJ+2qHX5ITaiyqyt+kDqijBEkNCuMTYkhofVH0JOMfjWKpEsEIaoooJgmqEpqpQpw8MwAwGxw7egwkRQIrsOoAsGNLj24Ya6JQhjmFOcQDmAJZCLCZXt0w4OwvxAsbefGWGDU4uWBKFEXjtb1QkkLkCGkttH6sAmMRxGoBoQGSBMiAq4KBEyZMg9g2O370GERyCJZvTwQAQyCVMtf4LkBh7mwqgrAGyGSzcaeWH/+EegC7tuKiJ1SECe0wngPE6Yq6oOYEE9WfqB3qu/8k8c9BwKYpNksDz4PDhz9A6QJWWAeA7dv7HjZS5v2uE8J58+ZS0zOXYQDgrI+d5EQvqClexjdFxneDRGNE9AR5FZkkxNoqkJVOtRI4oQDjkrpaMscFEjlICI7rkAfgaO3EhydAkkJobGjWlixZ4tdwwNatG28305knXMeD8+adR43PdCYNuUwDzfvwh6p7PtsXXIDDCvrQMGBV33jim6oW4AYwOmAVZVJWJ12cERs1B2POERI4ft4490cAcFaAAJRLJRgaGoIg9AaWXb+8bYIO6Nv+8mJTT/f7rg9zEQDdBBM7wRlUhWaiacm8gAzlbSmKx/gdJRg6dQqGBgehODICQ6dP0/DCxl/bhuLoaFVSc+lcqVTATKdZTHPWx3rEwP6jrpMXNjQ3U1c6P3s2tOTzbGLEpa9g/Dj9cffH8bplW1CxylAcGYXiWBEC39u5bOnyuD0WZwGc8+umMuz7IRTmFKj5SfUAqsJ0hub9zAtYKIycOQNv7dkNB95/H44fOQKHDx6EyliJwGmdNRtaC3OgpbUVZre1kaJszechnc3A7EKBjdCx768ofNoTgE/zf3aLcYsAVsoV+hxk8WEEdHgYTp86CcOncRoekWJtO/98mHfBBXDBRRfBxe2XQvOsPLXGUDLhDMGuoAq0CHgEwnW9H9+w9IZ4fliTnrft2LIPIqk9PyvPO8AmKUIE4a3du+H111+Htw78BvYe/U8Y0s6AY4SQNTLwyr2/gLLjUPrEdhQOSXUyEhcisMevigZy7ChiNUb0EQTRsaivNkxEVUdLEjgP8FxwaWHCh7FiEbKGDosf+jL4sgtpT4bMSBY+33YZfHHBIrikvR3aL78cPN+B4WEshCpQsZ3OVStWvTQhBPCB7T/b/EQYyLdjE6E0WoT/6N8Jv9m9BwU1zP/CpbDvc3vhZHgCIj+iUXUoRXBdYRn84JbHaJujOtgUWoEPSibpCldjPjY7HpoIgGguyFtgFCLJFlwUUYf6m8/9Nfzb4CsAAUA6mwJQImhRZ8MV7/0xHHr3PRguj8FfLVsGl36hHQI3bOvo6Ii30Wo8YMuWn14ThPLPH/32d8DyfVhyzZ/B1X9yNVx0STucGRqCY6NH4J/OrAfPcCHdaMLIyBj8cNFTsDD/RwRotVOEQ42EWGL/msiCtdMAYhDe/mUCialAumGUx3r/vPNETfhErn9z8DW4f89amJVvgrFRC2RHgjtavg2FhvMgnU7B6PAwfHDwIMyeW3i1Y8XKq5PpuAaA/v5+9cMTx09ks7l8YxMOGDRqhiAJYj2A8vS/3Tfgn8/8PQyPjkEuaoSnF22EwKsORtgkZ1xbvG5PkF0GN0/8UfWAZNeYA8KSQLIXyIhQ1gBu/dUygIwPZkaFNfm74Q/0qyjmS2NFIsJysQRlq7L2lptu+fGkAOA/PPPMP/7DrDmz70KiQi2A6RBng7j5wRqjMvQVn4VdpX+Hy+WroHP2HQmDgWJenLZS3XxIfmbNfdH3r32QaXnhJ2wYwh7BDTLs940PhyePfh9OZPbDouyfwrKGWynjnDw5ADau1uAWieX4lYp1fldX7TLmhLb4U0891d7QnNuHay4IABqPHSG8jwDMys8CL3LhRx/eB3+Z7YS54XymENhEDBQJ9wFZ7IvpbtX9xccJ09gti2sBATdcuL9ocvIuMW6JCDAY27PnH1Pfh1cqvXDvvPWggAoHDh6g3I/G25aNr3npxtU3do4/ibqjsX95vqcvAuV6bCaS8bgDhLeGAc0tzdA2Zw4M2MfAOoW7e7U7AGwTjPEBNVKm/WFt7eoEKAEERwZPnDgg6QEcOaEFQAuhoc2EttRn4MDBg3ByAKfDuDli0+TYTJtX3Fhn67QuAM8/37OwZLm7dc1QdRN3gQzAzRC61Q347EXzqUQ+fORoNb3F012c7bONINoVGkd/STxqqTBmQu4SVc/AUxf9QZwQ0zPZRIQTJZtN4nVh0fPO22+D7Tjguuj+DgqvjV+59Ssr6p1FXQDwiU8/89TTru/fhgbjTIAZjxthBgkknBqNjhbHrcEwb8CdQHxjtunBQJj6h4dCHUJACex7mGIjti1KrXFmvBibERChD40NjTBw8gRUKha4nk0LVEHo2035pstv7rj5wFkB8MILL+RPDZ7cB5KSF+IGm6M4GmfbYDgiZ50iNsyOp+VUOqsqMxzDQGyBTGC/hAvwOVGCC5hH0CYIMj/tBwWxDhAYsHSIi5WoIHF/kC1Rerg55rqQNs3uO++486HJDmBSD8AXPPnkhuXDo8WX1YThBADtBuKUGEHgC3DUF0OL2FsiALTpgSCo03BBDRDVP7DQEsUWSmQxIosXrPnozPdxedLFvSC69Tx0fw8UWdp75RevvFJUfmflAeLJ63607gmrYt+OhlNxQsbj6ivbDCVDMd3xeGTRyLoxtCWOuz8KeoI2lRbiFR7/VGp9BRD4rMjCpgZrkXG9xO8gOQY+Gu2xGoKMx18PlVMpX2i94s7b7qzr+sK+KT0An4Ti6Jev/rLf84IvoSiiHQEeAmwvmC9GkifwlpSPKo4tMSAAFB4yZoXqXsHE06hKIpzoYL4XcS92EOg1pAdQECFAuC/EDEYvoD1i34fQ9/zmlqal93zjnh3Tsc+0AOAb9PRsKLy3/1h/EEXtSDRYHCEZojcotBnO1uLFFIjECu7w0DpbSC2ECH/DiG+A1V+fxdd5YcCNjKjgEd1mcfzIFVh3sG0xLI7YKj1uleN9fKy5qXHt/ffdX6P4zokDki/asGFd4eixM/2RBO0tLXkamLDMgHvBOokewfjxCeEuD62/MyJDgHCZCfsHYntE9PNI3XHXph0gH5lfML3o+CARMmNDNJremwHAvlzhQzqbXvvwd7pnZDy+/Yw8IOaDDesKw8dHfq5o6mX5/CwOAgokthytyFj2SmyDg29z0gWTq+KFckan8XcYS2jybP5NEYp1nuOZDhJbYGgskqLHv0eAIKE+CMirPM/1U7r2ze7uh2ds/FkDgC/YsGFD9sOBEy8qqnpdoVCgLQxanMa6ge8QMABC8D2s4avGCxCEy8annDhp1iBFENh+MJ0s3wyLcE1ObIkFAWj0HQQJpW5JUdXO73Z3Txvz40PhrDwg+eIHHnrgbyVZfbStUFCxPsB2OAqmlGmApCjMeAKAf9EBYxbTFQLiMTfGE8TwEDo4uSmCAIr8T96Ef6MOwB0g2lc2SOpaVmWPpqid3d3dU7L9R+aAem/w4PceXBi40RMtrS1XXfiZC+miKFfzZShxWj5+yYFYGsPBp44OgcDDAmOepU4262e9ffaLW6D4npqmUFmOmQhbZmPFom051veuvebPvz9Vnv9YssB0b3LfA/etMfXUw+fNmzevrQ17fjqdLF4ofqnB9XxSaeQVxAnsO0AUCvyXFh35ZIdmC7JM6RYrUDRckRX6ngA2WsvlynOaojzQ3d1ds/A03XXW+/dzDoHxb/Zgz4Oms9+5KZvN/U2h0HZZYc4caqxST48TIRqNxQoTLewXwwClMz6PvmxFX6yqLkqjd+D298jwsG1Zlecqpcr69evXv3suxn6iACTf/Ov3fP2qTDq3srGpafms1vw8LJwwblEU0YYn7f+zCo9iG9mcNwToewCo5x0b29h+uVTeOVYe+2nWSG/s7u6edOn5XAH52Dxgsgu46xt3tWeN7Jcaco1/mM6kF8qKOk+V5XmRJKmGphE3YIM1CILBIPAHfN87YNvuG6Xy6B6n7Lz6+OOPl87VuJm87hMHYCYX8Wk+5/8B+DTR/3347P8FeEd1IsgwYSwAAAAASUVORK5CYII=" alt="Marvin the Paranoid Android">
+    <div class="starfield"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="page-wrapper">
+        {{ content }}
+    </div>
+
+    <div class="marvin-container" title="I think you ought to know I'm feeling very depressed.">
+        <img src="{{ 'marvin.png' | relative_url }}" alt="Marvin the Paranoid Android">
+    </div>
+
+    <div class="footer-42">
+        <span>the answer is 42</span>
+    </div>
 </body>
+
 </html>
