@@ -79,12 +79,12 @@ title: Sunmeet Singh
             </svg>
             Instagram
         </a>
-        <a class="link-pill" href="mailto:me@sunmeet.ca" aria-label="Email Sunmeet">
+        <a class="link-pill" href="mailto:me@sunmeet.ca" aria-label="Email Sunmeet" id="email-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                     d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
             </svg>
-            Email
+            <span class="link-text">Email</span>
         </a>
         <a class="link-pill"
             href="https://keys.openpgp.org/vks/v1/by-fingerprint/3D122F7985960CB02072ED55072797E63ED6CC8E"
@@ -96,3 +96,32 @@ title: Sunmeet Singh
         </a>
     </div>
 </div>
+</div>
+
+<div class="marvin-container" title="I think you ought to know I'm feeling very depressed.">
+    <img src="{{ 'marvin.png' | relative_url }}" alt="Marvin the Paranoid Android">
+</div>
+
+<div class="footer-42">
+    <span>the answer is 42</span>
+</div>
+
+<script>
+    document.getElementById('email-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        navigator.clipboard.writeText('me@sunmeet.ca').then(() => {
+            const textSpan = this.querySelector('.link-text');
+            const originalText = 'Email';
+            textSpan.textContent = 'Copied!';
+            setTimeout(() => {
+                textSpan.textContent = originalText;
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            window.location.href = this.href;
+        });
+    });
+</script>
+</body>
+
+</html>
