@@ -79,7 +79,8 @@ title: Sunmeet Singh
             </svg>
             Instagram
         </a>
-        <a class="link-pill" href="mailto:me@sunmeet.ca" aria-label="Email Sunmeet" id="email-link">
+        <a class="link-pill" href="mailto:me@sunmeet.ca" aria-label="Email Sunmeet" id="email-link"
+            title="Click to copy email address">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path
                     d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
@@ -96,18 +97,23 @@ title: Sunmeet Singh
         </a>
     </div>
 </div>
+<<<<<<< HEAD
 </div>
 
 <div class="marvin-container" title="I think you ought to know I'm feeling very depressed.">
     <img src="{{ 'marvin.png' | relative_url }}" alt="Marvin the Paranoid Android">
 </div>
+=======
+>>>>>>> a8ace94 (fix: remove duplicate footer elements and enhance email link UX)
 
 <script>
     document.getElementById('email-link').addEventListener('click', function (e) {
         e.preventDefault();
-        navigator.clipboard.writeText('me@sunmeet.ca').then(() => {
-            const textSpan = this.querySelector('.link-text');
-            const originalText = 'Email';
+        const email = this.href.replace('mailto:', '');
+        const textSpan = this.querySelector('.link-text');
+        const originalText = textSpan.textContent;
+
+        navigator.clipboard.writeText(email).then(() => {
             textSpan.textContent = 'Copied!';
             setTimeout(() => {
                 textSpan.textContent = originalText;
