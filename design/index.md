@@ -9,6 +9,9 @@ permalink: /design/
 
 **Muted · Timeless · Chic** — Dining moves to the wintergarten. The 45 m² living room becomes a pure lounge.
 
+> [!TIP]
+> **Shopping time!** Check out the curated [Furniture Sourcing Report](/design/sourcing/) for specific items and logistics.
+
 ---
 
 ## Color Palette

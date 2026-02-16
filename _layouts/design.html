@@ -38,6 +38,29 @@
             padding: 60px 40px 100px;
         }
 
+        nav {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--sand);
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-weight: 600;
+            color: #6B6560;
+            /* text-light */
+            text-decoration: none;
+            padding-bottom: 4px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #2D2A26;
+            /* text */
+            border-bottom: 2px solid var(--bronze);
+        }
+
         .content h1 {
             font-size: 2.4rem;
             font-weight: 700;
@@ -195,6 +218,11 @@
 
 <body>
     <div class="content">
+        <nav>
+            <a href="/design/" class="{% if page.url == '/design/' %}active{% endif %}">Design Concept</a>
+            <a href="/design/sourcing/" class="{% if page.url == '/design/sourcing/' %}active{% endif %}">Furniture
+                Sourcing</a>
+        </nav>
         {{ content }}
     </div>
 </body>
