@@ -1,10 +1,10 @@
 ---
 layout: design
-title: "Zwyssigstrasse 11 — Interior Design v3"
+title: "Zwyssigstrasse 11 — Interior Design v4"
 permalink: /design/
 ---
 
-# Zwyssigstrasse 11 — Interior Design v3
+# Zwyssigstrasse 11 — Interior Design v4
 ## "Modern Chateau"
 
 **Muted · Timeless · Chic** — Dining moves to the wintergarten. The 45 m² living room becomes a pure lounge.
@@ -30,13 +30,13 @@ permalink: /design/
 
 ## Full Apartment Layout
 
-![Full Layout](/design/v3_full_layout.png)
+![Full Layout](/design/v4_full_layout.png)
 
 ---
 
 ## Living Room + Wintergarten + Bar Station
 
-![Living Area Detail](/design/v3_living_layout.png)
+![Living Area Detail](/design/v4_living_layout.png)
 
 ### Mood Reference
 
@@ -93,7 +93,7 @@ Tucked into the corner between the guest bedroom and wintergarten entrance.
 
 ## Bedrooms + Office
 
-![Rooms Detail](/design/v3_rooms_layout.png)
+![Rooms Detail](/design/v4_rooms_layout.png)
 
 ### Mood Reference
 
@@ -103,7 +103,7 @@ Tucked into the corner between the guest bedroom and wintergarten entrance.
 
 ### Master Bedroom — 16 m² "The Retreat"
 
-Bed against the left wall. Built-in wardrobes on top wall. Clean and minimal.
+Bed against the bottom wall (shared with office). Built-in wardrobes on top wall. Window wall clear. Clean and minimal.
 
 | Piece | Est. Price (CHF) |
 |---|---|
