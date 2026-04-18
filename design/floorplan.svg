@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr-s" markerWidth="8" markerHeight="8" refX="2" refY="4" orient="auto">
+      <path d="M6,1 L2,4 L6,7" fill="none" stroke="#2266cc" stroke-width="1.2"/>
+    </marker>
+    <marker id="arr-e" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M2,1 L6,4 L2,7" fill="none" stroke="#2266cc" stroke-width="1.2"/>
+    </marker>
+    <pattern id="stair-hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#bbb" stroke-width="1"/>
+    </pattern>
+    <pattern id="wardrobe-X" width="36" height="36" patternUnits="userSpaceOnUse">
+      <rect width="36" height="36" fill="none" stroke="#888" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="36" y2="36" stroke="#888" stroke-width="0.5"/>
+      <line x1="0" y1="36" x2="36" y2="0" stroke="#888" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Title -->
+  <text x="50" y="30" font-size="24" font-weight="300" fill="#222">1. Obergeschoss</text>
+  <text x="50" y="45" font-size="10" fill="#999" font-style="italic">Reconstructed Floorplan (Proportional scaled SVG)</text>
+
+  <!-- ==================== ROOM FILLS ==================== -->
+  <g stroke="#333" stroke-width="1">
+    <!-- Bad (Restored to accurate width mapping) -->
+    <rect x="62" y="62" width="147" height="183" fill="#e4ecf5" />
+    <!-- Dusche (Restored adjacent to Bad cleanly via thin partition) -->
+    <rect x="215" y="62" width="130" height="183" fill="#e4ecf5" />
+    
+    <!-- Treppenhaus -->
+    <rect x="450" y="62" width="283" height="180" fill="#f8f8f8" />
+    
+    <!-- Stair area hatching -->
+    <rect x="546" y="62" width="187" height="180" fill="url(#stair-hatch)" />
+
+    <!-- Top Zimmer (height 210px = 3.5m) -->
+    <rect x="62" y="248" width="280" height="210" fill="#f8f8f8" />
+    <!-- Middle Zimmer (height 162px = 2.7m) -->
+    <rect x="62" y="458" width="280" height="162" fill="#f8f8f8" />
+    <!-- Bottom Zimmer (height 162px = 2.7m) -->
+    <rect x="62" y="620" width="280" height="162" fill="#f8f8f8" />
+
+    <!-- Corridor & Entrée (Seamlessly merged extending fully up to Top boundary Y=143) -->
+    <rect x="348" y="143" width="102" height="639" fill="#f8f8f8" stroke="none" />
+
+    <!-- Kitchen & Living & Wintergarten (merged open feel) -->
+    <rect x="450" y="248" width="289" height="534" fill="#f8f8f8" stroke="none" />
+    
+    <!-- Open plan dividing string (dotted) -->
+    <line x1="450" y1="398" x2="450" y2="665" stroke="#ccc" stroke-width="1.5" stroke-dasharray="4,4" />
+    
+    <!-- Wintergarten Highlight Area (Shifted Down!) -->
+    <rect x="448" y="665" width="381" height="150" fill="#eaf5ea" stroke="none" />
+    
+    <!-- Balkon (Extended Down into Wintergarten Area!) -->
+    <rect x="739" y="248" width="90" height="417" fill="#eaf5ea" stroke="#555" stroke-dasharray="6,4" />
+  </g>
+
+  <!-- ==================== WARDROBES & KITCHEN [X] ==================== -->
+  <g fill="url(#wardrobe-X)" stroke="#666" stroke-width="1">
+    <!-- Top Zimmer Wardrobe (With opening on left) -->
+    <rect x="140" y="248" width="202" height="36" />
+    
+    <!-- Lift in Treppenhaus -->
+    <rect x="450" y="62" width="96" height="96" />
+
+    <!-- Kitchen Drawers facing Corridor (Height increased by 33px) -->
+    <rect x="450" y="248" width="36" height="150" />
+    <!-- Kitchen Cabinets Top -->
+    <rect x="486" y="248" width="114" height="36" />
+    
+    <!-- Top Zimmer mini box right -->
+    <rect x="306" y="370" width="36" height="76" />
+  </g>
+  
+  <!-- Kitchen Island -->
+  <rect x="540" y="340" width="80" height="50" fill="#fafafa" stroke="#888" stroke-width="1" />
+  <circle cx="560" cy="355" r="8" fill="none" stroke="#888" />
+  <circle cx="560" cy="375" r="8" fill="none" stroke="#888" />
+  <circle cx="580" cy="355" r="8" fill="none" stroke="#888" />
+  <circle cx="580" cy="375" r="8" fill="none" stroke="#888" />
+
+  <!-- ==================== THICK WALLS (Exterior & Structural) ==================== -->
+  <g stroke="#222" stroke-linecap="square">
+    <!-- Left exterior -->
+    <line x1="56" y1="56" x2="56" y2="788" stroke-width="12"/>
+    <!-- Top exterior blocks -->
+    <line x1="56" y1="56" x2="348" y2="56" stroke-width="12"/>
+    <line x1="345" y1="143" x2="444" y2="143" stroke-width="12"/>
+    <line x1="444" y1="56" x2="739" y2="56" stroke-width="12"/>
+    <!-- Right exterior -->
+    <line x1="739" y1="56" x2="739" y2="248" stroke-width="12"/>
+    <!-- Stair core inner walls -->
+    <line x1="444" y1="56" x2="444" y2="248" stroke-width="12"/>
+    <!-- Bottom exterior (Stops at thick pillar for wintergarten) -->
+    <line x1="56" y1="788" x2="423" y2="788" stroke-width="12"/>
+    
+    <!-- Wintergarten Wall Stub at bottom of corridor (Shifted Down!) -->
+    <rect x="423" y="665" width="25" height="117" fill="#222" stroke="none" />
+  </g>
+
+  <!-- ==================== INNER WALLS ==================== -->
+  <g stroke="#333" stroke-width="6" stroke-linecap="square">
+    <!-- Zimmer right wall / corridor left wall -->
+    <line x1="345" y1="62" x2="345" y2="782" />
+    
+    <!-- Dividing partition between Bad and Dusche -->
+    <line x1="212" y1="62" x2="212" y2="245" />
+    <!-- Horizontal wall between Bad/Dusche and Zimmers -->
+    <line x1="62" y1="245" x2="348" y2="245" />
+    
+    <!-- Horizontal wall below Treppenhaus (Entree is completely open to Corridor) -->
+    <line x1="450" y1="245" x2="739" y2="245" />
+    
+    <!-- Zimmer separations (adjusted for 3.5m top zimmer) -->
+    <line x1="62" y1="458" x2="345" y2="458" />
+    <line x1="62" y1="620" x2="345" y2="620" />
+  </g>
+
+  <!-- ==================== DOORS & THIN WALLS ==================== -->
+  <!-- ==================== FLOOR-TO-CEILING WINDOWS / GLASS WALLS ==================== -->
+  <g stroke="#89a">
+    <!-- 1) Living Room to Balkon (Vertical at X=739, Y=248..665) -->
+    <line x1="737" y1="248" x2="737" y2="665" stroke-width="1" />
+    <line x1="741" y1="248" x2="741" y2="665" stroke-width="1" />
+    <line x1="739" y1="248" x2="739" y2="665" stroke-width="5" stroke-dasharray="2, 60" />
+
+    <!-- 2) Balkon to Wintergarten (Horizontal at Y=665, X=739..829) -->
+    <line x1="739" y1="663" x2="829" y2="663" stroke-width="1" />
+    <line x1="739" y1="667" x2="829" y2="667" stroke-width="1" />
+    <line x1="739" y1="665" x2="829" y2="665" stroke-width="5" stroke-dasharray="2, 60" />
+
+    <!-- 3) Wintergarten Outer Bottom (Horizontal at Y=815, X=448..829) -->
+    <line x1="448" y1="813" x2="829" y2="813" stroke-width="1" />
+    <line x1="448" y1="817" x2="829" y2="817" stroke-width="1" />
+    <line x1="448" y1="815" x2="829" y2="815" stroke-width="5" stroke-dasharray="2, 60" />
+
+    <!-- 4) Wintergarten Outer Left (Vertical at X=448, Y=665..815) -->
+    <line x1="446" y1="665" x2="446" y2="815" stroke-width="1" />
+    <line x1="450" y1="665" x2="450" y2="815" stroke-width="1" />
+    <line x1="448" y1="665" x2="448" y2="815" stroke-width="5" stroke-dasharray="2, 60" />
+
+    <!-- 5) Living Room to Wintergarten (Horizontal at Y=665, X=448..739) -->
+    <line x1="448" y1="663" x2="739" y2="663" stroke-width="1" />
+    <line x1="448" y1="667" x2="739" y2="667" stroke-width="1" />
+    <line x1="448" y1="665" x2="739" y2="665" stroke-width="5" stroke-dasharray="2, 60" />
+
+    <!-- 6) Wintergarten Outer Right (Vertical at X=829, Y=665..815) -->
+    <line x1="827" y1="665" x2="827" y2="815" stroke-width="1" />
+    <line x1="831" y1="665" x2="831" y2="815" stroke-width="1" />
+    <line x1="829" y1="665" x2="829" y2="815" stroke-width="5" stroke-dasharray="2, 60" />
+  </g>
+  
+  <g fill="none" stroke="#68a" stroke-width="1.5">
+    <!-- Bad door (en suite to Zimmer on bottom horizontal line) -->
+    <rect x="90" y="242" width="40" height="6" fill="#f8f8f8" stroke="none" />
+    <line x1="90" y1="245" x2="90" y2="205" />
+    <path d="M 130,245 A 40,40 0 0,0 90,205" />
+
+    <!-- Dusche door (Connecting to Entree on vertical right wall) -->
+    <rect x="342" y="190" width="6" height="40" fill="#f8f8f8" stroke="none" />
+    <line x1="345" y1="190" x2="305" y2="190" />
+    <path d="M 345,230 A 40,40 0 0,1 305,190" />
+
+    <!-- Top Zimmer door -->
+    <rect x="342" y="418" width="6" height="40" fill="#f8f8f8" stroke="none" />
+    <line x1="345" y1="458" x2="305" y2="458" />
+    <path d="M 345,418 A 40,40 0 0,0 305,458" />
+
+    <!-- Middle Zimmer door -->
+    <rect x="342" y="580" width="6" height="40" fill="#f8f8f8" stroke="none" />
+    <line x1="345" y1="580" x2="305" y2="580" />
+    <path d="M 345,620 A 40,40 0 0,1 305,580" />
+
+    <!-- Bottom Zimmer door -->
+    <rect x="342" y="620" width="6" height="40" fill="#f8f8f8" stroke="none" />
+    <line x1="345" y1="660" x2="305" y2="660" />
+    <path d="M 345,620 A 40,40 0 0,0 305,660" />
+
+    <!-- Apartment Entrance Door from Treppenhaus -->
+    <rect x="438" y="180" width="12" height="40" fill="#f8f8f8" stroke="none" />
+    <line x1="444" y1="180" x2="404" y2="180" />
+    <path d="M 444,220 A 40,40 0 0,1 404,180" />
+    
+    <!-- Wintergarten to Balkon Door (Horizontal divider at Y=665) -->
+    <line x1="739" y1="665" x2="739" y2="705" />
+    <path d="M 779,665 A 40,40 0 0,1 739,705" />
+  </g>
+
+  <!-- ==================== WINDOWS (blue blocks on exterior) ==================== -->
+  <g stroke="#5599cc" stroke-width="5">
+    <!-- Bad Window -->
+    <line x1="56" y1="120" x2="56" y2="180" />
+    <!-- Top Zimmer -->
+    <line x1="56" y1="300" x2="56" y2="360" />
+    <!-- Middle Zimmer -->
+    <line x1="56" y1="500" x2="56" y2="560" />
+    <!-- Bottom Zimmer -->
+    <line x1="56" y1="670" x2="56" y2="730" />
+    <!-- Kitchen right -->
+    <line x1="739" y1="80" x2="739" y2="150" />
+  </g>
+
+  <!-- ==================== BATHROOM FIXTURES ==================== -->
+  <g fill="#fafafa" stroke="#68a" stroke-width="1.2">
+    <!-- === Bad Fixtures (Left Room, plumbing on right partition) === -->
+    <!-- Bathtub (Wall-to-wall with extended right platform) -->
+    <rect x="62" y="62" width="147" height="45" fill="#fdfdfd" />
+    <rect x="66" y="66" width="95" height="37" rx="8" ry="8" />
+    <circle cx="145" cy="84" r="3" fill="#68a" stroke="none" />
+    <!-- Washbasin (Middle right next to bath) -->
+    <rect x="179" y="115" width="30" height="40" />
+    <ellipse cx="194" cy="135" rx="7" ry="14" />
+    <!-- Toilet (Closer to bottom edge) -->
+    <rect x="200" y="185" width="9" height="24" fill="#eee" />
+    <ellipse cx="188" cy="197" rx="14" ry="9" />
+    
+    <!-- === Dusche Fixtures (Right Room, flipped configuration) === -->
+    <!-- Shower Stall (Left edge, wider and longer) -->
+    <rect x="215" y="62" width="85" height="60" fill="#fdfdfd" />
+    <line x1="215" y1="62" x2="300" y2="122" stroke-width="0.8" />
+    <line x1="215" y1="122" x2="300" y2="62" stroke-width="0.8" />
+    <!-- Washing Machine Column (Right edge, same length as shower) -->
+    <rect x="300" y="62" width="45" height="60" />
+    <circle cx="322" cy="85" r="10" />
+    <text x="322" y="105" font-size="8" font-weight="600" fill="#68a" stroke="none" text-anchor="middle">WM/TU</text>
+    <!-- Washbasin (Left side, further down) -->
+    <rect x="215" y="135" width="30" height="40" />
+    <ellipse cx="230" cy="155" rx="7" ry="14" />
+    <!-- Toilet (Left side, further down near the bottom) -->
+    <rect x="215" y="195" width="9" height="24" fill="#eee" />
+    <ellipse cx="227" cy="207" rx="14" ry="9" />
+  </g>
+
+  <!-- ==================== ROOM LABELS ==================== -->
+  <g font-size="12" fill="#333" text-anchor="middle">
+    <!-- Bad label -->
+    <text x="135" y="175" font-weight="600">Bad</text>
+    <text x="135" y="190" font-size="9" fill="#888" font-style="italic">Bathroom (ca. 7 m²)</text>
+    
+    <!-- Dusche label -->
+    <text x="280" y="175" font-weight="600">Dusche</text>
+    <text x="280" y="190" font-size="9" fill="#888" font-style="italic">Shower (ca. 6 m²)</text>
+    
+    <text x="415" y="175" font-weight="600">Entrée</text>
+    
+    <text x="640" y="145" font-weight="600">Treppenhaus</text>
+    
+    <text x="600" y="150" font-weight="600" transform="translate(0, 150)">Küche</text>
+    <text x="600" y="165" font-size="9" fill="#888" font-style="italic" transform="translate(0, 150)">Kitchen (ca. 9 m²)</text>
+
+    <text x="202" y="345" font-weight="600">Zimmer</text>
+    <text x="202" y="360" font-size="9" fill="#888" font-style="italic">Bedroom (ca. 16 m²)</text>
+
+    <text x="202" y="535" font-weight="600">Zimmer</text>
+    <text x="202" y="550" font-size="9" fill="#888" font-style="italic">Bedroom (ca. 14 m²)</text>
+
+    <text x="202" y="705" font-weight="600">Zimmer</text>
+    <text x="202" y="720" font-size="9" fill="#888" font-style="italic">Bedroom (ca. 14 m²)</text>
+
+    <!-- Shifted down to accommodate new wintergarten position -->
+    <text x="594" y="440" font-weight="600" font-size="14">Wohnen / Essen</text>
+    <text x="594" y="458" font-size="10" fill="#888" font-style="italic">Living / Dining room (ca. 45 m²)</text>
+
+    <!-- Shifted down 33px -->
+    <text x="594" y="733" font-weight="600" font-size="11" fill="#454">Wintergarten</text>
+    <text x="594" y="748" font-size="8" fill="#787" font-style="italic">Conservatory</text>
+
+    <text x="790" y="430" font-weight="600" font-size="11" fill="#454">Balkon</text>
+    <text x="790" y="445" font-size="8" fill="#787" font-style="italic">Balcony</text>
+  </g>
+
+  <!-- ==================== BLUE DIMENSION ANNOTATIONS ==================== -->
+  <g fill="#2266cc" font-size="10" font-weight="600" text-anchor="middle">
+    <!-- (Removed floating 2.86m annotation) -->
+    <!-- Top Zimmer Left Vertical 3.5m -->
+    <line x1="36" y1="248" x2="36" y2="458" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="30" y="353" transform="rotate(-90, 30, 353)">3.5 m</text>
+
+    <!-- Middle Zimmer Left Vertical 2.7m -->
+    <line x1="36" y1="458" x2="36" y2="620" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="30" y="539" transform="rotate(-90, 30, 539)">2.7 m</text>
+
+    <!-- Middle Zimmer Horizontal 4.65m -->
+    <line x1="62" y1="590" x2="342" y2="590" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="202" y="586">4.65 m</text>
+
+    <!-- Top Corridor 1.7m -->
+    <line x1="348" y1="360" x2="450" y2="360" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="415" y="356">1.7 m</text>
+
+    <!-- Entrée vertical depth 4.25m -->
+    <line x1="375" y1="143" x2="375" y2="398" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="369" y="270" transform="rotate(-90, 369, 270)">4.25 m</text>
+
+    <!-- 4.45m Open Boundary Living Room (Shifted Down) -->
+    <line x1="440" y1="398" x2="440" y2="665" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="434" y="531" transform="rotate(-90, 434, 531)">4.45 m</text>
+
+    <!-- Bottom Corridor 1.20m -->
+    <line x1="348" y1="770" x2="423" y2="770" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="385" y="785">1.20 m</text>
+
+    <!-- Pillar Width 0.42m -->
+    <line x1="423" y1="675" x2="448" y2="675" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="435" y="690" font-size="8">0.42 m</text>
+
+    <!-- Pillar Height 1.95m (Shifted Down) -->
+    <line x1="410" y1="665" x2="410" y2="782" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="395" y="723" font-size="8" transform="rotate(-90, 395, 723)">1.95 m</text>
+
+    <!-- Living Room & Wintergarten Width 4.43m -->
+    <line x1="450" y1="590" x2="739" y2="590" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="591" y="586">4.43 m</text>
+
+    <!-- Wintergarten Vertical 2.5m (Shifted Down) -->
+    <line x1="720" y1="665" x2="720" y2="815" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="710" y="740" transform="rotate(-90, 710, 740)">2.5 m</text>
+  </g>
+
+</svg>
