@@ -607,6 +607,74 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     }
     .sourcing-table a:hover { border-bottom-color: var(--brass); }
 
+    /* ── Room layout diagrams ────────────────────────────────── */
+    .room-layout-toggle {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+    }
+    .room-layout-toggle summary {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      cursor: pointer;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .room-layout-toggle summary::-webkit-details-marker { display: none; }
+    .room-layout-toggle summary::before {
+      content: '▶';
+      font-size: 0.55rem;
+      transition: transform 0.2s;
+    }
+    .room-layout-toggle[open] summary::before { transform: rotate(90deg); }
+    .room-layout-toggle summary:hover { color: var(--text-2); }
+    .room-diagram {
+      margin-top: 12px;
+      background: var(--surface-2);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      position: relative;
+      font-size: 0.62rem;
+      font-weight: 500;
+      color: var(--text-2);
+      letter-spacing: 0.02em;
+    }
+    .rd-grid {
+      display: grid;
+      gap: 4px;
+      width: 100%;
+    }
+    .rd-cell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.3;
+      min-height: 28px;
+    }
+    .rd-cell.wall  { background: var(--steel); color: transparent; min-height: 8px; border-radius: 2px; border: none; }
+    .rd-cell.window { background: #D4E8F5; border-color: #A8C8E0; color: #4A7A9B; }
+    .rd-cell.door  { background: var(--surface-2); border-style: dashed; color: var(--text-3); }
+    .rd-cell.done  { background: var(--green-bg); border-color: #A8C8B8; color: var(--green); }
+    .rd-cell.sofa  { background: var(--brass-bg); border-color: #E0C898; color: #7A5A28; }
+    .rd-cell.empty { background: transparent; border: none; }
+    .rd-note {
+      font-size: 0.65rem;
+      color: var(--text-3);
+      margin-top: 8px;
+      text-align: center;
+    }
+
     /* ── Utility ─────────────────────────────────────────────── */
     .card-wrap {
       background: var(--surface);
@@ -796,6 +864,31 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>0 / 8</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <!-- 45m² ~7×6.5m. Top = balcony wall, right = kitchen, bottom = corridor -->
+            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr; grid-template-rows: auto auto auto auto auto auto;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell window">Window / Balcony</div>
+              <div class="rd-cell window" style="grid-column:span 2">Window</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell sofa" style="grid-column:span 2; grid-row:span 2">L-Sofa</div>
+              <div class="rd-cell">Coffee Table</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell">Accent Chair</div>
+              <div class="rd-cell">Reading Chair</div>
+              <div class="rd-cell">TV Wall</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell">Sideboard</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell door">→ Bar nook</div>
+              <div class="rd-cell door">→ Kitchen</div>
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+            </div>
+            <div class="rd-note">Approximate — not to scale · N = balcony wall</div>
+          </div>
+        </details>
       </div>
 
       <!-- Wintergarten Dining -->
@@ -839,6 +932,23 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>0 / 5</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr; grid-template-rows:auto auto auto auto;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell window" style="grid-column:span 3">Glass ceiling + walls — Wintergarten</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell" style="grid-column:span 1; grid-row:span 2">Dining Table 200×90</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell">Chair ×3</div>
+              <div class="rd-cell">Chair ×3</div>
+              <div class="rd-cell">Rug</div>
+              <div class="rd-cell door" style="grid-column:span 3">← Partition (4B ST2) → Living room</div>
+            </div>
+            <div class="rd-note">~11.5 m² · glass on 3 sides</div>
+          </div>
+        </details>
       </div>
 
       <!-- Bar Station -->
@@ -882,6 +992,24 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>0 / 5</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <div class="rd-grid" style="grid-template-columns:1fr 2fr 1fr;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell">Console + Wine Fridge + Shelf</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell empty" style="grid-row:span 2"></div>
+              <div class="rd-cell empty" style="grid-row:span 2"></div>
+              <div class="rd-cell empty" style="grid-row:span 2"></div>
+              <div class="rd-cell door">↑ Wintergarten</div>
+              <div class="rd-cell door">↑ Guest room</div>
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+            </div>
+            <div class="rd-note">Corner nook between guest bedroom + wintergarten entrance</div>
+          </div>
+        </details>
       </div>
 
       <!-- Master Bedroom -->
@@ -935,6 +1063,27 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>0 / 7</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <!-- ~4×4m. Left = exterior/window, right = corridor door, top = shared w/bathroom, bottom = shared w/office -->
+            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
+              <div class="rd-cell" style="grid-column:span 4; grid-row:span 2">King Bed 180×200</div>
+              <div class="rd-cell">NS</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell">NS</div>
+              <div class="rd-cell">Bench</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell">Wardrobe →</div>
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell empty" style="grid-column:span 3"></div>
+              <div class="rd-cell door">Door →</div>
+            </div>
+            <div class="rd-note">16 m² · window on left · door to corridor on right · NS = nightstand</div>
+          </div>
+        </details>
       </div>
 
       <!-- Home Office -->
@@ -950,7 +1099,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         <ul class="room-items">
           <li class="room-item">
             <div class="item-check done"></div>
-            <div class="item-text done">OAKO Alive Oak Desk — 160×80 cm, live-edge oak, black motor frame, height-adjustable</div>
+            <div class="item-text done">OAKO Alive Oak Desk — 140×80 cm, live-edge oak, black motor frame, height-adjustable</div>
             <div class="item-price">~1,500</div>
           </li>
           <li class="room-item">
@@ -993,6 +1142,26 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>1 / 8</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:12.5%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <!-- ~3.5×4m. Left = exterior/window, right = corridor door -->
+            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
+              <div class="rd-cell done" style="grid-column:span 4">OAKO Desk 140×80 · height-adjustable</div>
+              <div class="rd-cell empty" style="grid-column:span 4">Chair zone</div>
+              <div class="rd-cell sofa" style="grid-column:span 2; grid-row:span 2">L-Sofa ~180×130</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell">Side table</div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell empty" style="grid-column:span 3"></div>
+              <div class="rd-cell door">Door →</div>
+            </div>
+            <div class="rd-note">14 m² · desk at window · L-sofa in back corner · door to corridor right</div>
+          </div>
+        </details>
       </div>
 
       <!-- Guest Bedroom -->
@@ -1031,6 +1200,23 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
           <div class="progress-label"><span>Items sourced</span><span>0 / 4</span></div>
           <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
         </div>
+        <details class="room-layout-toggle">
+          <summary>Room layout</summary>
+          <div class="room-diagram">
+            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
+              <div class="rd-cell" style="grid-column:span 4; grid-row:span 2">Queen Bed 160×200</div>
+              <div class="rd-cell">NS</div>
+              <div class="rd-cell empty" style="grid-column:span 2"></div>
+              <div class="rd-cell empty"></div>
+              <div class="rd-cell wall" style="grid-column:1/-1"></div>
+              <div class="rd-cell empty" style="grid-column:span 3"></div>
+              <div class="rd-cell door">Door →</div>
+            </div>
+            <div class="rd-note">14 m² · simple and welcoming · NS = nightstand</div>
+          </div>
+        </details>
       </div>
 
     </div><!-- /rooms-grid -->
