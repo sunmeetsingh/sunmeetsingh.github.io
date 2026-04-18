@@ -1,0 +1,1340 @@
+---
+layout: null
+permalink: /design/
+title: "Zwyssigstrasse 11 — Project Dashboard"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zwyssigstrasse 11 — Project Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {% if jekyll.environment == "production" and site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+  <style>
+    /* ── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:           #F5F0EB;
+      --surface:      #FFFFFF;
+      --surface-2:    #EDE8E1;
+      --border:       #DDD6CC;
+      --border-light: #EAE4DC;
+      --text:         #1C1A18;
+      --text-2:       #6B6058;
+      --text-3:       #9C9088;
+      --brass:        #B08B4E;
+      --brass-bg:     #FBF5EB;
+      --steel:        #3D3D3D;
+      --green:        #2D4A3E;
+      --green-bg:     #EAF0ED;
+      --red-bg:       #FAF0EE;
+      --red:          #B05440;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.06);
+      --shadow:       0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 8px 32px rgba(0,0,0,0.10);
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 240, 235, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      gap: 24px;
+    }
+    .nav-brand {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-2);
+      padding: 5px 12px;
+      border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    /* ── Page shell ──────────────────────────────────────────── */
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 32px 80px; }
+
+    /* ── Section headers ─────────────────────────────────────── */
+    .section { margin-top: 60px; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .section-meta {
+      font-size: 0.78rem;
+      color: var(--text-3);
+      font-weight: 400;
+    }
+
+    /* ── Project header ──────────────────────────────────────── */
+    .project-header {
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 10px;
+    }
+    .project-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .project-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-2);
+      margin-bottom: 20px;
+    }
+    .project-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-2);
+    }
+    .pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-planning  { background: #C0A882; }
+    .dot-quoting   { background: var(--brass); }
+    .dot-active    { background: #6A9E7F; }
+    .dot-done      { background: var(--green); }
+
+    /* ── Workstream cards ────────────────────────────────────── */
+    .workstreams {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .ws-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .ws-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .ws-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .ws-status {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 100px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .status-planning  { background: var(--surface-2); color: var(--text-2); }
+    .status-quoting   { background: var(--brass-bg); color: var(--brass); border: 1px solid #E8D4A8; }
+    .status-sourcing  { background: var(--brass-bg); color: var(--brass); border: 1px solid #E8D4A8; }
+    .status-done      { background: var(--green-bg); color: var(--green); }
+
+    .ws-detail {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .ws-budget {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+    .budget-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 8px;
+    }
+    .budget-bar-wrap { position: relative; margin-bottom: 6px; }
+    .budget-bar-bg {
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 3px;
+      overflow: visible;
+    }
+    .budget-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #C9A96E, #B08B4E);
+      position: relative;
+    }
+    .budget-bar-target {
+      position: absolute;
+      top: -4px;
+      width: 2px;
+      height: 14px;
+      background: var(--steel);
+      border-radius: 1px;
+    }
+    .budget-numbers {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-3);
+    }
+    .budget-numbers strong { color: var(--text-2); }
+
+    /* ── Room grid ───────────────────────────────────────────── */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .room-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+    .room-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .room-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .room-size {
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
+    .room-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .room-status {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+    .room-budget {
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
+    .room-items {
+      list-style: none;
+      flex: 1;
+    }
+    .room-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: var(--text-2);
+    }
+    .room-item:last-child { border-bottom: none; }
+    .item-check {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .item-check.done {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .item-check.done::after {
+      content: '';
+      width: 5px;
+      height: 3px;
+      border-left: 1.5px solid white;
+      border-bottom: 1.5px solid white;
+      transform: rotate(-45deg) translateY(-1px);
+    }
+    .item-check.sourcing {
+      border-color: var(--brass);
+    }
+    .item-check.sourcing::after {
+      content: '·';
+      color: var(--brass);
+      font-size: 1rem;
+      line-height: 0.7;
+    }
+    .item-text { line-height: 1.4; flex: 1; }
+    .item-text.done { color: var(--text-3); text-decoration: line-through; }
+    .item-price {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      white-space: nowrap;
+      margin-top: 1px;
+    }
+
+    /* ── Progress bar (items) ────────────────────────────────── */
+    .room-progress {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border-light);
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--text-3);
+      margin-bottom: 5px;
+    }
+    .progress-track {
+      height: 3px;
+      background: var(--surface-2);
+      border-radius: 2px;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--green);
+      transition: width 0.6s ease;
+    }
+
+    /* ── Style panel ─────────────────────────────────────────── */
+    .style-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .style-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .style-card-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 16px;
+    }
+
+    /* Palette swatches */
+    .swatches {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .swatch-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .swatch-info { flex: 1; }
+    .swatch-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .swatch-detail {
+      font-size: 0.7rem;
+      color: var(--text-3);
+    }
+
+    /* Rules */
+    .rules-list { list-style: none; }
+    .rule {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.82rem;
+    }
+    .rule:last-child { border-bottom: none; }
+    .rule-icon {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      margin-top: 1px;
+    }
+    .rule-use  { background: var(--green-bg); color: var(--green); }
+    .rule-avoid { background: var(--red-bg); color: var(--red); }
+    .rule-text { color: var(--text-2); line-height: 1.5; }
+
+    /* ── Mood board ──────────────────────────────────────────── */
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mood-img {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--surface-2);
+    }
+    .mood-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .mood-img:hover img { transform: scale(1.03); }
+    .mood-img-label {
+      font-size: 0.72rem;
+      color: var(--text-3);
+      margin-top: 6px;
+    }
+    .mood-item { display: flex; flex-direction: column; }
+
+    /* ── Wintergarten panel ──────────────────────────────────── */
+    .wg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .wg-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .spec-list { list-style: none; }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.82rem;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key { color: var(--text-2); }
+    .spec-val { font-weight: 500; color: var(--text); text-align: right; }
+    .constraint-note {
+      margin-top: 12px;
+      padding: 10px 14px;
+      background: var(--red-bg);
+      border-left: 3px solid var(--red);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: var(--red);
+    }
+    .vendor-list { list-style: none; }
+    .vendor-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+      gap: 12px;
+    }
+    .vendor-row:last-child { border-bottom: none; }
+    .vendor-name { font-size: 0.85rem; font-weight: 500; }
+    .vendor-note { font-size: 0.75rem; color: var(--text-2); }
+    .vendor-badge {
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-preferred { background: var(--green-bg); color: var(--green); }
+    .badge-quote     { background: var(--brass-bg); color: var(--brass); }
+    .badge-ruled-out { background: var(--red-bg); color: var(--red); }
+
+    /* ── Next actions ────────────────────────────────────────── */
+    .actions-list { list-style: none; }
+    .action-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+      align-items: flex-start;
+    }
+    .action-item:last-child { border-bottom: none; }
+    .action-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--text-2);
+      flex-shrink: 0;
+    }
+    .action-body { flex: 1; }
+    .action-title { font-size: 0.85rem; font-weight: 500; }
+    .action-detail { font-size: 0.78rem; color: var(--text-2); margin-top: 2px; }
+
+    /* ── Sourcing table ──────────────────────────────────────── */
+    .sourcing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .sourcing-table thead th {
+      text-align: left;
+      padding: 8px 16px;
+      background: var(--surface-2);
+      color: var(--text-2);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .sourcing-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .sourcing-table thead th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+    .sourcing-table tbody td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-2);
+      vertical-align: top;
+    }
+    .sourcing-table tbody td strong { color: var(--text); font-weight: 500; }
+    .sourcing-table tbody tr:last-child td { border-bottom: none; }
+    .sourcing-table a {
+      color: var(--brass);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(176,139,78,0.25);
+    }
+    .sourcing-table a:hover { border-bottom-color: var(--brass); }
+
+    /* ── Utility ─────────────────────────────────────────────── */
+    .card-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 800px) {
+      .page { padding: 24px 16px 60px; }
+      .nav-inner { padding: 0 16px; }
+      .project-title { font-size: 1.6rem; }
+      .style-grid { grid-template-columns: 1fr; }
+      .wg-grid { grid-template-columns: 1fr; }
+      .mood-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links a { padding: 5px 8px; }
+    }
+    @media (max-width: 540px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .mood-grid { grid-template-columns: 1fr; }
+      .project-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Zwyssigstrasse 11</span>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#style">Style</a>
+      <a href="#wintergarten">Wintergarten</a>
+      <a href="#sourcing">Sourcing</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- ── Project Header ───────────────────────────────────── -->
+  <div id="overview" class="project-header">
+    <div class="project-eyebrow">Apartment Renovation · Zurich</div>
+    <h1 class="project-title">Zwyssigstrasse 11</h1>
+    <p class="project-subtitle">4.5-room, 1st floor, ~100 m² · Design direction: <strong>Warm Precision</strong> · Modern · Material-honest · Timeless</p>
+    <div class="project-pills">
+      <span class="pill"><span class="pill-dot dot-planning"></span>Interior Planning</span>
+      <span class="pill"><span class="pill-dot dot-quoting"></span>Wintergarten Quoting</span>
+      <span class="pill"><span class="pill-dot" style="background:#C0A882"></span>Target: ~20,000 CHF</span>
+    </div>
+  </div>
+
+  <!-- ── Workstreams ───────────────────────────────────────── -->
+  <div class="workstreams">
+
+    <div class="ws-card">
+      <div class="ws-header">
+        <div class="ws-name">Interior Furnishing</div>
+        <span class="ws-status status-planning">Planning</span>
+      </div>
+      <div class="ws-detail">
+        All rooms planned. Sofa, dining table, and bed are the priority purchases. Everything else can be staggered or sourced secondhand.
+      </div>
+      <div class="ws-budget">
+        <div class="budget-label">Budget · CHF</div>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar-bg">
+            <!-- fill = low/high * 100 = 17200/32550 = 53% ; target at 20000/32550 = 61% -->
+            <div class="budget-bar-fill" style="width:53%">
+              <div class="budget-bar-target" style="left: calc(61% / 53% * 100% - 1px)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="budget-numbers">
+          <span>Low: <strong>17,200</strong></span>
+          <span>Target: <strong>~20,000</strong></span>
+          <span>High: <strong>32,550</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ws-card">
+      <div class="ws-header">
+        <div class="ws-name">Wintergarten Partition</div>
+        <span class="ws-status status-quoting">Quoting</span>
+      </div>
+      <div class="ws-detail">
+        System chosen: <strong>4B ST2</strong>, Schema K (F-S-S-F, centre-opening). Getting competing quotes from EgoKiefer and Triseko before committing.
+      </div>
+      <div class="ws-budget">
+        <div class="budget-label">Budget · CHF</div>
+        <div class="budget-bar-wrap">
+          <div class="budget-bar-bg">
+            <!-- fill = 8000/14000 = 57% ; target at 11000/14000 = 79% -->
+            <div class="budget-bar-fill" style="width:57%">
+              <div class="budget-bar-target" style="left: calc(78.5% - 1px)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="budget-numbers">
+          <span>Low: <strong>8,000</strong></span>
+          <span>Target: <strong>~11,000</strong></span>
+          <span>High: <strong>14,000</strong></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Rooms ─────────────────────────────────────────────── -->
+  <div id="rooms" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Rooms</h2>
+      <span class="section-meta">○ planned &nbsp;·&nbsp; ◑ sourcing &nbsp;·&nbsp; ● done</span>
+    </div>
+    <div class="rooms-grid">
+
+      <!-- Living Room -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Living Room — "The Salon"</div>
+          <div class="room-size">45 m²</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">5,950–10,600 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">L-shaped sofa — deep, structured, stone wool (HAY Mags or similar)</div>
+            <div class="item-price">2,500–4,000</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Coffee table — oiled oak, 120×60 cm, clean joinery</div>
+            <div class="item-price">400–800</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Accent chair — deep forest green</div>
+            <div class="item-price">600–1,000</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Reading armchair — cognac leather</div>
+            <div class="item-price">700–1,200</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Sideboard — oak, flat-faced, brass pulls, 180 cm</div>
+            <div class="item-price">700–1,400</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Rug — flatweave wool, warm stone, 300×400 cm</div>
+            <div class="item-price">500–1,000</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">TV + oak shelf panel — wall-mounted near pillar</div>
+            <div class="item-price">300–700</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Floor lamp — sculptural metal (Gubi Bestlite or similar)</div>
+            <div class="item-price">250–500</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 8</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Wintergarten Dining -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Wintergarten — Dining</div>
+          <div class="room-size">~11.5 m²</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">2,600–5,100 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Dining table — solid oak, 200×90 cm (Mazawood or Tikamoon)</div>
+            <div class="item-price">900–1,800</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">6× dining chairs — wood frame + upholstered seat pad</div>
+            <div class="item-price">900–1,800</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Pendant light — single sculptural (Gubi Giant or Normann)</div>
+            <div class="item-price">300–600</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Rug — flatweave wool, 250×350 cm</div>
+            <div class="item-price">300–500</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Plants — 2–3 large pots, architectural varieties</div>
+            <div class="item-price">200–400</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 5</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Bar Station -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Bar &amp; Coffee Station</div>
+          <div class="room-size">Corner nook</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">1,450–2,850 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Oak console — flat-faced, ~150 cm, brass pulls, wine fridge slot</div>
+            <div class="item-price">600–1,200</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Wine fridge — slim under-counter (30 cm)</div>
+            <div class="item-price">400–700</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Floating oak shelf — bottles + glasses above</div>
+            <div class="item-price">100–200</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Wall sconces ×2 — solid brass or steel, directional</div>
+            <div class="item-price">150–350</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Espresso machine</div>
+            <div class="item-price">200–400</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 5</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Master Bedroom -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Master Bedroom</div>
+          <div class="room-size">16 m²</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">2,650–4,950 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">King bed — upholstered headboard, linen/wool, 180×200 cm</div>
+            <div class="item-price">1,200–2,000</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Foot bench — dark leather or ribbed wool</div>
+            <div class="item-price">300–600</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">2× nightstands — oiled oak, open shelf</div>
+            <div class="item-price">300–600</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Curtains — blackout linen, floor-to-ceiling</div>
+            <div class="item-price">200–400</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Rug — wool, 200×300 cm</div>
+            <div class="item-price">300–600</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Wall sconces ×2 — brushed brass reading (Tala / Astro)</div>
+            <div class="item-price">150–350</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Bedding — linen + knit throw</div>
+            <div class="item-price">200–400</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 7</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Home Office -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Home Office</div>
+          <div class="room-size">14 m²</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">1,700–3,250 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Desk — oiled oak, 150×70 cm, clean-lined</div>
+            <div class="item-price">500–900</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Office chair — cognac leather, wood base (HAY AAC22 or Vitra Hal Wood)</div>
+            <div class="item-price">500–900</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Bookshelf — oak, 180×40 cm, open</div>
+            <div class="item-price">300–600</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Rug — wool flatweave, 160×230 cm</div>
+            <div class="item-price">250–500</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Task lamp — Anglepoise or Gubi Bestlite</div>
+            <div class="item-price">150–350</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 5</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Guest Bedroom -->
+      <div class="room-card">
+        <div class="room-header">
+          <div class="room-name">Guest Bedroom</div>
+          <div class="room-size">14 m²</div>
+        </div>
+        <div class="room-status-row">
+          <span class="room-status status-planning">Planning</span>
+          <span class="room-budget">1,100–2,200 CHF</span>
+        </div>
+        <ul class="room-items">
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Queen bed — oak frame, clean lines</div>
+            <div class="item-price">600–1,100</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Nightstand — oiled oak</div>
+            <div class="item-price">100–300</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Bedding — linen</div>
+            <div class="item-price">150–300</div>
+          </li>
+          <li class="room-item">
+            <div class="item-check"></div>
+            <div class="item-text">Rug — wool, 160×230 cm</div>
+            <div class="item-price">250–500</div>
+          </li>
+        </ul>
+        <div class="room-progress">
+          <div class="progress-label"><span>Items sourced</span><span>0 / 4</span></div>
+          <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+    </div><!-- /rooms-grid -->
+  </div><!-- /rooms section -->
+
+  <!-- ── Style Direction ───────────────────────────────────── -->
+  <div id="style" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Style Direction — Warm Precision</h2>
+      <span class="section-meta">Locked decisions</span>
+    </div>
+    <div class="style-grid">
+
+      <div class="style-card">
+        <div class="style-card-title">Material &amp; Finish Palette</div>
+        <div class="swatches">
+          <div class="swatch-row">
+            <div class="swatch" style="background:#F5F0EB;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Warm White — walls</div>
+              <div class="swatch-detail">#F5F0EB · everywhere</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#D4C9B8;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Stone / Oatmeal — base fabric</div>
+              <div class="swatch-detail">Sofa, dining chair seat pads</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#B08955;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Brushed Brass — metal</div>
+              <div class="swatch-detail">#C9A96E · hardware, lighting, fixtures</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#B08955; background: linear-gradient(135deg,#8A7D6A 0%,#5C5248 100%);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Oiled Oak — wood</div>
+              <div class="swatch-detail">All furniture · flat-faced, clean joinery</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#2D4A3E;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Forest Green — accent</div>
+              <div class="swatch-detail">#2D4A3E · one hit per room, maximum</div>
+            </div>
+          </div>
+          <div class="swatch-row">
+            <div class="swatch" style="background:#3D3D3D;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Dark Anthracite — floor (fixed)</div>
+              <div class="swatch-detail">Large-format stone tile throughout · design around it</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="style-card">
+        <div class="style-card-title">Material Rules</div>
+        <ul class="rules-list">
+          <li class="rule">
+            <span class="rule-icon rule-use">USE</span>
+            <span class="rule-text">Oiled oak with flat-faced, precise joinery — no shaker-style panels or farmhouse profiles</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-use">USE</span>
+            <span class="rule-text">Brushed brass hardware — warm and precise, not ornate</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-use">USE</span>
+            <span class="rule-text">Structured wool or tight-weave performance fabric on sofas — deep seat, defined silhouette</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-use">USE</span>
+            <span class="rule-text">Low-pile or flatweave wool rugs — not jute</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-use">USE</span>
+            <span class="rule-text">Architectural lighting — sculptural metal/glass forms (Gubi, Flos, Louis Poulsen)</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-avoid">AVOID</span>
+            <span class="rule-text">Aged bronze — reads antique and will date in 10 years</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-avoid">AVOID</span>
+            <span class="rule-text">Jute rugs, Edison cage sconces, linen-shade floor lamps — fights the contemporary floor</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-avoid">AVOID</span>
+            <span class="rule-text">Pale sage as a dominant accent — too trend-tied (2023–24)</span>
+          </li>
+          <li class="rule">
+            <span class="rule-icon rule-avoid">AVOID</span>
+            <span class="rule-text">Loose-covered linen dining chairs — too soft and shapeless against dark modern tiles</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Mood board -->
+    <div class="section-header" style="margin-top:32px">
+      <h3 class="section-title" style="font-size:0.9rem;color:var(--text-2)">Mood Reference</h3>
+    </div>
+    <div class="mood-grid">
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/living_room_concept.png" alt="Living room reference" loading="lazy"></div>
+        <div class="mood-img-label">Living room</div>
+      </div>
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/wintergarten_dining_concept.png" alt="Wintergarten dining reference" loading="lazy"></div>
+        <div class="mood-img-label">Wintergarten dining</div>
+      </div>
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/bar_station_concept.png" alt="Bar station reference" loading="lazy"></div>
+        <div class="mood-img-label">Bar station</div>
+      </div>
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/master_bedroom_concept.png" alt="Master bedroom reference" loading="lazy"></div>
+        <div class="mood-img-label">Master bedroom</div>
+      </div>
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/office_concept.png" alt="Office reference" loading="lazy"></div>
+        <div class="mood-img-label">Home office</div>
+      </div>
+      <div class="mood-item">
+        <div class="mood-img"><img src="/design/color_palette.png" alt="Colour palette" loading="lazy"></div>
+        <div class="mood-img-label">Colour palette</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Wintergarten Project ──────────────────────────────── -->
+  <div id="wintergarten" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Wintergarten Partition</h2>
+      <span class="section-meta">Status: Getting quotes</span>
+    </div>
+    <div class="wg-grid">
+
+      <div class="wg-card">
+        <div class="style-card-title">Technical Specs</div>
+        <ul class="spec-list">
+          <li class="spec-row">
+            <span class="spec-key">Opening width</span>
+            <span class="spec-val">4.76 m</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Opening height</span>
+            <span class="spec-val">2.42 m</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Step-over depth</span>
+            <span class="spec-val">~60 mm</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Thermal standard</span>
+            <span class="spec-val">SIA 380/1 · U ≤ 1.3 W/m²K</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">System type</span>
+            <span class="spec-val">Lift-and-slide (Hebe-Schiebetür)</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Chosen config</span>
+            <span class="spec-val">Schema K · 4 panels · F-S-S-F</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Clear opening</span>
+            <span class="spec-val">~50% (centre-opening)</span>
+          </li>
+          <li class="spec-row">
+            <span class="spec-key">Budget</span>
+            <span class="spec-val">8,000–14,000 CHF</span>
+          </li>
+        </ul>
+        <div class="constraint-note">
+          Frameless glazing systems (Solarlux, Lumon, etc.) do NOT meet SIA 380/1. Do not request quotes from them.
+        </div>
+      </div>
+
+      <div class="wg-card">
+        <div class="style-card-title">Vendors</div>
+        <ul class="vendor-list">
+          <li class="vendor-row">
+            <div>
+              <div class="vendor-name">4B ST2</div>
+              <div class="vendor-note">HQ in Adliswil ZH · confirmed to fit the opening</div>
+            </div>
+            <span class="vendor-badge badge-preferred">Preferred</span>
+          </li>
+          <li class="vendor-row">
+            <div>
+              <div class="vendor-name">EgoKiefer</div>
+              <div class="vendor-note">Request competing quote</div>
+            </div>
+            <span class="vendor-badge badge-quote">Get quote</span>
+          </li>
+          <li class="vendor-row">
+            <div>
+              <div class="vendor-name">Triseko</div>
+              <div class="vendor-note">Request competing quote</div>
+            </div>
+            <span class="vendor-badge badge-quote">Get quote</span>
+          </li>
+          <li class="vendor-row">
+            <div>
+              <div class="vendor-name">Renovafenster AG</div>
+              <div class="vendor-note">Alternative if others are out of budget</div>
+            </div>
+            <span class="vendor-badge badge-quote">Backup</span>
+          </li>
+          <li class="vendor-row">
+            <div>
+              <div class="vendor-name">Solarlux / Lumon</div>
+              <div class="vendor-note">Frameless — does not meet SIA 380/1</div>
+            </div>
+            <span class="vendor-badge badge-ruled-out">Ruled out</span>
+          </li>
+        </ul>
+
+        <div style="margin-top:20px;">
+          <div class="style-card-title">Next Actions</div>
+          <ul class="actions-list">
+            <li class="action-item">
+              <div class="action-num">1</div>
+              <div class="action-body">
+                <div class="action-title">Get formal quote from 4B</div>
+                <div class="action-detail">Schema K, 4-panel F-S-S-F, 4.76×2.42 m, Kunststoff/Alu or Holz/Alu</div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-num">2</div>
+              <div class="action-body">
+                <div class="action-title">Request competing quotes from EgoKiefer + Triseko</div>
+                <div class="action-detail">Same spec — compare on price, lead time, and installation service</div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-num">3</div>
+              <div class="action-body">
+                <div class="action-title">Check building permit requirements</div>
+                <div class="action-detail">Confirm with building management if Baubewilligung is needed</div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-num">4</div>
+              <div class="action-body">
+                <div class="action-title">Decide &amp; order</div>
+                <div class="action-detail">Lead times are typically 8–14 weeks</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /wg-grid -->
+  </div>
+
+  <!-- ── Sourcing ───────────────────────────────────────────── -->
+  <div id="sourcing" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Sourcing Strategy</h2>
+      <span class="section-meta">Prioritise sofa, dining table, bed · rest can be budget or secondhand</span>
+    </div>
+    <div class="card-wrap">
+      <table class="sourcing-table">
+        <thead>
+          <tr>
+            <th>Supplier</th>
+            <th>Best for</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong><a href="https://mazawood.fr" target="_blank" rel="noopener">Mazawood</a></strong></td>
+            <td>Dining table, coffee table</td>
+            <td>French atelier, custom oak, direct shipping to CH. Request quote: "Table Chêne Massif 200×90"</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://sklum.com/ch" target="_blank" rel="noopener">SKLUM</a></strong></td>
+            <td>Sofa, chairs, shelving</td>
+            <td>40–60% less than Swiss retail. Ships direct to CH.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://hay.com" target="_blank" rel="noopener">HAY</a></strong></td>
+            <td>Office chair, accent chairs, lighting</td>
+            <td>HAY AAC22 for office chair. HAY Mags for sofa reference.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://beliani.ch" target="_blank" rel="noopener">Beliani</a></strong></td>
+            <td>Rugs, bed frames, basics</td>
+            <td>Good value, ships to CH. Good for guest bedroom.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://pfister.ch" target="_blank" rel="noopener">Pfister</a></strong></td>
+            <td>Beds, nightstands</td>
+            <td>Swiss delivery + assembly. Good for master bedroom bed.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://galaxus.ch" target="_blank" rel="noopener">Galaxus</a></strong></td>
+            <td>Wine fridge, hardware, lighting</td>
+            <td>Zero customs hassle, fast returns. Wine fridge: search "30cm wine cooler".</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://tutti.ch" target="_blank" rel="noopener">Tutti.ch</a> / Ricardo</strong></td>
+            <td>Sideboard, armchairs, vintage</td>
+            <td>Secondhand for character pieces — sideboard, reading armchair.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://tikamoon.ch" target="_blank" rel="noopener">Tikamoon</a></strong></td>
+            <td>Dining table, coffee table</td>
+            <td>Alternative to Mazawood. "Pol" or "Urbain" table.</td>
+          </tr>
+          <tr>
+            <td><strong><a href="https://meineinkauf.ch" target="_blank" rel="noopener">MeinEinkauf.ch</a></strong></td>
+            <td>DE/FR → CH forwarding</td>
+            <td>For DE/FR shops that don't ship to CH. 0% DE VAT + 8.1% CH VAT at border.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
