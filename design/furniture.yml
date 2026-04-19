@@ -53,18 +53,21 @@ master_bedroom:
 
 home_office:
   # Room: 467 × 270 cm.
-  # plan_left: exterior wall, 1 window centered at y≈135 cm.
-  # plan_right: corridor door — opening at BOTTOM of right wall (SVG arc: y≈203–270 cm in room coords).
-  #   Door swings inward; keep x=405–467, y=203–270 clear.
-  # plan_top: shared wall with master_bedroom (no door).
-  # plan_bottom: shared wall with guest_bedroom (no door).
-  # Layout: desk against plan_left window (y-centered on window); L-sofa in plan_right/plan_TOP
-  #   corner — moved there specifically because door is at plan_bottom-right, not plan_top-right.
-  - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 80,  d: 140, x: 0,   y: 65,  status: purchased }
-  - { id: office_chair,    type: chair,    label: "Chair",            w: 55,  d: 55,  x: 85,  y: 113 }
-  - { id: l_sofa_compact,  type: sofa,     label: "L-Sofa",           w: 200, d: 140, x: 267, y: 0   }
-  - { id: side_table,      type: table,    label: "Side",             w: 45,  d: 45,  x: 215, y: 115 }
-  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",      w: 160, d: 20,  x: 80,  y: 250 }
+  # plan_left: exterior wall, window centered at y≈135 cm.
+  # plan_right: corridor door at BOTTOM of right wall (y≈200–270 cm). Keep x=405–467, y=200–270 clear.
+  # plan_top: wall to master_bedroom (no door). plan_bottom: wall to guest_bedroom (no door).
+  #
+  # Design: desk along plan_top wall, right-aligned — person faces room (window to left, sofa ahead).
+  # L-sofa/daybed in plan_bottom/plan_left corner:
+  #   main section (220×90) along plan_bottom — 90 cm deep enough to sleep on (daybed use).
+  #   chaise return (90×100) along plan_left wall at y=80–180 — centred on window, open face
+  #   toward room. Low-profile back (≤70 cm) keeps wall above chaise free for artwork.
+  # Open floor ~220×100 cm in centre — clear path from door to desk.
+  - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 140, d: 80,  x: 307, y: 0,   status: purchased }
+  - { id: l_sofa_main,     type: sofa,     label: "L-Sofa / Daybed",  w: 220, d: 90,  x: 0,   y: 180  }
+  - { id: l_sofa_chaise,   type: sofa,     label: "",                  w: 90,  d: 100, x: 0,   y: 80   }
+  - { id: side_table,      type: table,    label: "Side",              w: 45,  d: 45,  x: 225, y: 190  }
+  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",       w: 200, d: 20,  x: 100, y: 0    }
 
 guest_bedroom:
   # Room: 467 × 270 cm. Window on plan_left, exterior also on plan_bottom (corner room).
