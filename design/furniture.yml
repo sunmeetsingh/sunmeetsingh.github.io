@@ -52,13 +52,19 @@ master_bedroom:
   - { id: foot_bench,      type: accent,   label: "Foot Bench",        w: 140, d: 40,  x: 165, y: 90 }
 
 home_office:
-  # Room: 467 × 270 cm. Window on plan_left, door on plan_right.
-  # OAKO desk along plan_top facing plan_left window. L-sofa in plan_right/plan_bottom corner.
-  - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 80,  d: 140, x: 30,  y: 20,  status: purchased }
-  - { id: office_chair,    type: chair,    label: "Chair",            w: 55,  d: 55,  x: 100, y: 60 }
-  - { id: l_sofa_compact,  type: sofa,     label: "L-Sofa 180×130",   w: 180, d: 130, x: 280, y: 130 }
-  - { id: side_table,      type: table,    label: "Side",             w: 40,  d: 40,  x: 240, y: 175 }
-  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",      w: 120, d: 20,  x: 30,  y: 200 }
+  # Room: 467 × 270 cm.
+  # plan_left: exterior wall, 1 window centered at y≈135 cm.
+  # plan_right: corridor door — opening at BOTTOM of right wall (SVG arc: y≈203–270 cm in room coords).
+  #   Door swings inward; keep x=405–467, y=203–270 clear.
+  # plan_top: shared wall with master_bedroom (no door).
+  # plan_bottom: shared wall with guest_bedroom (no door).
+  # Layout: desk against plan_left window (y-centered on window); L-sofa in plan_right/plan_TOP
+  #   corner — moved there specifically because door is at plan_bottom-right, not plan_top-right.
+  - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 80,  d: 140, x: 0,   y: 65,  status: purchased }
+  - { id: office_chair,    type: chair,    label: "Chair",            w: 55,  d: 55,  x: 85,  y: 113 }
+  - { id: l_sofa_compact,  type: sofa,     label: "L-Sofa",           w: 200, d: 140, x: 267, y: 0   }
+  - { id: side_table,      type: table,    label: "Side",             w: 45,  d: 45,  x: 215, y: 115 }
+  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",      w: 160, d: 20,  x: 80,  y: 250 }
 
 guest_bedroom:
   # Room: 467 × 270 cm. Window on plan_left, exterior also on plan_bottom (corner room).

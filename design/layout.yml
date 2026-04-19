@@ -108,20 +108,21 @@ rooms:
       plan_right: interior to entrée/corridor (door)
       plan_bottom: interior to guest_bedroom
     adjacent_to:
-      - { space: entrée, type: door, wall: plan_right }
+      - { space: corridor, type: door, wall: plan_right, note: "door at BOTTOM of right wall — SVG arc from (345,620)→(305,580) floorplan px, i.e. y≈200–270 cm in room coords; door swings inward clearing x=405–467, y=203–270 cm" }
       - { space: master_bedroom, type: none }
       - { space: guest_bedroom, type: none }
     windows:
-      - { wall: plan_left, count: 1, orientation: exterior }
+      - { wall: plan_left, count: 1, orientation: exterior, note: centered on wall at y≈135 cm }
     fixed_elements: []
     planned_furniture:
-      - OAKO Alive Oak Desk (140 × 80 cm) at the window (plan_left wall)
-      - compact L-sofa (~180 × 130 cm) in plan_right/plan_bottom corner
-      - rug under sofa area
+      - OAKO Alive Oak Desk (140 × 80 cm) against plan_left wall, centered on window (y=65–205 cm)
+      - compact L-sofa (~200 × 140 cm) in plan_right/plan_TOP corner (door is at bottom-right, not top-right)
+      - side table between desk and sofa zones
+      - floating oak shelf along plan_bottom wall
     notes:
       - middle of the three west-side rooms
-      - door opens from corridor (plan_right wall)
-      - window on exterior (plan_left wall) — desk faces window with live edge toward room
+      - door at BOTTOM of plan_right wall (y≈200–270 cm) — sofa must go in plan_top/plan_right corner
+      - window on exterior (plan_left wall), centered — desk aligned to window center
 
   guest_bedroom:
     label: Zimmer (bottom — guest bedroom)

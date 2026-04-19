@@ -1523,10 +1523,12 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     return;
   }
 
-  const PX_PER_M = layout.meta.scale_px_per_m || 60;
-  const PX_TO_CM = 100 / PX_PER_M;
+  const PX_PER_M    = layout.meta.scale_px_per_m || 60;
+  const PX_TO_CM    = 100 / PX_PER_M;   // floorplan px → cm (≈1.667)
+  const CM_TO_PX    = PX_PER_M / 100;   // cm → floorplan px (= 0.6)
+  const FLOORPLAN_PX = 900;             // floorplan.svg is 900×900 px
+  const CONTEXT_PX   = 100;             // ~1.67 m context shown around each room
 
-  // Furniture fill colors keyed by `type` in furniture.yml
   const TYPE_FILL = {
     sofa:      '#E8D6B8',
     bed:       '#E8DDC8',
@@ -1541,54 +1543,31 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
   const FOREST = '#2D4A3E';
   const PURCHASED_STROKE = '#4F7A5F';
 
-  const wallToEdge = {
-    plan_top:    'top',
-    plan_bottom: 'bottom',
-    plan_left:   'left',
-    plan_right:  'right'
-  };
+  function renderItem(item, bx, by) {
+    // Convert furniture cm (room-relative) → floorplan px
+    const px = bx + item.x * CM_TO_PX;
+    const py = by + item.y * CM_TO_PX;
+    const pw = item.w * CM_TO_PX;
+    const ph = item.d * CM_TO_PX;
 
-  function renderWindowsOn(room, wCm, hCm) {
-    if (!room.windows || !room.windows.length) return '';
-    return room.windows.map(win => {
-      const edge = wallToEdge[win.wall];
-      if (!edge) return '';
-      // Window length: span_m * 100 if specified, else 60% of wall length
-      let len;
-      if (win.span_m) len = win.span_m * 100;
-      else if (edge === 'top' || edge === 'bottom') len = wCm * 0.5;
-      else len = hCm * 0.5;
-      // Center the window on the wall by default
-      const STROKE = 9;
-      let x1, y1, x2, y2;
-      if (edge === 'top')    { x1 = (wCm - len) / 2; y1 = 0;   x2 = x1 + len; y2 = 0;   }
-      if (edge === 'bottom') { x1 = (wCm - len) / 2; y1 = hCm; x2 = x1 + len; y2 = hCm; }
-      if (edge === 'left')   { x1 = 0;   y1 = (hCm - len) / 2; x2 = 0;   y2 = y1 + len; }
-      if (edge === 'right')  { x1 = wCm; y1 = (hCm - len) / 2; x2 = wCm; y2 = y1 + len; }
-      return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#5599cc" stroke-width="${STROKE}" stroke-linecap="butt"/>`;
-    }).join('');
-  }
-
-  function renderItem(item) {
-    const fill = TYPE_FILL[item.type] || '#EAE0CC';
-    const stroke = item.status === 'purchased' ? PURCHASED_STROKE : '#8A7A5A';
-    const strokeWidth = item.status === 'purchased' ? 2.5 : 1.5;
-    const cx = item.x + item.w / 2;
-    const cy = item.y + item.d / 2;
+    const isForest = item.id === 'accent_chair';
+    const fill     = isForest ? FOREST : (TYPE_FILL[item.type] || '#EAE0CC');
+    const stroke   = item.status === 'purchased' ? PURCHASED_STROKE : '#8A7A5A';
+    const sW       = item.status === 'purchased' ? 1.5 : 1.0;
+    const cx = px + pw / 2;
+    const cy = py + ph / 2;
     const transform = item.rotation ? `rotate(${item.rotation} ${cx} ${cy})` : '';
-    // Font size: scale to room size — roughly 14px works for most rooms (units are cm)
-    const fontSize = Math.max(11, Math.min(item.w, item.d) * 0.18);
-    const labelText = item.label || '';
-    const isAccentDark = item.id === 'accent_chair';
-    const labelFill = isAccentDark ? FOREST : '#5C4F3A';
-    const labelEl = labelText
-      ? `<text x="${cx}" y="${cy}" font-size="${fontSize}" text-anchor="middle" dominant-baseline="middle" fill="${labelFill}" font-family="Helvetica, Arial, sans-serif">${labelText}</text>`
+    const fontSize  = Math.max(3.5, Math.min(pw, ph) * 0.22);
+    const label     = item.label || '';
+    const labelEl   = label
+      ? `<text x="${cx}" y="${cy}" font-size="${fontSize}" text-anchor="middle"
+               dominant-baseline="middle" fill="${isForest ? '#FFF' : '#5C4F3A'}"
+               font-family="Helvetica, Arial, sans-serif">${label}</text>`
       : '';
     return `<g ${transform ? `transform="${transform}"` : ''}>
-      <rect x="${item.x}" y="${item.y}" width="${item.w}" height="${item.d}"
-            fill="${item.id === 'accent_chair' ? FOREST : fill}"
-            fill-opacity="${item.id === 'accent_chair' ? 0.85 : 1}"
-            stroke="${stroke}" stroke-width="${strokeWidth}" rx="2"/>
+      <rect x="${px}" y="${py}" width="${pw}" height="${ph}"
+            fill="${fill}" fill-opacity="0.88"
+            stroke="${stroke}" stroke-width="${sW}" rx="0.8"/>
       ${labelEl}
     </g>`;
   }
@@ -1600,46 +1579,58 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       return;
     }
     const items = furniture[roomKey] || [];
-    const wCm = room.bbox.w * PX_TO_CM;
-    const hCm = room.bbox.h * PX_TO_CM;
-    const PAD = 14; // cm padding for wall stroke + label
-    const vbW = wCm + PAD * 2;
-    const vbH = hCm + PAD * 2;
+    const { x: bx, y: by, w: bw, h: bh } = room.bbox;
 
-    const wallStroke = 6;
+    // For sub-area views (e.g., bar_nook within the corridor), crop to the
+    // bounding box of the furniture items rather than the full room bbox.
+    let cropBx = bx, cropBy = by, cropBw = bw, cropBh = bh;
+    if (container.dataset.view && items.length > 0) {
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      items.forEach(item => {
+        minX = Math.min(minX, item.x); minY = Math.min(minY, item.y);
+        maxX = Math.max(maxX, item.x + item.w); maxY = Math.max(maxY, item.y + item.d);
+      });
+      cropBx = bx + minX * CM_TO_PX;
+      cropBy = by + minY * CM_TO_PX;
+      cropBw = (maxX - minX) * CM_TO_PX;
+      cropBh = (maxY - minY) * CM_TO_PX;
+    }
 
-    const items_svg = items.map(renderItem).join('');
-    const windows_svg = renderWindowsOn(room, wCm, hCm);
+    // Crop region: focus area + context padding, clamped to floorplan bounds
+    const cx0 = Math.max(0,             cropBx - CONTEXT_PX);
+    const cy0 = Math.max(0,             cropBy - CONTEXT_PX);
+    const cx1 = Math.min(FLOORPLAN_PX,  cropBx + cropBw + CONTEXT_PX);
+    const cy1 = Math.min(FLOORPLAN_PX,  cropBy + cropBh + CONTEXT_PX);
 
-    // Dimensions label (small, bottom-right)
-    const wM = (wCm / 100).toFixed(2);
-    const hM = (hCm / 100).toFixed(2);
+    const itemsSvg = items.map(item => renderItem(item, bx, by)).join('');
+    const wM = (bw * PX_TO_CM / 100).toFixed(2);
+    const hM = (bh * PX_TO_CM / 100).toFixed(2);
+    const dimFs = Math.max(6, Math.min(bw * 0.038, 10));
 
     container.innerHTML = `
       <div class="room-svg-wrap">
-        <svg viewBox="0 0 ${vbW} ${vbH}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(${PAD}, ${PAD})">
-            <!-- Room footprint: walls -->
-            <rect x="0" y="0" width="${wCm}" height="${hCm}"
-                  fill="#FAF8F4" stroke="#666" stroke-width="${wallStroke}"/>
-            ${windows_svg}
-            ${items_svg}
-            <!-- Dimensions caption -->
-            <text x="${wCm - 4}" y="${hCm - 4}" font-size="11" text-anchor="end"
-                  fill="#999" font-family="Helvetica, Arial, sans-serif" font-style="italic">
-              ${wM} × ${hM} m
-            </text>
-          </g>
+        <svg viewBox="${cx0} ${cy0} ${cx1 - cx0} ${cy1 - cy0}"
+             preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <!-- Floorplan as context background -->
+          <image href="/design/floorplan.svg" x="0" y="0"
+                 width="${FLOORPLAN_PX}" height="${FLOORPLAN_PX}"/>
+          <!-- Active room highlight (brass border + subtle warm tint) -->
+          <rect x="${bx}" y="${by}" width="${bw}" height="${bh}"
+                fill="rgba(255,252,248,0.32)" stroke="#B08B4E" stroke-width="2.5"/>
+          <!-- Furniture items -->
+          ${itemsSvg}
+          <!-- Dimensions caption (inside room, bottom-right) -->
+          <text x="${bx + bw - 2}" y="${by + bh - 2}"
+                font-size="${dimFs}" text-anchor="end"
+                fill="#88776A" font-family="Helvetica, Arial, sans-serif" font-style="italic">
+            ${wM} × ${hM} m
+          </text>
         </svg>
       </div>
     `;
   }
 
   containers.forEach(c => renderRoom(c.dataset.room, c));
-
-  // Render layouts when their <details> first opens (saves work for closed cards
-  // and avoids visual jank on initial load — but we already rendered above, so
-  // this is only useful if we switch to lazy-render later. Keeping the simple path.)
 })();
 </script>
 
