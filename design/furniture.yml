@@ -1,0 +1,91 @@
+# Per-room furniture placement.
+# Coordinate system: cm from each room's plan_top-left corner (room origin).
+#   x = rightward (toward plan_right)
+#   y = downward (toward plan_bottom)
+# Dimensions are footprint (top-down): w × d in cm.
+# rotation in degrees, clockwise. Default 0.
+# `type` drives colour in the renderer (sofa, bed, table, chair, storage, sanitary, appliance, fixture, accent).
+# `status` (optional): purchased | planned | considering. Default planned.
+#
+# This is a working file (interior/ is the design scratchpad). Iterate freely.
+# Room footprints come from apartment/layout.yml `bbox` (the source of truth for room sizes).
+
+living_room:
+  # Room: 482 × 445 cm (bbox-derived). plan_left = corridor/TV wall, plan_top = kitchen,
+  # plan_right = balkon glazing, plan_bottom = wintergarten partition.
+  - { id: tv_panel,        type: fixture,  label: "TV / Oak Panel", w: 200, d: 20, x: 0,   y: 130 }
+  - { id: l_sofa,          type: sofa,     label: "L-Sofa",         w: 280, d: 180, x: 80, y: 180 }
+  - { id: coffee_table,    type: table,    label: "Coffee Table",   w: 120, d: 60,  x: 160, y: 100 }
+  - { id: accent_chair,    type: accent,   label: "Forest Chair",   w: 80,  d: 80,  x: 30,  y: 360 }
+  - { id: reading_chair,   type: accent,   label: "Reading Chair",  w: 90,  d: 80,  x: 360, y: 30 }
+  - { id: sideboard,       type: storage,  label: "Sideboard",      w: 180, d: 45,  x: 50,  y: 0 }
+  - { id: floor_lamp,      type: accent,   label: "Floor Lamp",     w: 35,  d: 35,  x: 410, y: 130 }
+
+wintergarten:
+  # Room: 635 × 250 cm. Pillar (42 × 195) sits just OUTSIDE plan_top-left corner (in corridor).
+  # Furniture concentrated in the western 4.76m (the partitioned dining zone).
+  - { id: dining_table,    type: table,    label: "Dining 200×90", w: 200, d: 90,  x: 130, y: 80 }
+  - { id: chair_n1,        type: chair,    label: "",              w: 50,  d: 45,  x: 140, y: 25 }
+  - { id: chair_n2,        type: chair,    label: "",              w: 50,  d: 45,  x: 205, y: 25 }
+  - { id: chair_n3,        type: chair,    label: "",              w: 50,  d: 45,  x: 270, y: 25 }
+  - { id: chair_s1,        type: chair,    label: "",              w: 50,  d: 45,  x: 140, y: 180 }
+  - { id: chair_s2,        type: chair,    label: "",              w: 50,  d: 45,  x: 205, y: 180 }
+  - { id: chair_s3,        type: chair,    label: "",              w: 50,  d: 45,  x: 270, y: 180 }
+  - { id: pendant,         type: fixture,  label: "Pendant ↑",     w: 50,  d: 50,  x: 205, y: 100 }
+  - { id: plant_1,         type: accent,   label: "Plant",         w: 50,  d: 50,  x: 560, y: 30 }
+  - { id: plant_2,         type: accent,   label: "Plant",         w: 50,  d: 50,  x: 560, y: 170 }
+
+corridor:
+  # Bar nook: south end of corridor, against guest_bedroom plan_right wall.
+  # Corridor narrows from 170 → 125 cm below y≈445 (the pillar).
+  - { id: bar_console,     type: storage,  label: "Bar Console",   w: 150, d: 45,  x: 0,   y: 480 }
+  - { id: wine_fridge,     type: appliance, label: "Wine Fr.",     w: 45,  d: 45,  x: 100, y: 480 }
+  - { id: bar_shelf,       type: fixture,  label: "Oak Shelf ↑",   w: 150, d: 15,  x: 0,   y: 460 }
+
+master_bedroom:
+  # Room: 467 × 350 cm. plan_top wall = built-in wardrobe (along bath wall).
+  # Bed against plan_bottom wall.
+  - { id: wardrobe,        type: storage,  label: "Built-in Wardrobe", w: 340, d: 60,  x: 80,  y: 0 }
+  - { id: king_bed,        type: bed,      label: "King Bed 180×210",  w: 180, d: 210, x: 145, y: 140 }
+  - { id: nightstand_l,    type: storage,  label: "NS",                w: 50,  d: 40,  x: 90,  y: 200 }
+  - { id: nightstand_r,    type: storage,  label: "NS",                w: 50,  d: 40,  x: 325, y: 200 }
+  - { id: foot_bench,      type: accent,   label: "Foot Bench",        w: 140, d: 40,  x: 165, y: 90 }
+
+home_office:
+  # Room: 467 × 270 cm. Window on plan_left, door on plan_right.
+  # OAKO desk along plan_top facing plan_left window. L-sofa in plan_right/plan_bottom corner.
+  - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 80,  d: 140, x: 30,  y: 20,  status: purchased }
+  - { id: office_chair,    type: chair,    label: "Chair",            w: 55,  d: 55,  x: 100, y: 60 }
+  - { id: l_sofa_compact,  type: sofa,     label: "L-Sofa 180×130",   w: 180, d: 130, x: 280, y: 130 }
+  - { id: side_table,      type: table,    label: "Side",             w: 40,  d: 40,  x: 240, y: 175 }
+  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",      w: 120, d: 20,  x: 30,  y: 200 }
+
+guest_bedroom:
+  # Room: 467 × 270 cm. Window on plan_left, exterior also on plan_bottom (corner room).
+  # Bed away from window — against plan_top wall.
+  - { id: queen_bed,       type: bed,      label: "Queen Bed",     w: 160, d: 200, x: 150, y: 10 }
+  - { id: nightstand,      type: storage,  label: "NS",            w: 40,  d: 40,  x: 110, y: 30 }
+
+küche:
+  # Room: 482 × 250 cm. No exterior window. White/matte units, wood island top.
+  - { id: base_cabinets_L, type: storage,  label: "Base Cab.",     w: 60,  d: 250, x: 0,   y: 0 }
+  - { id: upper_cab_T,     type: storage,  label: "Upper Cab.",    w: 200, d: 60,  x: 60,  y: 0 }
+  - { id: island,          type: appliance, label: "Island + Hob", w: 135, d: 85,  x: 150, y: 153 }
+
+bad:
+  # Room: 245 × 305 cm. en-suite to master.
+  - { id: bathtub,         type: sanitary, label: "Bathtub",       w: 160, d: 75,  x: 5,   y: 5 }
+  - { id: washbasin,       type: sanitary, label: "Basin",         w: 50,  d: 65,  x: 195, y: 90 }
+  - { id: toilet,          type: sanitary, label: "WC",            w: 35,  d: 60,  x: 200, y: 220 }
+
+dusche:
+  # Room: 217 × 305 cm. Guest WC + laundry.
+  - { id: shower,          type: sanitary, label: "Shower",        w: 140, d: 100, x: 0,   y: 0 }
+  - { id: wm_tu,           type: appliance, label: "WM/TU",        w: 75,  d: 100, x: 140, y: 0 }
+  - { id: washbasin,       type: sanitary, label: "Basin",         w: 50,  d: 65,  x: 0,   y: 120 }
+  - { id: toilet,          type: sanitary, label: "WC",            w: 35,  d: 60,  x: 0,   y: 220 }
+
+# Empty placeholders (no furniture planned yet but room exists in layout.yml):
+balkon: []
+entrée: []
+treppenhaus: []

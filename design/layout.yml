@@ -1,0 +1,354 @@
+# Zwyssigstrasse 11 — Semantic Layout
+# Machine-readable description of the apartment layout for spatial reasoning.
+# Derived from apartment/floorplan.svg and interior/concept.md.
+# Dimensions are approximate (SVG scale ~60 px/m). Cardinal orientations unknown;
+# walls are named by floorplan position: plan_left / plan_right / plan_top / plan_bottom.
+# plan_left and plan_bottom-left are the building's exterior long facade (all bedrooms + bath).
+# plan_right / plan_bottom are exterior on the balkon/wintergarten side.
+# plan_top (north of the apartment) faces the shared Treppenhaus (stairwell).
+
+meta:
+  address: Zwyssigstrasse 11, Zürich
+  floor: 1. Obergeschoss
+  rooms_nominal: 4.5
+  total_area_m2_approx: 100
+  floor_finish: large-format dark anthracite stone-look tiles (throughout, fixed)
+  wall_finish: white smooth plaster
+  heating: underfloor (throughout)
+  scale_px_per_m: 60
+  # Each room's `bbox` is in the same SVG coordinate system as apartment/floorplan.svg
+  # (60 px/m). Use it to crop the master plan or to position furniture from
+  # interior/furniture.yml. Furniture coords are cm-from-room-origin (top-left).
+
+# --- ROOMS ---
+
+rooms:
+
+  bad:
+    label: Bad (main bathroom)
+    area_m2: 7
+    dimensions_m: { length: 3.05, width: 2.45 }
+    bbox: { x: 62, y: 62, w: 147, h: 183 }     # SVG px @ 60 px/m
+    walls:
+      plan_left: exterior
+      plan_top: exterior
+      plan_right: partition to dusche
+      plan_bottom: interior to master_bedroom
+    adjacent_to:
+      - { space: master_bedroom, type: door, note: en-suite, wall: plan_bottom }
+      - { space: dusche, type: none, note: shared partition wall only }
+    windows:
+      - { wall: plan_left, count: 1, orientation: exterior }
+    fixed_elements:
+      - bathtub along plan_top wall (wall-to-wall, ~1.6 m)
+      - washbasin on plan_right partition (mid-height)
+      - toilet on plan_right partition (south end)
+    notes:
+      - en-suite to master bedroom; no direct hallway access
+      - plumbing concentrated on shared partition with dusche
+
+  dusche:
+    label: Dusche (shower / laundry bath)
+    area_m2: 6
+    dimensions_m: { length: 3.05, width: 2.17 }
+    bbox: { x: 215, y: 62, w: 130, h: 183 }
+    walls:
+      plan_left: partition to bad
+      plan_top: exterior
+      plan_right: interior to entrée
+      plan_bottom: interior to master_bedroom (wardrobe runs along this wall in bedroom)
+    adjacent_to:
+      - { space: entrée, type: door, wall: plan_right }
+      - { space: bad, type: none, note: shared partition wall only }
+    windows: []
+    fixed_elements:
+      - shower stall along plan_top wall (~85 cm × 60 cm)
+      - washing machine / tumble dryer column, plan_top-right corner
+      - washbasin on plan_left partition
+      - toilet on plan_left partition (south end)
+    notes:
+      - serves as guest WC and laundry
+      - no exterior window — mechanical ventilation assumed
+
+  master_bedroom:
+    label: Zimmer (master bedroom)
+    area_m2: 16
+    dimensions_m: { length: 4.65, width: 3.5 }
+    bbox: { x: 62, y: 248, w: 280, h: 210 }
+    walls:
+      plan_left: exterior
+      plan_top: interior to bad + dusche (wardrobe built in along this wall)
+      plan_right: interior to entrée (door)
+      plan_bottom: interior to home_office
+    adjacent_to:
+      - { space: bad, type: door, note: en-suite, wall: plan_top }
+      - { space: entrée, type: door, wall: plan_right }
+      - { space: home_office, type: none, note: shared partition wall only }
+    windows:
+      - { wall: plan_left, count: 1, orientation: exterior }
+    fixed_elements:
+      - built-in wardrobe run along plan_top wall (~3.4 m wide × 0.6 m deep)
+      - small closet/utility box on plan_right side near plan-center (≈0.6 × 1.3 m)
+    planned_furniture:
+      - king bed against plan_bottom wall
+      - 2× nightstands flanking bed
+      - foot bench
+    notes:
+      - largest bedroom; wardrobe wall means bed goes opposite (plan_bottom)
+      - window is on plan_left (exterior long facade)
+
+  home_office:
+    label: Zimmer (middle — home office / dual-mode)
+    area_m2: 14
+    dimensions_m: { length: 4.65, width: 2.7 }
+    bbox: { x: 62, y: 458, w: 280, h: 162 }
+    walls:
+      plan_left: exterior
+      plan_top: interior to master_bedroom
+      plan_right: interior to entrée/corridor (door)
+      plan_bottom: interior to guest_bedroom
+    adjacent_to:
+      - { space: entrée, type: door, wall: plan_right }
+      - { space: master_bedroom, type: none }
+      - { space: guest_bedroom, type: none }
+    windows:
+      - { wall: plan_left, count: 1, orientation: exterior }
+    fixed_elements: []
+    planned_furniture:
+      - OAKO Alive Oak Desk (140 × 80 cm) at the window (plan_left wall)
+      - compact L-sofa (~180 × 130 cm) in plan_right/plan_bottom corner
+      - rug under sofa area
+    notes:
+      - middle of the three west-side rooms
+      - door opens from corridor (plan_right wall)
+      - window on exterior (plan_left wall) — desk faces window with live edge toward room
+
+  guest_bedroom:
+    label: Zimmer (bottom — guest bedroom)
+    area_m2: 14
+    dimensions_m: { length: 4.65, width: 2.7 }
+    bbox: { x: 62, y: 620, w: 280, h: 162 }
+    walls:
+      plan_left: exterior
+      plan_top: interior to home_office
+      plan_right: interior to corridor (door near plan_top corner of right wall)
+      plan_bottom: exterior
+    adjacent_to:
+      - { space: corridor, type: door, wall: plan_right, note: door at plan_top end of wall }
+      - { space: home_office, type: none }
+      - { space: wintergarten, type: none, note: thin shared pillar/partition near plan_bottom-right (bar nook sits in corridor outside this wall) }
+    windows:
+      - { wall: plan_left, count: 1, orientation: exterior }
+    fixed_elements: []
+    planned_furniture:
+      - queen bed (away from window per concept)
+      - nightstand
+    notes:
+      - corner room — two exterior walls (plan_left + plan_bottom)
+      - the 0.42 m × 1.95 m pillar at the corridor/wintergarten junction sits just outside this room's plan_bottom-right corner
+
+  entrée:
+    label: Entrée (entrance hall)
+    area_m2: 7
+    dimensions_m: { length: 4.25, width: 1.7 }
+    bbox: { x: 348, y: 143, w: 102, h: 255 }
+    walls:
+      plan_left: interior to dusche + master_bedroom (doors)
+      plan_top: exterior / apartment entrance door from Treppenhaus
+      plan_right: open to kitchen (no wall below Treppenhaus line)
+      plan_bottom: flows into corridor (no wall — same continuous space)
+    adjacent_to:
+      - { space: treppenhaus, type: door, note: apartment entrance, wall: plan_top }
+      - { space: dusche, type: door, wall: plan_left }
+      - { space: master_bedroom, type: door, wall: plan_left }
+      - { space: küche, type: open, note: no wall — kitchen sits across an open boundary, wall: plan_right }
+      - { space: corridor, type: open, note: continuous space — entrée and corridor are one long circulation spine }
+    windows: []
+    fixed_elements:
+      - apartment entrance door (from stairwell)
+    notes:
+      - entrée transitions directly into corridor without a door or threshold
+      - kitchen is visible immediately on entry (open to plan_right)
+
+  corridor:
+    label: Corridor (circulation spine to west rooms and wintergarten)
+    area_m2: 8
+    dimensions_m: { length: 6.4, width: 1.2 }
+    bbox: { x: 348, y: 398, w: 102, h: 384 }   # narrows to 75 px below pillar (y > 665)
+    walls:
+      plan_left: interior to home_office + guest_bedroom (doors)
+      plan_top: flows from entrée (continuous)
+      plan_right: open to living_room (no wall — living room spans the full east side)
+      plan_bottom: 0.42 m pillar then wintergarten opening
+    adjacent_to:
+      - { space: entrée, type: open, note: continuous }
+      - { space: home_office, type: door, wall: plan_left }
+      - { space: guest_bedroom, type: door, wall: plan_left }
+      - { space: living_room, type: open, wall: plan_right }
+      - { space: wintergarten, type: open (step-over ~60 mm), note: passes between 0.42 m pillar and wintergarten glass wall, wall: plan_bottom }
+    windows: []
+    fixed_elements:
+      - structural pillar at plan_bottom-right corner (0.42 m wide × 1.95 m deep)
+    planned_furniture:
+      - bar / coffee station tucked into the corner between guest_bedroom wall and wintergarten entrance (oak console, wine fridge, floating oak shelf, 2× wall sconces)
+    notes:
+      - bar nook sits in the corridor's south end, against the guest_bedroom plan_right wall
+      - narrow at 1.2 m — bar console must be shallow
+
+  treppenhaus:
+    label: Treppenhaus (shared stairwell — outside apartment)
+    area_m2: null
+    dimensions_m: { length: 4.7, width: 3.0 }
+    bbox: { x: 450, y: 62, w: 283, h: 180 }
+    walls:
+      plan_bottom: shared wall with apartment (entrance door + kitchen interior wall)
+    adjacent_to:
+      - { space: entrée, type: door, note: apartment entrance door }
+    windows:
+      - { wall: plan_right, count: 1, orientation: exterior, note: serves stairwell, not apartment }
+    fixed_elements:
+      - lift shaft (plan_top-left, ~1.6 × 1.6 m)
+      - stairs (hatched area)
+    notes:
+      - not part of the apartment — shared common area
+      - only the entrance door connects it to the apartment
+
+  küche:
+    label: Küche (kitchen)
+    area_m2: 9
+    dimensions_m: { length: 4.8, width: 2.5 }
+    bbox: { x: 450, y: 248, w: 289, h: 150 }
+    walls:
+      plan_left: partition to entrée/corridor (kitchen units line this wall)
+      plan_top: interior to Treppenhaus (upper kitchen cabinets along this wall)
+      plan_right: open to living_room (no wall — continues to balkon glazing)
+      plan_bottom: open to living_room (dotted/imaginary boundary)
+    adjacent_to:
+      - { space: entrée, type: open, wall: plan_left }
+      - { space: living_room, type: open, note: open-plan — no physical boundary, wall: plan_bottom }
+      - { space: treppenhaus, type: none, note: shared wall, no opening, wall: plan_top }
+    windows: []
+    fixed_elements:
+      - base cabinets & appliances along plan_left wall (facing corridor, ~2.5 m run × 0.6 m)
+      - upper + base cabinets along plan_top wall (~1.9 m run × 0.6 m)
+      - kitchen island (~1.35 m × 0.85 m) with 4-burner cooktop, centre of kitchen
+    notes:
+      - style: white/matte German-style units, wood island top (fixed)
+      - open-plan — visually continuous with living/dining area
+      - no exterior window (interior room)
+
+  living_room:
+    label: Wohnen / Essen — "The Salon"
+    area_m2: 45
+    dimensions_m: { length: 6.95, width: 4.43, note: "L-shape open-plan incl. kitchen zone; pure lounge zone ~4.45 × 4.43 m below kitchen" }
+    bbox: { x: 450, y: 398, w: 289, h: 267 }   # lounge zone only — kitchen has its own bbox
+    walls:
+      plan_left: interior wall to corridor (living room runs along the east side of corridor)
+      plan_top: flows from kitchen (no wall)
+      plan_right: full-height glass wall to balkon
+      plan_bottom: full-height glass wall + sliding partition to wintergarten (opening 4.76 m × 2.42 m)
+    adjacent_to:
+      - { space: küche, type: open, note: open-plan, wall: plan_top }
+      - { space: corridor, type: open, wall: plan_left }
+      - { space: balkon, type: glass wall, note: floor-to-ceiling glazing, door at plan_bottom-right corner passes through to wintergarten-balkon junction, wall: plan_right }
+      - { space: wintergarten, type: sliding glass partition (planned — 4B ST2 Schema K, F-S-S-F), note: step-over ~60 mm, wall: plan_bottom }
+    windows:
+      - { wall: plan_right, count: 1, orientation: exterior, type: floor-to-ceiling glazing (to balkon), span_m: 6.95 }
+      - { wall: plan_bottom, count: 1, orientation: exterior, type: floor-to-ceiling glazing + sliding partition (to wintergarten), span_m: 4.85 }
+    fixed_elements:
+      - structural pillar near plan_bottom-left (0.42 m wide × 1.95 m deep) — defines wintergarten opening edge
+      - corridor-side wall is solid; TV / media wall is intended here (per concept, near pillar)
+    planned_furniture:
+      - L-shaped sofa facing media wall near the pillar
+      - coffee table (oiled oak, 120 × 60 cm)
+      - wall-mounted TV + oak shelf panel near pillar
+      - accent chair (forest green)
+      - reading armchair by balkon glazing
+      - sideboard (oak, 180 cm) near kitchen
+      - rug (300 × 400 cm)
+      - floor lamp
+    notes:
+      - 45 m² includes the open-plan kitchen-dining-living flow (dining moves to wintergarten in the new concept)
+      - dominant fixed element: dark anthracite large-format tiles — design must work with them
+      - two exterior glazed walls meeting at plan_bottom-right corner; balkon + wintergarten wrap the room
+
+  balkon:
+    label: Balkon (balcony)
+    area_m2: 10.4
+    dimensions_m: { length: 6.95, width: 1.5 }
+    bbox: { x: 739, y: 248, w: 90, h: 417 }
+    walls:
+      plan_left: glass wall to living_room
+      plan_bottom: opens through door to wintergarten (at plan_bottom-left corner)
+      plan_right: exterior
+      plan_top: exterior
+    adjacent_to:
+      - { space: living_room, type: glass wall, note: floor-to-ceiling glazing, wall: plan_left }
+      - { space: wintergarten, type: door, wall: plan_bottom, note: single door at plan_bottom-left corner of balkon }
+    windows: []
+    fixed_elements:
+      - outdoor railing / balcony structure (plan_right + plan_top edges)
+    notes:
+      - exterior outdoor space running full length of living room's plan_right side
+      - wraps into wintergarten at the plan_bottom-right corner of the apartment
+
+  wintergarten:
+    label: Wintergarten (conservatory — planned new dining room)
+    area_m2: 11.5
+    dimensions_m: { length: 4.76, width: 2.5, note: "dining zone inside partition; total slab ~6.35 × 2.5 m including former balkon overhang on plan_right" }
+    bbox: { x: 448, y: 665, w: 381, h: 150 }
+    walls:
+      plan_top: sliding glass partition to living_room (planned — 4B ST2 Schema K) + short door opening to balkon at plan_right
+      plan_left: solid exterior (connects to 0.42 m pillar)
+      plan_right: full-height glazing (exterior)
+      plan_bottom: full-height glazing (exterior)
+    adjacent_to:
+      - { space: living_room, type: sliding glass partition (planned), note: "opening 4.76 m wide × 2.42 m high, step-over ~60 mm; F-S-S-F centre-opening, ~50% clear opening; must meet SIA 380/1 (U ≤ 1.3 W/m²K)", wall: plan_top }
+      - { space: balkon, type: door, wall: plan_top, note: small door at plan_right end connecting to balkon corner }
+      - { space: corridor, type: open (step-over ~60 mm), note: via gap between pillar and partition }
+    windows:
+      - { wall: plan_right, count: 1, orientation: exterior, type: floor-to-ceiling glazing }
+      - { wall: plan_bottom, count: 1, orientation: exterior, type: floor-to-ceiling glazing, span_m: 6.35 }
+      - { wall: plan_left, count: 1, orientation: exterior, type: floor-to-ceiling glazing, span_m: 2.5 }
+    fixed_elements:
+      - glass ceiling (existing — provides primary atmosphere for dining room)
+      - 60 mm step-over at partition threshold (Nullschwelle required for 4B ST2 system)
+      - structural pillar (0.42 × 1.95 m) at plan_top-left corner (shared with corridor)
+    planned_furniture:
+      - dining table (solid oak, 200 × 90 cm)
+      - 6× dining chairs
+      - single sculptural pendant light
+      - flatweave rug (250 × 350 cm)
+      - 2–3 large plant pots
+    notes:
+      - unheated space today; partition project separates it thermally from living_room
+      - currently an enclosed conservatory-style extension; aluminum-framed structure
+      - design treats this as the new dining room (moved from living room)
+
+# --- ADJACENCY GRAPH (quick-reference edges) ---
+
+adjacency_edges:
+  - [treppenhaus, entrée, door]                  # apartment entrance
+  - [entrée, dusche, door]
+  - [entrée, master_bedroom, door]
+  - [entrée, küche, open]
+  - [entrée, corridor, open]                     # continuous
+  - [corridor, home_office, door]
+  - [corridor, guest_bedroom, door]
+  - [corridor, living_room, open]
+  - [corridor, wintergarten, open]               # past pillar
+  - [master_bedroom, bad, door]                  # en-suite
+  - [küche, living_room, open]                   # open-plan
+  - [living_room, balkon, glass_wall]
+  - [living_room, wintergarten, sliding_partition_planned]
+  - [balkon, wintergarten, door]
+
+# --- ORIENTATION NOTES ---
+
+orientation:
+  cardinal: unknown (not documented in project files)
+  plan_left_wall: exterior long facade — all three Zimmer + Bad have their windows here
+  plan_right_wall: exterior — balkon runs full length of this side
+  plan_bottom_wall: exterior — wintergarten + guest_bedroom corner
+  plan_top_wall: Treppenhaus (shared stairwell) — no apartment exterior here except above Bad/Dusche
+  note: if orientation becomes relevant, confirm from apartment/docs/building_permit.pdf or by asking the owner

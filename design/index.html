@@ -675,6 +675,23 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       text-align: center;
     }
 
+    /* SVG renderer (anchored to apartment/layout.yml + interior/furniture.yml) */
+    .room-svg-wrap {
+      width: 100%;
+      max-height: 480px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .room-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      max-height: 480px;
+      background: #FAF8F4;
+      border-radius: var(--radius-sm);
+    }
+    .rd-loading { font-size: 0.7rem; color: var(--text-3); text-align: center; padding: 20px; }
+
     /* ── Utility ─────────────────────────────────────────────── */
     .card-wrap {
       background: var(--surface);
@@ -866,27 +883,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <!-- 45m² ~7×6.5m. Top = balcony wall, right = kitchen, bottom = corridor -->
-            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr 1fr; grid-template-rows: auto auto auto auto auto auto;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell window">Window / Balcony</div>
-              <div class="rd-cell window" style="grid-column:span 2">Window</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell sofa" style="grid-column:span 2; grid-row:span 2">L-Sofa</div>
-              <div class="rd-cell">Coffee Table</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell">Accent Chair</div>
-              <div class="rd-cell">Reading Chair</div>
-              <div class="rd-cell">TV Wall</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell">Sideboard</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell door">→ Bar nook</div>
-              <div class="rd-cell door">→ Kitchen</div>
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-            </div>
-            <div class="rd-note">Approximate — not to scale · N = balcony wall</div>
+          <div class="room-diagram" data-room="living_room">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -934,19 +932,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr; grid-template-rows:auto auto auto auto;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell window" style="grid-column:span 3">Glass ceiling + walls — Wintergarten</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell" style="grid-column:span 1; grid-row:span 2">Dining Table 200×90</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell">Chair ×3</div>
-              <div class="rd-cell">Chair ×3</div>
-              <div class="rd-cell">Rug</div>
-              <div class="rd-cell door" style="grid-column:span 3">← Partition (4B ST2) → Living room</div>
-            </div>
-            <div class="rd-note">~11.5 m² · glass on 3 sides</div>
+          <div class="room-diagram" data-room="wintergarten">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -994,20 +981,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <div class="rd-grid" style="grid-template-columns:1fr 2fr 1fr;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell">Console + Wine Fridge + Shelf</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell empty" style="grid-row:span 2"></div>
-              <div class="rd-cell empty" style="grid-row:span 2"></div>
-              <div class="rd-cell empty" style="grid-row:span 2"></div>
-              <div class="rd-cell door">↑ Wintergarten</div>
-              <div class="rd-cell door">↑ Guest room</div>
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-            </div>
-            <div class="rd-note">Corner nook between guest bedroom + wintergarten entrance</div>
+          <div class="room-diagram" data-room="corridor" data-view="bar_nook">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -1065,23 +1040,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <!-- ~4×4m. Left = exterior/window, right = corridor door, top = shared w/bathroom, bottom = shared w/office -->
-            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
-              <div class="rd-cell" style="grid-column:span 4; grid-row:span 2">King Bed 180×200</div>
-              <div class="rd-cell">NS</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell">NS</div>
-              <div class="rd-cell">Bench</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell">Wardrobe →</div>
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell empty" style="grid-column:span 3"></div>
-              <div class="rd-cell door">Door →</div>
-            </div>
-            <div class="rd-note">16 m² · window on left · door to corridor on right · NS = nightstand</div>
+          <div class="room-diagram" data-room="master_bedroom">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -1144,22 +1104,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <!-- ~3.5×4m. Left = exterior/window, right = corridor door -->
-            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
-              <div class="rd-cell done" style="grid-column:span 4">OAKO Desk 140×80 · height-adjustable</div>
-              <div class="rd-cell empty" style="grid-column:span 4">Chair zone</div>
-              <div class="rd-cell sofa" style="grid-column:span 2; grid-row:span 2">L-Sofa ~180×130</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell">Side table</div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell empty" style="grid-column:span 3"></div>
-              <div class="rd-cell door">Door →</div>
-            </div>
-            <div class="rd-note">14 m² · desk at window · L-sofa in back corner · door to corridor right</div>
+          <div class="room-diagram" data-room="home_office">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -1202,19 +1148,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
         <details class="room-layout-toggle">
           <summary>Room layout</summary>
-          <div class="room-diagram">
-            <div class="rd-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell window" style="grid-column:span 4">← Exterior wall (window) →</div>
-              <div class="rd-cell" style="grid-column:span 4; grid-row:span 2">Queen Bed 160×200</div>
-              <div class="rd-cell">NS</div>
-              <div class="rd-cell empty" style="grid-column:span 2"></div>
-              <div class="rd-cell empty"></div>
-              <div class="rd-cell wall" style="grid-column:1/-1"></div>
-              <div class="rd-cell empty" style="grid-column:span 3"></div>
-              <div class="rd-cell door">Door →</div>
-            </div>
-            <div class="rd-note">14 m² · simple and welcoming · NS = nightstand</div>
+          <div class="room-diagram" data-room="guest_bedroom">
+            <div class="rd-loading">Loading layout…</div>
           </div>
         </details>
       </div>
@@ -1562,6 +1497,151 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
   </div>
 
 </div><!-- /page -->
+
+<!-- ── Room layout renderer ──────────────────────────────────────────
+     Loads apartment/layout.yml + interior/furniture.yml (mirrored to
+     /design/) and renders each [data-room] container as a scaled SVG
+     anchored to the master floorplan coordinate system.
+-->
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+<script>
+(async function renderRooms() {
+  const containers = document.querySelectorAll('[data-room]');
+  if (!containers.length) return;
+
+  let layout, furniture;
+  try {
+    const [layoutTxt, furnitureTxt] = await Promise.all([
+      fetch('/design/layout.yml').then(r => r.text()),
+      fetch('/design/furniture.yml').then(r => r.text())
+    ]);
+    layout = jsyaml.load(layoutTxt);
+    furniture = jsyaml.load(furnitureTxt);
+  } catch (e) {
+    console.error('Failed to load room data', e);
+    containers.forEach(c => c.innerHTML = '<div class="rd-loading">Layout data unavailable</div>');
+    return;
+  }
+
+  const PX_PER_M = layout.meta.scale_px_per_m || 60;
+  const PX_TO_CM = 100 / PX_PER_M;
+
+  // Furniture fill colors keyed by `type` in furniture.yml
+  const TYPE_FILL = {
+    sofa:      '#E8D6B8',
+    bed:       '#E8DDC8',
+    table:     '#D4C5A8',
+    chair:     '#EFE4CC',
+    storage:   '#C9B89A',
+    sanitary:  '#D8E8F2',
+    appliance: '#DCDCDC',
+    fixture:   '#EAE0CC',
+    accent:    '#C5D4C8'
+  };
+  const FOREST = '#2D4A3E';
+  const PURCHASED_STROKE = '#4F7A5F';
+
+  const wallToEdge = {
+    plan_top:    'top',
+    plan_bottom: 'bottom',
+    plan_left:   'left',
+    plan_right:  'right'
+  };
+
+  function renderWindowsOn(room, wCm, hCm) {
+    if (!room.windows || !room.windows.length) return '';
+    return room.windows.map(win => {
+      const edge = wallToEdge[win.wall];
+      if (!edge) return '';
+      // Window length: span_m * 100 if specified, else 60% of wall length
+      let len;
+      if (win.span_m) len = win.span_m * 100;
+      else if (edge === 'top' || edge === 'bottom') len = wCm * 0.5;
+      else len = hCm * 0.5;
+      // Center the window on the wall by default
+      const STROKE = 9;
+      let x1, y1, x2, y2;
+      if (edge === 'top')    { x1 = (wCm - len) / 2; y1 = 0;   x2 = x1 + len; y2 = 0;   }
+      if (edge === 'bottom') { x1 = (wCm - len) / 2; y1 = hCm; x2 = x1 + len; y2 = hCm; }
+      if (edge === 'left')   { x1 = 0;   y1 = (hCm - len) / 2; x2 = 0;   y2 = y1 + len; }
+      if (edge === 'right')  { x1 = wCm; y1 = (hCm - len) / 2; x2 = wCm; y2 = y1 + len; }
+      return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#5599cc" stroke-width="${STROKE}" stroke-linecap="butt"/>`;
+    }).join('');
+  }
+
+  function renderItem(item) {
+    const fill = TYPE_FILL[item.type] || '#EAE0CC';
+    const stroke = item.status === 'purchased' ? PURCHASED_STROKE : '#8A7A5A';
+    const strokeWidth = item.status === 'purchased' ? 2.5 : 1.5;
+    const cx = item.x + item.w / 2;
+    const cy = item.y + item.d / 2;
+    const transform = item.rotation ? `rotate(${item.rotation} ${cx} ${cy})` : '';
+    // Font size: scale to room size — roughly 14px works for most rooms (units are cm)
+    const fontSize = Math.max(11, Math.min(item.w, item.d) * 0.18);
+    const labelText = item.label || '';
+    const isAccentDark = item.id === 'accent_chair';
+    const labelFill = isAccentDark ? FOREST : '#5C4F3A';
+    const labelEl = labelText
+      ? `<text x="${cx}" y="${cy}" font-size="${fontSize}" text-anchor="middle" dominant-baseline="middle" fill="${labelFill}" font-family="Helvetica, Arial, sans-serif">${labelText}</text>`
+      : '';
+    return `<g ${transform ? `transform="${transform}"` : ''}>
+      <rect x="${item.x}" y="${item.y}" width="${item.w}" height="${item.d}"
+            fill="${item.id === 'accent_chair' ? FOREST : fill}"
+            fill-opacity="${item.id === 'accent_chair' ? 0.85 : 1}"
+            stroke="${stroke}" stroke-width="${strokeWidth}" rx="2"/>
+      ${labelEl}
+    </g>`;
+  }
+
+  function renderRoom(roomKey, container) {
+    const room = layout.rooms[roomKey];
+    if (!room || !room.bbox) {
+      container.innerHTML = `<div class="rd-loading">No bbox for "${roomKey}"</div>`;
+      return;
+    }
+    const items = furniture[roomKey] || [];
+    const wCm = room.bbox.w * PX_TO_CM;
+    const hCm = room.bbox.h * PX_TO_CM;
+    const PAD = 14; // cm padding for wall stroke + label
+    const vbW = wCm + PAD * 2;
+    const vbH = hCm + PAD * 2;
+
+    const wallStroke = 6;
+
+    const items_svg = items.map(renderItem).join('');
+    const windows_svg = renderWindowsOn(room, wCm, hCm);
+
+    // Dimensions label (small, bottom-right)
+    const wM = (wCm / 100).toFixed(2);
+    const hM = (hCm / 100).toFixed(2);
+
+    container.innerHTML = `
+      <div class="room-svg-wrap">
+        <svg viewBox="0 0 ${vbW} ${vbH}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(${PAD}, ${PAD})">
+            <!-- Room footprint: walls -->
+            <rect x="0" y="0" width="${wCm}" height="${hCm}"
+                  fill="#FAF8F4" stroke="#666" stroke-width="${wallStroke}"/>
+            ${windows_svg}
+            ${items_svg}
+            <!-- Dimensions caption -->
+            <text x="${wCm - 4}" y="${hCm - 4}" font-size="11" text-anchor="end"
+                  fill="#999" font-family="Helvetica, Arial, sans-serif" font-style="italic">
+              ${wM} × ${hM} m
+            </text>
+          </g>
+        </svg>
+      </div>
+    `;
+  }
+
+  containers.forEach(c => renderRoom(c.dataset.room, c));
+
+  // Render layouts when their <details> first opens (saves work for closed cards
+  // and avoids visual jank on initial load — but we already rendered above, so
+  // this is only useful if we switch to lazy-render later. Keeping the simple path.)
+})();
+</script>
 
 </body>
 </html>
