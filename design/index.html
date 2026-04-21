@@ -798,6 +798,64 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       box-shadow: var(--shadow-sm);
     }
 
+    /* ── Dark theme ─────────────────────────────────────────── */
+    [data-theme="dark"] {
+      --bg:           #17150F;
+      --surface:      #1F1C16;
+      --surface-2:    #272319;
+      --border:       #3A332A;
+      --border-light: #2E2820;
+      --text:         #EDE8DE;
+      --text-2:       #A89070;
+      --text-3:       #6B5E50;
+      --brass:        #D4AC72;
+      --brass-bg:     #261E0E;
+      --steel:        #6A6056;
+      --green:        #5A9070;
+      --green-bg:     #152018;
+      --red-bg:       #241610;
+      --red:          #C07055;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.5);
+      --shadow:       0 2px 12px rgba(0,0,0,0.6);
+      --shadow-lg:    0 8px 40px rgba(0,0,0,0.7);
+    }
+    [data-theme="dark"] .nav {
+      background: rgba(23, 21, 15, 0.90);
+    }
+    [data-theme="dark"] .status-quoting,
+    [data-theme="dark"] .status-sourcing { border-color: #5A3E18; }
+    [data-theme="dark"] .swatch { border-color: rgba(255,255,255,0.07); }
+    [data-theme="dark"] .room-svg-wrap svg,
+    [data-theme="dark"] .rd-modal-body svg { background: #1F1C16; }
+    [data-theme="dark"] .rd-expand-btn:hover { background: #2A2620 !important; }
+
+    /* ── Theme toggle ────────────────────────────────────────── */
+    .theme-toggle {
+      width: 32px; height: 32px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+    .theme-toggle .icon-sun  { display: none;  align-items: center; }
+    .theme-toggle .icon-moon { display: flex;  align-items: center; }
+    [data-theme="dark"] .theme-toggle .icon-sun  { display: flex; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    /* ── Scroll reveal ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.42s ease, transform 0.42s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
     /* ── Responsive ──────────────────────────────────────────── */
     @media (max-width: 800px) {
       .page { padding: 24px 16px 60px; }
@@ -829,6 +887,19 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       <a href="#wintergarten">Wintergarten</a>
       <a href="#sourcing">Sourcing</a>
     </div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <span class="icon-moon">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.5 8.5A5 5 0 0 1 4.5 2.5a5 5 0 1 0 6 6z"/>
+        </svg>
+      </span>
+      <span class="icon-sun">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="7" cy="7" r="2.5"/>
+          <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06"/>
+        </svg>
+      </span>
+    </button>
   </div>
 </nav>
 
@@ -849,7 +920,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
   <!-- ── Workstreams ───────────────────────────────────────── -->
   <div class="workstreams">
 
-    <div class="ws-card">
+    <div class="ws-card reveal">
       <div class="ws-header">
         <div class="ws-name">Interior Furnishing</div>
         <span class="ws-status status-planning">Planning</span>
@@ -875,7 +946,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
     </div>
 
-    <div class="ws-card">
+    <div class="ws-card reveal">
       <div class="ws-header">
         <div class="ws-name">Wintergarten Partition</div>
         <span class="ws-status status-quoting">Quoting</span>
@@ -923,7 +994,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     <div class="rooms-grid">
 
       <!-- Living Room -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Living Room — "The Salon"</div>
           <div class="room-size">45 m²</div>
@@ -987,7 +1058,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
       <!-- Wintergarten Dining -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Wintergarten — Dining</div>
           <div class="room-size">~11.5 m²</div>
@@ -1036,7 +1107,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
       <!-- Bar Station -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Bar &amp; Coffee Station</div>
           <div class="room-size">Corner nook</div>
@@ -1085,7 +1156,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
       <!-- Master Bedroom -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Master Bedroom</div>
           <div class="room-size">16 m²</div>
@@ -1144,7 +1215,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
       <!-- Home Office -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Home Office</div>
           <div class="room-size">14 m² · middle room</div>
@@ -1203,7 +1274,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
       <!-- Guest Bedroom -->
-      <div class="room-card">
+      <div class="room-card reveal">
         <div class="room-header">
           <div class="room-name">Guest Bedroom</div>
           <div class="room-size">14 m²</div>
@@ -1257,7 +1328,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     </div>
     <div class="style-grid">
 
-      <div class="style-card">
+      <div class="style-card reveal">
         <div class="style-card-title">Material &amp; Finish Palette</div>
         <div class="swatches">
           <div class="swatch-row">
@@ -1305,7 +1376,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
       </div>
 
-      <div class="style-card">
+      <div class="style-card reveal">
         <div class="style-card-title">Material Rules</div>
         <ul class="rules-list">
           <li class="rule">
@@ -1354,27 +1425,27 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       <h3 class="section-title" style="font-size:0.9rem;color:var(--text-2)">Mood Reference</h3>
     </div>
     <div class="mood-grid">
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/living_room_concept.png" alt="Living room reference" loading="lazy"></div>
         <div class="mood-img-label">Living room</div>
       </div>
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/wintergarten_dining_concept.png" alt="Wintergarten dining reference" loading="lazy"></div>
         <div class="mood-img-label">Wintergarten dining</div>
       </div>
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/bar_station_concept.png" alt="Bar station reference" loading="lazy"></div>
         <div class="mood-img-label">Bar station</div>
       </div>
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/master_bedroom_concept.png" alt="Master bedroom reference" loading="lazy"></div>
         <div class="mood-img-label">Master bedroom</div>
       </div>
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/office_concept.png" alt="Office reference" loading="lazy"></div>
         <div class="mood-img-label">Home office</div>
       </div>
-      <div class="mood-item">
+      <div class="mood-item reveal">
         <div class="mood-img"><img src="/design/color_palette.png" alt="Colour palette" loading="lazy"></div>
         <div class="mood-img-label">Colour palette</div>
       </div>
@@ -1389,7 +1460,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     </div>
     <div class="wg-grid">
 
-      <div class="wg-card">
+      <div class="wg-card reveal">
         <div class="style-card-title">Technical Specs</div>
         <ul class="spec-list">
           <li class="spec-row">
@@ -1430,7 +1501,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
         </div>
       </div>
 
-      <div class="wg-card">
+      <div class="wg-card reveal">
         <div class="style-card-title">Vendors</div>
         <ul class="vendor-list">
           <li class="vendor-row">
@@ -1750,6 +1821,56 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') modal.classList.remove('open'); });
   }
+})();
+</script>
+
+<script>
+// ── Dark mode ──────────────────────────────────────────────────
+(function() {
+  const root = document.documentElement;
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (stored === 'dark' || (!stored && prefersDark)) root.setAttribute('data-theme', 'dark');
+
+  document.getElementById('theme-toggle').addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+})();
+
+// ── Scroll reveal ──────────────────────────────────────────────
+(function() {
+  const cards = document.querySelectorAll('.reveal');
+  if (!cards.length) return;
+
+  // Stagger siblings within each grid container
+  document.querySelectorAll('.workstreams, .rooms-grid, .style-grid, .wg-grid, .mood-grid').forEach(grid => {
+    Array.from(grid.querySelectorAll('.reveal')).forEach((card, i) => {
+      card.style.transitionDelay = `${i * 55}ms`;
+    });
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    cards.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -28px 0px', threshold: 0.04 });
+
+  cards.forEach(el => observer.observe(el));
 })();
 </script>
 
