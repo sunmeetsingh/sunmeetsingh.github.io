@@ -66,8 +66,7 @@ home_office:
   - { id: oako_desk,       type: table,    label: "OAKO Desk 140×80", w: 140, d: 80,  x: 307, y: 0,   status: purchased }
   - { id: l_sofa_main,     type: sofa,     label: "L-Sofa / Daybed",  w: 220, d: 90,  x: 0,   y: 180  }
   - { id: l_sofa_chaise,   type: sofa,     label: "",                  w: 90,  d: 100, x: 0,   y: 80   }
-  - { id: side_table,      type: table,    label: "Side",              w: 45,  d: 45,  x: 225, y: 190  }
-  - { id: shelf,           type: fixture,  label: "Oak Shelf ↑",       w: 200, d: 20,  x: 100, y: 0    }
+  - { id: side_table,      type: table,    label: "Side Table",        w: 45,  d: 45,  x: 225, y: 190  }
 
 guest_bedroom:
   # Room: 467 × 270 cm. Window on plan_left, exterior also on plan_bottom (corner room).
