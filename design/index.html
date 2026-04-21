@@ -848,6 +848,50 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     [data-theme="dark"] .theme-toggle .icon-sun  { display: flex; }
     [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
+    /* ── Active Sourcing section ─────────────────────────────── */
+    .sourcing-card { margin-bottom: 16px; }
+    .sourcing-card-head {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px; margin-bottom: 16px;
+    }
+    .sourcing-card-room {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--brass); margin-bottom: 4px;
+    }
+    .sourcing-card-title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .sourcing-card-sub { font-size: 0.75rem; color: var(--text-3); font-family: 'SF Mono', 'Fira Code', monospace; }
+    .sourcing-card-body { border-top: 1px solid var(--border-light); padding-top: 16px; }
+    .sourcing-note {
+      font-size: 0.8rem; color: var(--text-2); background: var(--surface-2);
+      border-left: 3px solid var(--brass); border-radius: 4px;
+      padding: 10px 14px; margin-bottom: 16px; line-height: 1.6;
+    }
+    .option-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    .option-table th {
+      text-align: left; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--text-3); padding: 0 12px 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .option-table td { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--border-light); color: var(--text-2); vertical-align: top; }
+    .option-table td:first-child { color: var(--text); font-weight: 500; }
+    .option-table td:nth-child(2) { white-space: nowrap; color: var(--text); font-weight: 600; }
+    .option-table tr:last-child td { border-bottom: none; }
+    .option-table tr.option-rec td { background: var(--green-bg); }
+    .option-link {
+      display: inline-flex; align-items: center;
+      font-size: 0.75rem; font-weight: 600; color: var(--brass);
+      text-decoration: none; white-space: nowrap;
+      padding: 3px 8px; border: 1px solid var(--brass);
+      border-radius: 4px; transition: background 0.15s;
+    }
+    .option-link:hover { background: var(--brass-bg); }
+    .sourcing-verdict {
+      font-size: 0.8rem; color: var(--text-2); line-height: 1.6;
+      margin-top: 14px; padding: 12px 14px;
+      background: var(--brass-bg); border-radius: var(--radius-sm);
+    }
+    .sourcing-verdict strong { color: var(--text); }
+
     /* ── Scroll reveal ───────────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -885,7 +929,8 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       <a href="#rooms">Rooms</a>
       <a href="#style">Style</a>
       <a href="#wintergarten">Wintergarten</a>
-      <a href="#sourcing">Sourcing</a>
+      <a href="#active-sourcing">Sourcing</a>
+      <a href="#sourcing">Strategy</a>
     </div>
     <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
       <span class="icon-moon">
@@ -1591,6 +1636,111 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
       </div>
 
     </div><!-- /wg-grid -->
+  </div>
+
+  <!-- ── Active Sourcing ─────────────────────────────────────── -->
+  <div id="active-sourcing" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Active Sourcing</h2>
+      <span class="section-meta">Researched options · ready to decide</span>
+    </div>
+
+    <!-- Art: Picasso Bouquet de Fleurs -->
+    <div class="sourcing-card card-wrap reveal">
+      <div class="sourcing-card-head">
+        <div>
+          <div class="sourcing-card-room">Home Office · Art</div>
+          <div class="sourcing-card-title">Pablo Picasso — Bouquet de Fleurs, 1958</div>
+          <div class="sourcing-card-sub">Original lithograph · Edition 200 · Czwiklitzer 147 · 65 × 50 cm · signed in stone</div>
+        </div>
+        <span class="ws-status status-quoting">Ready to buy</span>
+      </div>
+      <div class="sourcing-card-body">
+        <div class="sourcing-note">
+          Genuine Picasso — verified by Czwiklitzer catalogue raisonné. 8 auction appearances since 2000, consistent demand. Plate-signed edition of 200 on Arches paper. At CHF 4,000–7,000 all-in, this is strong value for a catalogued Picasso original. 65×50 cm fits perfectly above the chaise arm (framed ~80×65 cm).
+        </div>
+        <table class="option-table">
+          <thead>
+            <tr><th>Option</th><th>Price (all-in est.)</th><th>Notes</th><th></th></tr>
+          </thead>
+          <tbody>
+            <tr class="option-rec">
+              <td><strong>Auction via MyArtBroker</strong></td>
+              <td>CHF 4,000–7,000</td>
+              <td>Hammer £2,890–£4,917 + ~25% buyer's premium. Register a price alert — next sale notification is free.</td>
+              <td><a href="https://www.myartbroker.com/artist-pablo-picasso/artwork-bouquet-de-fleurs-signed-print" target="_blank" rel="noopener" class="option-link">Alert →</a></td>
+            </tr>
+            <tr>
+              <td><strong>Forum Auctions London</strong></td>
+              <td>CHF 4,000–7,000</td>
+              <td>Appeared twice in 2021. Watch upcoming prints &amp; multiples sales.</td>
+              <td><a href="https://www.forumauctions.co.uk" target="_blank" rel="noopener" class="option-link">Watch →</a></td>
+            </tr>
+            <tr>
+              <td><strong>"Bouquet of Peace" — Pamono</strong> <span class="item-badge">different piece</span></td>
+              <td>€850 + shipping</td>
+              <td>Same year, same series (Cramer 147). Genuine original, free CH shipping, COA included. In stock now.</td>
+              <td><a href="https://www.pamono.eu/pablo-picasso-bouquet-of-peace-original-lithograph-1958" target="_blank" rel="noopener" class="option-link">Buy →</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="sourcing-verdict">
+          <strong>Recommendation:</strong> Register the MyArtBroker alert for Czwiklitzer 147 — it costs nothing and pings you when one surfaces. If you want something now, the Pamono "Bouquet of Peace" at €850 is a genuine Picasso of the same period and ships free to CH. Confirm which exact image you saw before committing to the auction route.
+        </div>
+      </div>
+    </div>
+
+    <!-- Sofa: L-shaped chaise shortlist -->
+    <div class="sourcing-card card-wrap reveal">
+      <div class="sourcing-card-head">
+        <div>
+          <div class="sourcing-card-room">Home Office · L-Sofa / Daybed</div>
+          <div class="sourcing-card-title">L-Sofa with Chaise — Shortlist</div>
+          <div class="sourcing-card-sub">220 × 90 cm main + 90 × 100 cm chaise · back ≤70 cm · warm stone wool · oak or alu legs</div>
+        </div>
+        <span class="ws-status status-planning">Evaluating</span>
+      </div>
+      <div class="sourcing-card-body">
+        <div class="sourcing-note">
+          ⚠️ All new-price options exceed the original CHF 2,000–3,500 budget. Best path: set a saved search on Tutti.ch / Ricardo for "HAY Mags sofa" — they appear regularly at CHF 1,500–2,500. If buying new, HAY Mags Soft via smow.com (ships to CH) is the best spec match.
+        </div>
+        <table class="option-table">
+          <thead>
+            <tr><th>Option</th><th>Back ht.</th><th>Price (new)</th><th>Notes</th></tr>
+          </thead>
+          <tbody>
+            <tr class="option-rec">
+              <td><strong>HAY Mags Soft</strong> (récamière config)</td>
+              <td>67 cm ✓</td>
+              <td>~€4,880+</td>
+              <td>Best back height. Modular — configure exact L dimensions. Warm stone fabric available. Alu legs (no oak option). Ships via smow.com to CH.</td>
+            </tr>
+            <tr>
+              <td><strong>Muuto Outline Chaise</strong></td>
+              <td>71 cm ⚠️</td>
+              <td>~€5,248</td>
+              <td>1 cm over limit — marginal. Beautiful form. Alu legs only. Worth checking if art hangs above 80 cm from floor.</td>
+            </tr>
+            <tr>
+              <td><strong>Secondhand HAY / Muuto</strong></td>
+              <td>varies</td>
+              <td>CHF 1,500–2,500 est.</td>
+              <td>Best value. Search tutti.ch, ricardo.ch, marktplaats.nl. These appear regularly — set saved search.</td>
+            </tr>
+            <tr>
+              <td><strong>SofaCompany</strong> (custom chaise)</td>
+              <td>~65–70 cm</td>
+              <td>~€2,200–3,000</td>
+              <td>Danish DTC brand. Custom fabric + leg options including oak. Ships to CH. Lower design cachet but solid quality and within budget.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="sourcing-verdict">
+          <strong>Recommendation:</strong> Set a saved search now on <a href="https://tutti.ch" target="_blank" rel="noopener" style="color:var(--brass)">Tutti.ch</a> and <a href="https://ricardo.ch" target="_blank" rel="noopener" style="color:var(--brass)">Ricardo.ch</a> for "HAY Mags sofa". If you want new and are willing to stretch the budget, order via <a href="https://www.smow.com/hay/mags-sofa/" target="_blank" rel="noopener" style="color:var(--brass)">smow.com</a> — they have a Solothurn store and deliver to CH.
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- ── Sourcing ───────────────────────────────────────────── -->
