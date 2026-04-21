@@ -1701,7 +1701,7 @@ title: "Zwyssigstrasse 11 — Project Dashboard"
     if (expandBtn) {
       expandBtn.addEventListener('click', e => {
         e.stopPropagation();
-        const svgEl = container.querySelector('svg');
+        const svgEl = container.querySelector('.room-svg-wrap > svg');
         if (!svgEl) return;
         const modal = document.getElementById('rd-modal');
         modal.querySelector('.rd-modal-title').textContent =
