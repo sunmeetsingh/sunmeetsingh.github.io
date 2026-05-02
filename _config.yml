@@ -11,4 +11,5 @@ theme: minima   # optional, only if you want to use the minima theme.
 plugins:
   - jekyll-feed # safe plugins GitHub Pages supports
 
-
+exclude:
+  - tools/

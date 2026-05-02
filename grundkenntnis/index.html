@@ -1,0 +1,50 @@
+---
+layout: null
+permalink: /grundkenntnis/
+title: "Grundkenntnis Test – Kanton Zürich"
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grundkenntnis Test – Kanton Zürich</title>
+  <meta name="description" content="Lernhilfe für den kantonalen Grundkenntnistest im Einbürgerungsverfahren Zürich.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+  <div id="shell">
+    <nav class="topbar">
+      <span class="topbar-title"><span class="flag">🇨🇭</span>Grundkenntnis</span>
+      <div class="topbar-nav">
+        <a href="#/quiz" id="nav-quiz">Quiz</a>
+        <a href="#/review" id="nav-review">Fragen</a>
+        <a href="#/handbook" id="nav-handbook">Handbuch</a>
+        <a href="#/stats" id="nav-stats">Fortschritt</a>
+      </div>
+    </nav>
+
+    <main id="app">
+      <div class="loading">Lade…</div>
+    </main>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+
+  <script>
+    // Highlight active nav link based on hash
+    function updateNav() {
+      const hash = window.location.hash.replace(/^#\/?/, '').split('/')[0];
+      document.querySelectorAll('.topbar-nav a').forEach(a => {
+        const href = a.getAttribute('href').replace(/^#\//, '');
+        a.classList.toggle('active', href === hash || (href === 'quiz' && hash === 'quiz'));
+      });
+    }
+    window.addEventListener('hashchange', updateNav);
+    updateNav();
+  </script>
+</body>
+</html>
