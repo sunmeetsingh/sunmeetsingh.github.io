@@ -96,7 +96,7 @@
     <line x1="56" y1="788" x2="423" y2="788" stroke-width="12"/>
     
     <!-- Wintergarten Wall Stub at bottom of corridor (Shifted Down!) -->
-    <rect x="423" y="665" width="25" height="117" fill="#222" stroke="none" />
+    <rect x="423" y="615" width="25" height="179" fill="#222" stroke="none" />
   </g>
 
   <!-- ==================== INNER WALLS ==================== -->
@@ -124,6 +124,8 @@
     <line x1="737" y1="248" x2="737" y2="665" stroke-width="1" />
     <line x1="741" y1="248" x2="741" y2="665" stroke-width="1" />
     <line x1="739" y1="248" x2="739" y2="665" stroke-width="5" stroke-dasharray="2, 60" />
+    <!-- ==================== Pillar next to balcony ==================== -->
+    <circle cx="720" cy="480" r="6" stroke="#888" />
 
     <!-- 2) Balkon to Wintergarten (Horizontal at Y=665, X=739..829) -->
     <line x1="739" y1="663" x2="829" y2="663" stroke-width="1" />
@@ -293,25 +295,34 @@
     <line x1="375" y1="143" x2="375" y2="398" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
     <text x="369" y="270" transform="rotate(-90, 369, 270)">4.25 m</text>
 
-    <!-- 4.45m Open Boundary Living Room (Shifted Down) -->
-    <line x1="440" y1="398" x2="440" y2="665" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
-    <text x="434" y="531" transform="rotate(-90, 434, 531)">4.45 m</text>
+    <!-- 4.35m Open Boundary Living Room To Pillar block -->
+    <line x1="440" y1="398" x2="440" y2="615" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="434" y="531" transform="rotate(-90, 434, 531)">4.35 m</text>
+
+    <!-- 5.22m Open Boundary Living Room  -->
+    <line x1="480" y1="398" x2="480" y2="660" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="434" y="575" transform="rotate(-90, 434, 531)">5.22 m</text>
+
+    <!-- 2.45m Wintergarten to Pillar -->
+    <line x1="720" y1="485" x2="720" y2="660" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="900" y="740" transform="rotate(-90, 710, 740)">2.45 m</text>
+
 
     <!-- Bottom Corridor 1.20m -->
     <line x1="348" y1="770" x2="423" y2="770" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
-    <text x="385" y="785">1.20 m</text>
+    <text x="385" y="765">1.20 m</text>
 
     <!-- Pillar Width 0.42m -->
     <line x1="423" y1="675" x2="448" y2="675" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
     <text x="435" y="690" font-size="8">0.42 m</text>
 
     <!-- Pillar Height 1.95m (Shifted Down) -->
-    <line x1="410" y1="665" x2="410" y2="782" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
-    <text x="395" y="723" font-size="8" transform="rotate(-90, 395, 723)">1.95 m</text>
+    <line x1="415" y1="620" x2="415" y2="782" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="410" y="740" transform="rotate(-90, 395, 723)">1.95 m</text>
 
     <!-- Living Room & Wintergarten Width 4.43m -->
     <line x1="450" y1="590" x2="739" y2="590" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
-    <text x="591" y="586">4.43 m</text>
+    <text x="591" y="586">4.71 m</text>
 
     <!-- Wintergarten Vertical 2.5m (Shifted Down) -->
     <line x1="720" y1="665" x2="720" y2="815" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
