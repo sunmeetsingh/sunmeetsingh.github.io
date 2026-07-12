@@ -303,10 +303,12 @@
     <line x1="480" y1="398" x2="480" y2="660" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
     <text x="434" y="575" transform="rotate(-90, 434, 531)">5.22 m</text>
 
-    <!-- 2.45m Wintergarten to Pillar -->
+    <!-- 3.45m Wintergarten to Pillar -->
     <line x1="720" y1="485" x2="720" y2="660" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
-    <text x="900" y="740" transform="rotate(-90, 710, 740)">2.45 m</text>
-
+    <text x="900" y="740" transform="rotate(-90, 710, 740)">3.45 m</text>
+    <!-- Pillar depth -->
+    <line x1="711" y1="465" x2="738" y2="465" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
+    <text x="720" y="455">0.40 m</text>
 
     <!-- Bottom Corridor 1.20m -->
     <line x1="348" y1="770" x2="423" y2="770" stroke="#2266cc" stroke-width="1.5" marker-start="url(#arr-s)" marker-end="url(#arr-e)"/>
