@@ -135,9 +135,12 @@
     <line x1="828" y1="716" x2="828" y2="866" stroke-width="1" />
     <line x1="833" y1="716" x2="833" y2="866" stroke-width="1" />
     <line x1="830.5" y1="716" x2="830.5" y2="866" stroke-width="5" stroke-dasharray="2, 60" />
-    <!-- Balcony Pillar -->
+    <!-- Circular Pillar -->
     <circle cx="718" cy="495" r="6" fill="#fafafa" stroke="#888" stroke-width="1.2" />
     <text x="706" y="498" font-size="8" fill="#666" text-anchor="end">Ø 0.21m</text>
+    <!-- Circular Pillar -->
+    <circle cx="435" cy="495" r="6" fill="#fafafa" stroke="#888" stroke-width="1.2" />
+    <text x="423" y="498" font-size="8" fill="#666" text-anchor="end">Ø 0.21m</text>
   </g>
 
   <!-- ==================== DOORS & THIN WALLS ==================== -->
