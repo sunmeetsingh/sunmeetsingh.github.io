@@ -1,0 +1,1092 @@
+---
+layout: null
+permalink: /zwyssigstrasse/
+title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zwyssigstrasse 11 & 13 — Heating Replacement Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  {% if jekyll.environment == "production" and site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+  <style>
+    /* ── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:           #F5F0EB;
+      --surface:      #FFFFFF;
+      --surface-2:    #EDE8E1;
+      --border:       #DDD6CC;
+      --border-light: #EAE4DC;
+      --text:         #1C1A18;
+      --text-2:       #6B6058;
+      --text-3:       #9C9088;
+      --brass:        #B08B4E;
+      --brass-bg:     #FBF5EB;
+      --steel:        #3D3D3D;
+      --green:        #2D4A3E;
+      --green-bg:     #EAF0ED;
+      --red-bg:       #FAF0EE;
+      --red:          #B05440;
+      --blue-bg:      #EEF4FB;
+      --blue:         #2B6CB0;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.06);
+      --shadow:       0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 8px 32px rgba(0,0,0,0.10);
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+
+    [data-theme="dark"] {
+      --bg:           #17150F;
+      --surface:      #1F1C16;
+      --surface-2:    #272319;
+      --border:       #3A332A;
+      --border-light: #2E2820;
+      --text:         #EDE8DE;
+      --text-2:       #A89070;
+      --text-3:       #6B5E50;
+      --brass:        #D4AC72;
+      --brass-bg:     #261E0E;
+      --steel:        #6A6056;
+      --green:        #5A9070;
+      --green-bg:     #152018;
+      --red-bg:       #241610;
+      --red:          #C07055;
+      --blue-bg:      #132337;
+      --blue:         #63B3ED;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.5);
+      --shadow:       0 2px 12px rgba(0,0,0,0.6);
+      --shadow-lg:    0 8px 40px rgba(0,0,0,0.7);
+    }
+
+    /* ── Reset & Typography ──────────────────────────────────── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ──────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 240, 235, 0.90);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="dark"] .nav {
+      background: rgba(23, 21, 15, 0.92);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+      gap: 20px;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .nav-brand .badge {
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 100px;
+      background: var(--green-bg);
+      color: var(--green);
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-2);
+      padding: 5px 11px;
+      border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+    .nav-links a.active {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .nav-links .ext-link {
+      color: var(--brass);
+      font-weight: 600;
+      background: var(--brass-bg);
+    }
+    .nav-links .ext-link:hover {
+      background: var(--surface-2);
+    }
+
+    .theme-toggle {
+      width: 32px; height: 32px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+      transition: all 0.15s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { background: var(--surface-2); color: var(--text); }
+    .theme-toggle .icon-sun  { display: none; align-items: center; }
+    .theme-toggle .icon-moon { display: flex; align-items: center; }
+    [data-theme="dark"] .theme-toggle .icon-sun  { display: flex; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    /* ── Layout Container ────────────────────────────────────── */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 40px 28px 100px;
+    }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    .hero {
+      margin-bottom: 48px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      background: var(--green-bg);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.18;
+      margin-bottom: 12px;
+      max-width: 900px;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    /* ── Stat Cards Bar ──────────────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card.highlight {
+      border-color: var(--green);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--green-bg) 100%);
+    }
+    .kpi-card-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-3);
+      margin-bottom: 6px;
+    }
+    .kpi-card-value {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+    .kpi-card-sub {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.4;
+    }
+
+    /* ── Section Structure ───────────────────────────────────── */
+    .section {
+      margin-top: 56px;
+    }
+    .section-header {
+      margin-bottom: 24px;
+    }
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brass);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .section-desc {
+      font-size: 0.92rem;
+      color: var(--text-2);
+      margin-top: 4px;
+      max-width: 760px;
+    }
+
+    /* ── Comparison Cards Grid ───────────────────────────────── */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .option-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .option-card.primary {
+      border: 2px solid var(--green);
+      box-shadow: var(--shadow);
+    }
+    .option-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: var(--green);
+      color: #FFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .option-header {
+      margin-bottom: 16px;
+    }
+    .option-type {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
+    .option-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .option-status {
+      font-size: 0.8rem;
+      color: var(--text-2);
+      margin-top: 4px;
+    }
+
+    .option-specs {
+      margin: 16px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 14px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .spec-label {
+      font-size: 0.68rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .spec-value {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .option-list {
+      list-style: none;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .option-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.84rem;
+      color: var(--text-2);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .option-list li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      font-size: 1.1rem;
+      color: var(--text-3);
+    }
+    .option-list li.pro::before { content: "✓"; color: var(--green); font-size: 0.85rem; left: 4px; }
+    .option-list li.con::before { content: "✕"; color: var(--red); font-size: 0.85rem; left: 4px; }
+
+    /* ── Tables ──────────────────────────────────────────────── */
+    .table-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+    th {
+      background: var(--surface-2);
+      padding: 12px 18px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+    }
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text);
+      vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr.highlight-row {
+      background: var(--green-bg);
+      font-weight: 600;
+    }
+    td.num { font-variant-numeric: tabular-nums; text-align: right; }
+    th.num { text-align: right; }
+
+    /* ── Callout Boxes ───────────────────────────────────────── */
+    .callout {
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .callout.green {
+      background: var(--green-bg);
+      border-color: rgba(45, 74, 62, 0.25);
+    }
+    .callout.brass {
+      background: var(--brass-bg);
+      border-color: rgba(176, 139, 78, 0.25);
+    }
+    .callout.blue {
+      background: var(--blue-bg);
+      border-color: rgba(43, 108, 176, 0.25);
+    }
+    .callout-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .callout-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .callout-body {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.55;
+    }
+
+    /* ── Timeline Flow ───────────────────────────────────────── */
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .timeline-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .timeline-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--brass);
+      color: #FFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    .timeline-step-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .timeline-step-desc {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    .footer {
+      margin-top: 80px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-3);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a {
+      color: var(--text-2);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 1.75rem; }
+      .nav-inner { padding: 0 16px; }
+      .page { padding: 24px 16px 60px; }
+      .options-grid { grid-template-columns: 1fr; }
+      .specs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ──────────────────────────────────────────── -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/zwyssigstrasse/" class="nav-brand">
+      <span>Zwyssigstrasse 11 & 13</span>
+      <span class="badge">Heating Strategy</span>
+    </a>
+    <div class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#comparison">Options</a>
+      <a href="#financials">Financials</a>
+      <a href="#cooling">Free Cooling</a>
+      <a href="#space">Boiler Room</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="/design/" class="ext-link">Design Dashboard →</a>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+      <span class="icon-moon">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.5 8.5A5 5 0 0 1 4.5 2.5a5 5 0 1 0 6 6z"/>
+        </svg>
+      </span>
+      <span class="icon-sun">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <circle cx="7" cy="7" r="2.5"/>
+          <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06"/>
+        </svg>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Main Page Content ───────────────────────────────────── -->
+<div class="page" id="overview">
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-eyebrow">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+      Official Energy Coaching Evaluation · August 2026
+    </div>
+    <h1 class="hero-title">Heating System Replacement & Decarbonization Strategy</h1>
+    <p class="hero-desc">
+      Comprehensive evaluation for the co-owners of <strong>Zwyssigstrasse 11 and 13</strong> in Zürich-Altstetten. 
+      Navigating the municipal gas decommissioning (2034), evaluating Ground-Source Heat Pumps vs. District Heating, 
+      and unlocking immediate tax optimization and early-replacement subsidies.
+    </p>
+  </header>
+
+  <!-- Key Metrics / KPI Grid -->
+  <div class="kpi-grid">
+    <div class="kpi-card highlight">
+      <div class="kpi-card-label">Recommended Path</div>
+      <div class="kpi-card-value">Erdsonde</div>
+      <div class="kpi-card-sub">Geothermal Inverter Heat Pump with Passive Free Cooling</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card-label">Execution Window</div>
+      <div class="kpi-card-value">2026 / 2027</div>
+      <div class="kpi-card-sub">Locks in early subsidy (~1,800 CHF) & immediate tax write-offs</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card-label">Net CapEx / Apartment</div>
+      <div class="kpi-card-value">~CHF 16.5k</div>
+      <div class="kpi-card-sub">After Canton/City subsidies & ~30% income tax deduction</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-card-label">Annual Operating Cost</div>
+      <div class="kpi-card-value">-40% to -50%</div>
+      <div class="kpi-card-sub">Saves ~CHF 700–1,000/yr per owner vs ewz district heating</div>
+    </div>
+  </div>
+
+  <!-- ── Context & The Mandate ───────────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-tag">Regulatory Framework</div>
+      <h2 class="section-title">The Legal Mandate & Property Baseline</h2>
+      <p class="section-desc">Why a decision is required and how the two sister buildings are structured.</p>
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Zwyssigstrasse 11</th>
+            <th>Zwyssigstrasse 13</th>
+            <th>Combined Property Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Year Built / Units</strong></td>
+            <td>1999 · 4 Apartments</td>
+            <td>1999 · 4 Apartments</td>
+            <td>Identical sister buildings connected by shared underground parking</td>
+          </tr>
+          <tr>
+            <td><strong>Current Heating</strong></td>
+            <td>Erdgas (Gas boiler 2013, 20 kW)</td>
+            <td>Erdgas (Gas boiler 2011, 25 kW)</td>
+            <td>Separate heating circuits; both feed floor heating (*Fussbodenheizung*)</td>
+          </tr>
+          <tr>
+            <td><strong>Annual Consumption (2025)</strong></td>
+            <td>42,150 kWh / year</td>
+            <td>55,107 kWh / year</td>
+            <td>#13 has ~30% higher load (higher occupancy/DHW use); optimization recommended</td>
+          </tr>
+          <tr>
+            <td><strong>Municipal Gas Phase-out</strong></td>
+            <td>2034 (Altstetten Ost)</td>
+            <td>2034 (Altstetten Ost)</td>
+            <td>City of Zurich will permanently shut down the local gas distribution network</td>
+          </tr>
+          <tr>
+            <td><strong>Zurich Energy Act (2022)</strong></td>
+            <td colspan="3"><strong>5%-Mehrkosten-Klausel:</strong> Any 1:1 fossil replacement is prohibited by cantonal law unless a renewable alternative costs >5% more over its full lifecycle (which is not the case here).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout brass">
+      <div class="callout-icon">⏱️</div>
+      <div>
+        <div class="callout-title">The 2026/2027 Timing Opportunity: Why Act Now?</div>
+        <div class="callout-body">
+          The City of Zurich offers an <strong>Early Replacement Bonus (~CHF 1,800)</strong> specifically for gas heaters younger than 15 years. 
+          For Zwyssigstrasse 11 (installed in 2013), this bonus <strong>expires in 2027</strong>. 
+          Furthermore, replacing the system in 2026/2027 allows owners to deduct the entire investment from their cantonal and direct federal income taxes immediately, 
+          rather than waiting in limbo until the 2030s.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contenders Comparison ───────────────────────────────── -->
+  <section class="section" id="comparison">
+    <div class="section-header">
+      <div class="section-tag">Evaluation Matrix</div>
+      <h2 class="section-title">The Three Heating Replacement Options</h2>
+      <p class="section-desc">Detailed analysis of technical feasibility, operational performance, and real-world trade-offs.</p>
+    </div>
+
+    <div class="options-grid">
+      <!-- Option 1: Geothermal -->
+      <div class="option-card primary">
+        <div class="option-badge">Recommended Choice</div>
+        <div class="option-header">
+          <div class="option-type">Variante 2 / 3</div>
+          <h3 class="option-name">Erdsonden-Wärmepumpe</h3>
+          <div class="option-status">Brine-to-Water Geothermal Heat Pump</div>
+        </div>
+
+        <div class="option-specs">
+          <div class="spec-item">
+            <span class="spec-label">Seasonal Efficiency</span>
+            <span class="spec-value">COP ~4.5 – 5.0+</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Renewable Share</span>
+            <span class="spec-value">97% (ewz Naturstrom)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Summer Cooling</span>
+            <span class="spec-value">Yes (Free Cooling)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Availability</span>
+            <span class="spec-value">Immediate (2026/27)</span>
+          </div>
+        </div>
+
+        <ul class="option-list">
+          <li class="pro"><strong>Lowest annual running costs:</strong> High efficiency drastically reduces annual electricity bills.</li>
+          <li class="pro"><strong>Passive Free Cooling:</strong> Uses natural 8–12°C ground temp to cool apartments in summer with zero compressor power.</li>
+          <li class="pro"><strong>Longest asset lifespan:</strong> Geothermal probes last 50+ years; heat pump unit ~20 years.</li>
+          <li class="pro"><strong>Independent of tariffs:</strong> Shields owners from perpetual monopoly price hikes and fixed grid tariffs.</li>
+          <li class="con"><strong>Higher upfront CapEx:</strong> Requires drilling 3 boreholes (~150m each for #11) in the garden lawn outside the underground garage.</li>
+          <li class="con"><strong>Boiler room space:</strong> Tight footprint requires an inverter heat pump without buffer or a compact combi-cylinder.</li>
+        </ul>
+      </div>
+
+      <!-- Option 2: District Heating -->
+      <div class="option-card">
+        <div class="option-header">
+          <div class="option-type">Variante 4 / 5</div>
+          <h3 class="option-name">Fernwärme (ewz)</h3>
+          <div class="option-status">Altstetten Ost District Heating Grid</div>
+        </div>
+
+        <div class="option-specs">
+          <div class="spec-item">
+            <span class="spec-label">Arrival Date</span>
+            <span class="spec-value">Late 2032</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Renewable Share</span>
+            <span class="spec-value">75% or 100%</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Summer Cooling</span>
+            <span class="spec-value">None (Residential)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Boiler Room Footprint</span>
+            <span class="spec-value">Minimal</span>
+          </div>
+        </div>
+
+        <ul class="option-list">
+          <li class="pro"><strong>Low indoor footprint:</strong> Heat exchanger station (*Übergabestation*) takes minimal space; no compressor.</li>
+          <li class="pro"><strong>No drilling or garden impact:</strong> Everything arrives via underground street pipe from Zwyssigstrasse.</li>
+          <li class="pro"><strong>Hands-off operation:</strong> Upstream maintenance and generation managed by ewz.</li>
+          <li class="con"><strong>6-Year Gap Risk:</strong> Street pipes will not be laid until <strong>2032</strong>. Requires bridging until the 2013 boiler is 19 years old.</li>
+          <li class="con"><strong>High recurring base cost:</strong> Perpetual fixed *Grundpreis* (~CHF 2,567/yr) makes ongoing operating costs significantly higher.</li>
+          <li class="con"><strong>No cooling:</strong> Underfloor heating cannot be used to cool in hot summer months.</li>
+        </ul>
+      </div>
+
+      <!-- Option 3: Air-Source -->
+      <div class="option-card">
+        <div class="option-header">
+          <div class="option-type">Variante 1</div>
+          <h3 class="option-name">Luft/Wasser-Wärmepumpe</h3>
+          <div class="option-status">Air-to-Water Heat Pump</div>
+        </div>
+
+        <div class="option-specs">
+          <div class="spec-item">
+            <span class="spec-label">Seasonal Efficiency</span>
+            <span class="spec-value">COP ~3.0 – 3.5</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Noise Constraints</span>
+            <span class="spec-value">LSV Art. 7 (Strict)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Summer Cooling</span>
+            <span class="spec-value">Active Only (Noisy)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Installation Location</span>
+            <span class="spec-value">Outdoor Yard / Roof</span>
+          </div>
+        </div>
+
+        <ul class="option-list">
+          <li class="pro">Moderate upfront equipment cost; no ground drilling needed.</li>
+          <li class="con"><strong>Noise & Neighbor Conflicts:</strong> Heavy acoustic emissions from outdoor fans near private terraces/windows.</li>
+          <li class="con"><strong>Visual & Garden Spoil:</strong> Outdoor split units clutter the garden or garage entrance area.</li>
+          <li class="con"><strong>Lowest winter efficiency:</strong> Delivers lowest COP precisely during cold sub-zero Zurich winter weeks.</li>
+          <li class="con"><strong>No passive cooling:</strong> Active cooling is energy-intensive and increases summer outdoor fan noise.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Solar Reality Callout -->
+    <div class="callout blue">
+      <div class="callout-icon">☀️</div>
+      <div>
+        <div class="callout-title">Rooftop Reality: What About Solar PV & The Neighbor's Link?</div>
+        <div class="callout-body">
+          A neighbor recently circulated a link from <em>mission-gruener-wohnen.ch</em>. 
+          Technical inspection reveals this is an affiliate lead-generation advertorial. 
+          More importantly, the city energy coach noted on pages 7 and 10 that 
+          <strong>the building’s flat roof waterproofing (1999) is at the end of its 25-year lifespan</strong>. 
+          Installing solar panels prior to roof renovation (*Dachsanierung*) is strongly advised against, 
+          as any future roof repair would require expensive dismantling and re-installation of the PV panels. 
+          <strong>Strategy:</strong> Complete the heating replacement first; schedule roof renovation + extensive green roof (*Dachbegrünung*) + solar PV as a bundled project in 3–5 years.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Financial Model ─────────────────────────────────────── -->
+  <section class="section" id="financials">
+    <div class="section-header">
+      <div class="section-tag">Economics & Tax Optimization</div>
+      <h2 class="section-title">Comprehensive Financial Breakdown</h2>
+      <p class="section-desc">Detailed comparison per building and per individual apartment (4 units per building).</p>
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Cost Element</th>
+            <th class="num">Erdsonde (Single #11)</th>
+            <th class="num">Erdsonde (Joint #11+#13)</th>
+            <th class="num">Fernwärme (Single 2032)</th>
+            <th class="num">Fernwärme (Joint 2032)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Equipment & Internal Installation</td>
+            <td class="num">CHF 55,000</td>
+            <td class="num">CHF 50,000</td>
+            <td class="num">CHF 20,000</td>
+            <td class="num">CHF 15,000</td>
+          </tr>
+          <tr>
+            <td>Geothermal Drilling / ewz Grid Connection</td>
+            <td class="num">CHF 60,000</td>
+            <td class="num">CHF 55,000</td>
+            <td class="num">CHF 39,040</td>
+            <td class="num">CHF 20,840</td>
+          </tr>
+          <tr>
+            <td><strong>Total Gross Investment (per building)</strong></td>
+            <td class="num"><strong>CHF 115,000</strong></td>
+            <td class="num"><strong>CHF 105,000</strong></td>
+            <td class="num"><strong>CHF 59,040</strong></td>
+            <td class="num"><strong>CHF 35,840</strong></td>
+          </tr>
+          <tr style="color: var(--green);">
+            <td>Deduct: Canton & City Subsidies (incl. early bonus)</td>
+            <td class="num">-CHF 11,800</td>
+            <td class="num">-CHF 10,500</td>
+            <td class="num">-CHF 4,500</td>
+            <td class="num">-CHF 3,500</td>
+          </tr>
+          <tr>
+            <td><strong>Net CapEx per Building</strong></td>
+            <td class="num"><strong>CHF 103,200</strong></td>
+            <td class="num"><strong>CHF 94,500</strong></td>
+            <td class="num"><strong>CHF 54,540</strong></td>
+            <td class="num"><strong>CHF 32,340</strong></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>Net Investment per Apartment (÷ 4)</strong></td>
+            <td class="num"><strong>CHF 25,800</strong></td>
+            <td class="num"><strong>CHF 23,625</strong></td>
+            <td class="num"><strong>CHF 13,635</strong></td>
+            <td class="num"><strong>CHF 8,085</strong></td>
+          </tr>
+          <tr style="color: var(--brass);">
+            <td>Estimated Income Tax Savings (~30% marginal rate)</td>
+            <td class="num">-CHF 7,740</td>
+            <td class="num">-CHF 7,087</td>
+            <td class="num">-CHF 4,090</td>
+            <td class="num">-CHF 2,425</td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>True Out-of-Pocket Cost per Owner</strong></td>
+            <td class="num"><strong>~CHF 18,060</strong></td>
+            <td class="num"><strong>~CHF 16,538</strong></td>
+            <td class="num"><strong>~CHF 9,545</strong></td>
+            <td class="num"><strong>~CHF 5,660</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Annual Operating Cost Comparison -->
+    <div style="margin-top: 32px;">
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Annual Operating Costs & 20-Year Horizon (Per Apartment)</h3>
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Annual Cost Component</th>
+              <th class="num">Erdsonde (Geothermal)</th>
+              <th class="num">Fernwärme (75% Renewable)</th>
+              <th class="num">Fernwärme (100% Renewable)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fixed Base Fee (*Grundpreis*)</td>
+              <td class="num">CHF 0</td>
+              <td class="num">CHF 642 / yr</td>
+              <td class="num">CHF 642 / yr</td>
+            </tr>
+            <tr>
+              <td>Energy Consumption (Heat + Domestic Hot Water)</td>
+              <td class="num">~CHF 800 / yr</td>
+              <td class="num">CHF 993 / yr</td>
+              <td class="num">CHF 1,372 / yr</td>
+            </tr>
+            <tr>
+              <td>Maintenance & Mandatory Service Contracts</td>
+              <td class="num">~CHF 200 / yr</td>
+              <td class="num">~CHF 100 / yr</td>
+              <td class="num">~CHF 100 / yr</td>
+            </tr>
+            <tr style="color: var(--green);">
+              <td>Summer Floor Cooling Electricity</td>
+              <td class="num"><strong>~CHF 25 / yr</strong></td>
+              <td class="num"><em>Not available</em></td>
+              <td class="num"><em>Not available</em></td>
+            </tr>
+            <tr class="highlight-row">
+              <td><strong>Total Operating Cost per Year</strong></td>
+              <td class="num"><strong>~CHF 1,025 / yr</strong></td>
+              <td class="num"><strong>~CHF 1,735 / yr</strong></td>
+              <td class="num"><strong>~CHF 2,114 / yr</strong></td>
+            </tr>
+            <tr>
+              <td><strong>20-Year Cumulative Operating Expense</strong></td>
+              <td class="num"><strong>~CHF 20,500</strong></td>
+              <td class="num"><strong>~CHF 34,700</strong></td>
+              <td class="num"><strong>~CHF 42,280</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--text-2); margin-top: 10px;">
+        <em>Financial Conclusion:</em> Over 20 years, an owner with an Erdsonden heat pump saves <strong>CHF 14,200 to CHF 21,780</strong> in operating costs compared to Fernwärme. 
+        This operational surplus completely repays the initial CapEx delta, while providing free summer cooling and long-term asset appreciation.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Deep Dives: Free Cooling & Space ─────────────────────── -->
+  <section class="section" id="cooling">
+    <div class="section-header">
+      <div class="section-tag">Technology Spotlight</div>
+      <h2 class="section-title">Passive Free Cooling & Boiler Room Engineering</h2>
+      <p class="section-desc">How geothermal heat pumps deliver superior indoor comfort and fit within our compact basement.</p>
+    </div>
+
+    <div class="options-grid">
+      <!-- Deep Dive: Free Cooling -->
+      <div class="option-card">
+        <div class="option-header">
+          <div class="option-type">Summer Comfort</div>
+          <h3 class="option-name">Passive Free Cooling</h3>
+          <div class="option-status">Silent, draft-free, near-zero electricity</div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;">
+          At 100–190 meters underground, the earth remains at a steady 8–12°C year-round. 
+          During hot summer weeks, cold brine fluid is circulated directly through a heat exchanger into the underfloor heating pipes.
+        </p>
+        <ul class="option-list">
+          <li class="pro"><strong>Compressor remains off:</strong> Only low-wattage circulation pumps run, consuming negligible electricity (~CHF 20–30/summer for the whole building).</li>
+          <li class="pro"><strong>No draft, no noise:</strong> Unlike noisy AC wall splits, cooling is evenly and silently absorbed by the anthracite stone floor tiles.</li>
+          <li class="pro"><strong>Thermal Ground Regeneration:</strong> Heat extracted from the apartments is pumped into the ground, warming the borehole bed and increasing heat pump efficiency for the subsequent winter.</li>
+        </ul>
+      </div>
+
+      <!-- Deep Dive: Space Constraints -->
+      <div class="option-card" id="space">
+        <div class="option-header">
+          <div class="option-type">Spatial Integration</div>
+          <h3 class="option-name">Boiler Room Footprint</h3>
+          <div class="option-status">Solving the tight mechanical room challenge</div>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;">
+          The existing heating room is compact. Fitting a separate heat pump unit, a domestic hot water (DHW) storage tank, and a heating buffer was flagged by the city coach.
+        </p>
+        <ul class="option-list">
+          <li class="pro"><strong>Solution 1: Modulating Inverter without Buffer:</strong> Underfloor heating concrete screed acts as a massive thermal reservoir. Modern inverter heat pumps dynamically throttle output, eliminating the need for a separate heating buffer.</li>
+          <li class="pro"><strong>Solution 2: Compact Kombispeicher:</strong> A 2-in-1 vertical cylinder that combines DHW hygiene tank with a compact hydraulic separator in a single 80×80 cm footprint.</li>
+          <li class="pro"><strong>Electrical Grid:</strong> ewz confirmed the existing 63A building main can be upgraded to 100A with zero street excavation, only a flat network contribution.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Action Plan & Roadmap ───────────────────────────────── -->
+  <section class="section" id="roadmap">
+    <div class="section-header">
+      <div class="section-tag">Implementation Roadmap</div>
+      <h2 class="section-title">Action Plan for the Owners Association (STWE)</h2>
+      <p class="section-desc">Concrete sequential steps to align co-owners and execute before 2027.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="timeline-step-num">1</div>
+        <div class="timeline-step-title">Q3 2026: STWE Alignment</div>
+        <div class="timeline-step-desc">
+          Engage property manager Martin Meier (az-verwaltung.ch) to place the heating strategy on the agenda for #11 and coordinate with #13 for joint tender.
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-step-num">2</div>
+        <div class="timeline-step-title">Q4 2026: Contractor Bids</div>
+        <div class="timeline-step-desc">
+          Request turnkey offers from 2–3 certified Swiss installers (e.g. CTA, Stiebel Eltron, Viessmann partners) including AWEL drilling and boiler room layout.
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-step-num">3</div>
+        <div class="timeline-step-title">Q1 2027: Grants & Permits</div>
+        <div class="timeline-step-desc">
+          Submit the subsidy application to the Stadt Zürich / Kanton portal <em>prior to contract signing</em> to secure the early replacement bonus (~CHF 1,800).
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="timeline-step-num">4</div>
+        <div class="timeline-step-title">Q2 2027: Execution</div>
+        <div class="timeline-step-desc">
+          Drill boreholes in the garden lawn outside the underground car park, install inverter system, and commission Free Cooling for summer 2027.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top: 32px;">
+      <div class="callout-icon">📋</div>
+      <div>
+        <div class="callout-title">Summary Recommendation for Co-Owners</div>
+        <div class="callout-body">
+          Both buildings should collectively pursue <strong>Variante 3 (Joint Erdsonden-Wärmepumpe)</strong> or <strong>Variante 2 (Single Erdsonden-Wärmepumpe)</strong>. 
+          District heating's 2032 arrival date creates unacceptable operational and financial risk for our 2011/2013 boilers. 
+          By commissioning an inverter heat pump with Free Cooling now, every owner gains superior summer comfort, locks in maximum subsidies, and claims thousands in immediate income tax deductions.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ──────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div>
+      <strong>Zwyssigstrasse 11 & 13</strong> · Energy Transformation Strategy
+    </div>
+    <div>
+      <a href="/design/">Interior Design Dashboard</a> · 
+      <a href="https://sunmeet.ca">Sunmeet Singh</a>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ── Scripts ─────────────────────────────────────────────── -->
+<script>
+  // Theme toggle
+  (function() {
+    const btn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (stored === 'dark' || (!stored && prefersDark)) root.setAttribute('data-theme', 'dark');
+
+    btn.addEventListener('click', function() {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
