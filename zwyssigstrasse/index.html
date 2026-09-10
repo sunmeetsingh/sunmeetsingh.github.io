@@ -70,6 +70,10 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       --shadow-lg:    0 8px 40px rgba(0,0,0,0.7);
     }
 
+    /* ── Language Switch Visibility ──────────────────────────── */
+    html[lang="en"] .lang-de { display: none !important; }
+    html[lang="de"] .lang-en { display: none !important; }
+
     /* ── Reset & Typography ──────────────────────────────────── */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -102,7 +106,7 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       align-items: center;
       justify-content: space-between;
       height: 54px;
-      gap: 20px;
+      gap: 16px;
     }
     .nav-brand {
       display: flex;
@@ -125,14 +129,14 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
     .nav-links a {
       text-decoration: none;
       font-size: 0.78rem;
       font-weight: 500;
       color: var(--text-2);
-      padding: 5px 11px;
+      padding: 5px 10px;
       border-radius: 100px;
       transition: all 0.15s;
     }
@@ -140,17 +144,40 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       color: var(--text);
       background: var(--surface-2);
     }
-    .nav-links a.active {
-      color: var(--text);
-      font-weight: 600;
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    .nav-links .ext-link {
-      color: var(--brass);
-      font-weight: 600;
-      background: var(--brass-bg);
-    }
-    .nav-links .ext-link:hover {
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
       background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 2px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-2);
+      padding: 3px 9px;
+      border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .lang-btn.active {
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    [data-theme="dark"] .lang-btn.active {
+      background: var(--border);
+      color: var(--text);
     }
 
     .theme-toggle {
@@ -191,7 +218,7 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       letter-spacing: 0.08em;
       color: var(--green);
       background: var(--green-bg);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 100px;
       margin-bottom: 16px;
     }
@@ -200,13 +227,13 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.18;
-      margin-bottom: 12px;
-      max-width: 900px;
+      margin-bottom: 14px;
+      max-width: 920px;
     }
     .hero-desc {
       font-size: 1.05rem;
       color: var(--text-2);
-      max-width: 760px;
+      max-width: 820px;
       line-height: 1.6;
       margin-bottom: 32px;
     }
@@ -222,10 +249,9 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 18px 20px;
+      padding: 20px 22px;
       box-shadow: var(--shadow-sm);
       position: relative;
-      overflow: hidden;
     }
     .kpi-card.highlight {
       border-color: var(--green);
@@ -233,7 +259,7 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
     }
     .kpi-card-label {
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-3);
@@ -278,7 +304,7 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       font-size: 0.92rem;
       color: var(--text-2);
       margin-top: 4px;
-      max-width: 760px;
+      max-width: 800px;
     }
 
     /* ── Comparison Cards Grid ───────────────────────────────── */
@@ -463,6 +489,10 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       color: var(--text-2);
       line-height: 1.55;
     }
+    .callout-body a {
+      color: var(--blue);
+      text-decoration: underline;
+    }
 
     /* ── Timeline Flow ───────────────────────────────────────── */
     .timeline {
@@ -516,19 +546,13 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
       flex-wrap: wrap;
       gap: 12px;
     }
-    .footer a {
-      color: var(--text-2);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .footer a:hover { color: var(--text); }
 
     @media (max-width: 768px) {
       .hero-title { font-size: 1.75rem; }
       .nav-inner { padding: 0 16px; }
       .page { padding: 24px 16px 60px; }
       .options-grid { grid-template-columns: 1fr; }
-      .specs-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
@@ -539,120 +563,156 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
   <div class="nav-inner">
     <a href="/zwyssigstrasse/" class="nav-brand">
       <span>Zwyssigstrasse 11 & 13</span>
-      <span class="badge">Heating Strategy</span>
+      <span class="badge lang-en">Energy Strategy</span>
+      <span class="badge lang-de">Energiestrategie</span>
     </a>
+    
     <div class="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#comparison">Options</a>
-      <a href="#financials">Financials</a>
-      <a href="#cooling">Free Cooling</a>
-      <a href="#space">Boiler Room</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="/design/" class="ext-link">Design Dashboard →</a>
+      <a href="#overview"><span class="lang-en">Overview</span><span class="lang-de">Übersicht</span></a>
+      <a href="#comparison"><span class="lang-en">Options</span><span class="lang-de">Varianten</span></a>
+      <a href="#financials"><span class="lang-en">Financials</span><span class="lang-de">Wirtschaftlichkeit</span></a>
+      <a href="#cooling"><span class="lang-en">Free Cooling</span><span class="lang-de">Kühlung</span></a>
+      <a href="#space"><span class="lang-en">Boiler Room</span><span class="lang-de">Heizraum</span></a>
+      <a href="#roadmap"><span class="lang-en">Action Plan</span><span class="lang-de">Fahrplan</span></a>
     </div>
-    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
-      <span class="icon-moon">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M10.5 8.5A5 5 0 0 1 4.5 2.5a5 5 0 1 0 6 6z"/>
-        </svg>
-      </span>
-      <span class="icon-sun">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <circle cx="7" cy="7" r="2.5"/>
-          <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06"/>
-        </svg>
-      </span>
-    </button>
+
+    <div class="nav-controls">
+      <div class="lang-switcher">
+        <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="btn-de" onclick="setLanguage('de')">DE</button>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <span class="icon-moon">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.5 8.5A5 5 0 0 1 4.5 2.5a5 5 0 1 0 6 6z"/>
+          </svg>
+        </span>
+        <span class="icon-sun">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="7" cy="7" r="2.5"/>
+            <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M2.93 2.93l1.06 1.06M10.01 10.01l1.06 1.06M2.93 11.07l1.06-1.06M10.01 3.99l1.06-1.06"/>
+          </svg>
+        </span>
+      </button>
+    </div>
   </div>
 </nav>
 
 <!-- ── Main Page Content ───────────────────────────────────── -->
 <div class="page" id="overview">
 
-  <!-- Hero Header -->
+  <!-- ── Hero Header ─────────────────────────────────────────── -->
   <header class="hero">
     <div class="hero-eyebrow">
       <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
-      Official Energy Coaching Evaluation · August 2026
+      <span class="lang-en">Strategic Evaluation Report · City Consulting Baseline (Aug 2026)</span>
+      <span class="lang-de">Strategischer Bewertungsbericht · Basis Energieberatung Stadt Zürich (Aug 2026)</span>
     </div>
-    <h1 class="hero-title">Heating System Replacement & Decarbonization Strategy</h1>
-    <p class="hero-desc">
-      Comprehensive evaluation for the co-owners of <strong>Zwyssigstrasse 11 and 13</strong> in Zürich-Altstetten. 
-      Navigating the municipal gas decommissioning (2034), evaluating Ground-Source Heat Pumps vs. District Heating, 
-      and unlocking immediate tax optimization and early-replacement subsidies.
+
+    <h1 class="hero-title lang-en">Heating System Replacement & Long-Term Decarbonization</h1>
+    <h1 class="hero-title lang-de">Heizungsersatz & Langfristige Dekarbonisierungsstrategie</h1>
+
+    <p class="hero-desc lang-en">
+      An executive strategic assessment for the condominium co-owners (STWE) of <strong>Zwyssigstrasse 11 & 13</strong> in Zürich-Altstetten. 
+      Evaluating Ground-Source Geothermal Heat Pumps vs. District Heating under the 2034 municipal gas decommissioning mandate, 
+      with a focus on lifecycle economics, passive summer cooling, and immediate tax write-offs.
+    </p>
+    <p class="hero-desc lang-de">
+      Strategische Entscheidungsgrundlage für die Stockwerkeigentümergemeinschaft (STWE) <strong>Zwyssigstrasse 11 & 13</strong> in Zürich-Altstetten. 
+      Vergleich zwischen Erdsonden-Wärmepumpe und ewz-Fernwärme vor dem Hintergrund der Gasnetz-Stilllegung 2034 – 
+      mit Fokus auf Lebenszykluskosten, passive Sommerkühlung (Free Cooling) und steuerliche Optimierung.
     </p>
   </header>
 
-  <!-- Key Metrics / KPI Grid -->
+  <!-- ── KPI Grid ────────────────────────────────────────────── -->
   <div class="kpi-grid">
     <div class="kpi-card highlight">
-      <div class="kpi-card-label">Recommended Path</div>
-      <div class="kpi-card-value">Erdsonde</div>
-      <div class="kpi-card-sub">Geothermal Inverter Heat Pump with Passive Free Cooling</div>
+      <div class="kpi-card-label lang-en">Primary Recommendation</div>
+      <div class="kpi-card-label lang-de">Empfehlung</div>
+      <div class="kpi-card-value lang-en">Erdsonde</div>
+      <div class="kpi-card-value lang-de">Erdsonde</div>
+      <div class="kpi-card-sub lang-en">Inverter Geothermal Heat Pump with Passive Free Cooling</div>
+      <div class="kpi-card-sub lang-de">Inverter-Sole-Wasser-Wärmepumpe mit passivem Free Cooling</div>
     </div>
+
     <div class="kpi-card">
-      <div class="kpi-card-label">Execution Window</div>
+      <div class="kpi-card-label lang-en">Target Execution</div>
+      <div class="kpi-card-label lang-de">Umsetzungsfenster</div>
       <div class="kpi-card-value">2026 / 2027</div>
-      <div class="kpi-card-sub">Locks in early subsidy (~1,800 CHF) & immediate tax write-offs</div>
+      <div class="kpi-card-sub lang-en">Captures early-replacement bonus (~CHF 1,800) & immediate tax write-off</div>
+      <div class="kpi-card-sub lang-de">Sichert vorzeitigen Ersatzbonus (~CHF 1'800) & sofortigen Steuerabzug</div>
     </div>
+
     <div class="kpi-card">
-      <div class="kpi-card-label">Net CapEx / Apartment</div>
+      <div class="kpi-card-label lang-en">Net CapEx / Apartment</div>
+      <div class="kpi-card-label lang-de">Netto-Investition / Whg.</div>
       <div class="kpi-card-value">~CHF 16.5k</div>
-      <div class="kpi-card-sub">After Canton/City subsidies & ~30% income tax deduction</div>
+      <div class="kpi-card-sub lang-en">After cantonal/city subsidies and estimated 30% income tax relief</div>
+      <div class="kpi-card-sub lang-de">Nach Abzug von Fördergeldern und ca. 30% Steuerersparnis</div>
     </div>
+
     <div class="kpi-card">
-      <div class="kpi-card-label">Annual Operating Cost</div>
+      <div class="kpi-card-label lang-en">Annual OpEx Delta</div>
+      <div class="kpi-card-label lang-de">Betriebskostenvorteil</div>
       <div class="kpi-card-value">-40% to -50%</div>
-      <div class="kpi-card-sub">Saves ~CHF 700–1,000/yr per owner vs ewz district heating</div>
+      <div class="kpi-card-sub lang-en">Saves ~CHF 700–1,000/yr per owner vs ewz district heating tariffs</div>
+      <div class="kpi-card-sub lang-de">Spart ~CHF 700–1'000/Jahr pro Eigentümer ggü. ewz-Fernwärme</div>
     </div>
   </div>
 
-  <!-- ── Context & The Mandate ───────────────────────────────── -->
+  <!-- ── Baseline & Regulatory Framework ─────────────────────── -->
   <section class="section">
     <div class="section-header">
-      <div class="section-tag">Regulatory Framework</div>
-      <h2 class="section-title">The Legal Mandate & Property Baseline</h2>
-      <p class="section-desc">Why a decision is required and how the two sister buildings are structured.</p>
+      <div class="section-tag lang-en">Legal & Technical Baseline</div>
+      <div class="section-tag lang-de">Ausgangslage & Gesetzliche Rahmenbedingungen</div>
+      <h2 class="section-title lang-en">Property Context & Municipal Deadlines</h2>
+      <h2 class="section-title lang-de">Liegenschaftsdaten & Gesetzliche Fristen</h2>
+      <p class="section-desc lang-en">Key physical facts and regulatory drivers governing both buildings.</p>
+      <p class="section-desc lang-de">Wesentliche Gebäudedaten und regulatorische Vorgaben für die beiden Liegenschaften.</p>
     </div>
 
     <div class="table-card">
       <table>
         <thead>
           <tr>
-            <th>Parameter</th>
+            <th><span class="lang-en">Parameter</span><span class="lang-de">Parameter</span></th>
             <th>Zwyssigstrasse 11</th>
             <th>Zwyssigstrasse 13</th>
-            <th>Combined Property Notes</th>
+            <th><span class="lang-en">Context & Implications</span><span class="lang-de">Kontext & Auswirkung</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Year Built / Units</strong></td>
-            <td>1999 · 4 Apartments</td>
-            <td>1999 · 4 Apartments</td>
-            <td>Identical sister buildings connected by shared underground parking</td>
+            <td><strong><span class="lang-en">Building Type & Units</span><span class="lang-de">Baujahr & Einheiten</span></strong></td>
+            <td>1999 · 4 <span class="lang-en">Apartments</span><span class="lang-de">Wohnungen</span></td>
+            <td>1999 · 4 <span class="lang-en">Apartments</span><span class="lang-de">Wohnungen</span></td>
+            <td><span class="lang-en">Two freestanding sister buildings connected via shared underground parking</span><span class="lang-de">2 baugleiche Mehrfamilienhäuser, über Tiefgarage miteinander verbunden</span></td>
           </tr>
           <tr>
-            <td><strong>Current Heating</strong></td>
-            <td>Erdgas (Gas boiler 2013, 20 kW)</td>
-            <td>Erdgas (Gas boiler 2011, 25 kW)</td>
-            <td>Separate heating circuits; both feed floor heating (*Fussbodenheizung*)</td>
+            <td><strong><span class="lang-en">Existing Heating</span><span class="lang-de">Bestehende Heizung</span></strong></td>
+            <td>Gas (2013, 20 kW)</td>
+            <td>Gas (2011, 25 kW)</td>
+            <td><span class="lang-en">Both feed low-temperature underfloor heating (*Fussbodenheizung*)</span><span class="lang-de">Beide speisen Niedertemperatur-Fussbodenheizung (ideale WP-Voraussetzung)</span></td>
           </tr>
           <tr>
-            <td><strong>Annual Consumption (2025)</strong></td>
-            <td>42,150 kWh / year</td>
-            <td>55,107 kWh / year</td>
-            <td>#13 has ~30% higher load (higher occupancy/DHW use); optimization recommended</td>
+            <td><strong><span class="lang-en">Annual Energy Load (2025)</span><span class="lang-de">Jahresverbrauch (2025)</span></strong></td>
+            <td>42,150 kWh / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+            <td>55,107 kWh / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+            <td><span class="lang-en">#13 consumption is ~30% higher (higher hot water demand / occupancy)</span><span class="lang-de">#13 liegt ~30% höher (höhere Belegung/Warmwasser); Betriebsoptimierung empfohlen</span></td>
           </tr>
           <tr>
-            <td><strong>Municipal Gas Phase-out</strong></td>
+            <td><strong><span class="lang-en">Gas Grid Decommissioning</span><span class="lang-de">Gasnetz-Stilllegung</span></strong></td>
             <td>2034 (Altstetten Ost)</td>
             <td>2034 (Altstetten Ost)</td>
-            <td>City of Zurich will permanently shut down the local gas distribution network</td>
+            <td><span class="lang-en">City of Zurich permanently shuts down the gas distribution network</span><span class="lang-de">Stadt Zürich legt das Gasnetz im Versorgungsgebiet Altstetten Ost 2034 still</span></td>
           </tr>
           <tr>
-            <td><strong>Zurich Energy Act (2022)</strong></td>
-            <td colspan="3"><strong>5%-Mehrkosten-Klausel:</strong> Any 1:1 fossil replacement is prohibited by cantonal law unless a renewable alternative costs >5% more over its full lifecycle (which is not the case here).</td>
+            <td><strong><span class="lang-en">Zurich Energy Act</span><span class="lang-de">Zürcher Energiegesetz</span></strong></td>
+            <td colspan="3">
+              <span class="lang-en"><strong>5% Life-Cycle Cost Clause:</strong> Like-for-like replacement with a fossil boiler is legally prohibited unless renewable alternatives exceed a 5% life-cycle premium (which is demonstrably not the case).</span>
+              <span class="lang-de"><strong>5%-Mehrkosten-Klausel:</strong> Ein fossiler 1:1-Heizungsersatz ist unzulässig, da erneuerbare Systeme über den Lebenszyklus wirtschaftlicher sind.</span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -661,151 +721,215 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
     <div class="callout brass">
       <div class="callout-icon">⏱️</div>
       <div>
-        <div class="callout-title">The 2026/2027 Timing Opportunity: Why Act Now?</div>
-        <div class="callout-body">
-          The City of Zurich offers an <strong>Early Replacement Bonus (~CHF 1,800)</strong> specifically for gas heaters younger than 15 years. 
-          For Zwyssigstrasse 11 (installed in 2013), this bonus <strong>expires in 2027</strong>. 
-          Furthermore, replacing the system in 2026/2027 allows owners to deduct the entire investment from their cantonal and direct federal income taxes immediately, 
-          rather than waiting in limbo until the 2030s.
+        <div class="callout-title lang-en">Strategic Timing: Why 2026/2027 Unlocks Maximum Financial Advantage</div>
+        <div class="callout-title lang-de">Strategisches Zeitfenster: Warum eine Umsetzung 2026/2027 maximal profitiert</div>
+        <div class="callout-body lang-en">
+          The City of Zurich grants an <strong>Early Replacement Bonus (~CHF 1,800)</strong> exclusively for gas boilers under 15 years old. 
+          For Zwyssigstrasse 11 (installed in 2013), this subsidy window permanently closes in <strong>2027</strong>. 
+          Furthermore, implementing the project in 2026/2027 enables the owners to claim full income tax deductions against current high earnings immediately, 
+          rather than deferring capital expenditure into the 2030s.
+        </div>
+        <div class="callout-body lang-de">
+          Die Stadt Zürich gewährt einen <strong>Zusatzförderbeitrag für vorzeitigen Heizungsersatz (~CHF 1'800)</strong> für Gasheizungen, die jünger als 15 Jahre sind. 
+          Für Zwyssigstrasse 11 (Baujahr 2013) <strong>läuft dieses Förderfenster 2027 unwiderruflich ab</strong>. 
+          Zudem erlaubt eine Realisierung 2026/2027 den sofortigen Steuerabzug der Investitionskosten in den anstehenden Steuerperioden, 
+          anstatt die Massnahme unproduktiv in die 2030er-Jahre zu verschleppen.
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── Contenders Comparison ───────────────────────────────── -->
+  <!-- ── The Three Options Comparison ────────────────────────── -->
   <section class="section" id="comparison">
     <div class="section-header">
-      <div class="section-tag">Evaluation Matrix</div>
-      <h2 class="section-title">The Three Heating Replacement Options</h2>
-      <p class="section-desc">Detailed analysis of technical feasibility, operational performance, and real-world trade-offs.</p>
+      <div class="section-tag lang-en">System Analysis</div>
+      <div class="section-tag lang-de">Systemvergleich</div>
+      <h2 class="section-title lang-en">Comparison of Technological Options</h2>
+      <h2 class="section-title lang-de">Vergleich der Technologieoptionen</h2>
+      <p class="section-desc lang-en">Evaluating ground-source heat pumps, district heating, and air-source systems on technical merit, operating cost, and architectural viability.</p>
+      <p class="section-desc lang-de">Bewertung von Erdsonden-Wärmepumpe, Fernwärme und Luft/Wasser-Wärmepumpe hinsichtlich Technik, Wirtschaftlichkeit und räumlicher Machbarkeit.</p>
     </div>
 
     <div class="options-grid">
-      <!-- Option 1: Geothermal -->
+      <!-- Option 1: Geothermal Heat Pump -->
       <div class="option-card primary">
-        <div class="option-badge">Recommended Choice</div>
+        <div class="option-badge lang-en">Recommended</div>
+        <div class="option-badge lang-de">Empfohlen</div>
         <div class="option-header">
-          <div class="option-type">Variante 2 / 3</div>
-          <h3 class="option-name">Erdsonden-Wärmepumpe</h3>
-          <div class="option-status">Brine-to-Water Geothermal Heat Pump</div>
+          <div class="option-type lang-en">Option 1 (Variante 2/3)</div>
+          <div class="option-type lang-de">Option 1 (Variante 2/3)</div>
+          <h3 class="option-name lang-en">Ground-Source Heat Pump</h3>
+          <h3 class="option-name lang-de">Erdsonden-Wärmepumpe</h3>
+          <div class="option-status lang-en">Brine-to-Water Inverter System</div>
+          <div class="option-status lang-de">Sole/Wasser-Invertersystem</div>
         </div>
 
         <div class="option-specs">
           <div class="spec-item">
-            <span class="spec-label">Seasonal Efficiency</span>
-            <span class="spec-value">COP ~4.5 – 5.0+</span>
+            <span class="spec-label lang-en">Efficiency (COP)</span>
+            <span class="spec-label lang-de">Effizienz (JAZ/COP)</span>
+            <span class="spec-value">~4.5 – 5.0+</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Renewable Share</span>
-            <span class="spec-value">97% (ewz Naturstrom)</span>
+            <span class="spec-label lang-en">Renewable Share</span>
+            <span class="spec-label lang-de">Erneuerbar</span>
+            <span class="spec-value">97% (ewz Strom)</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Summer Cooling</span>
-            <span class="spec-value">Yes (Free Cooling)</span>
+            <span class="spec-label lang-en">Summer Cooling</span>
+            <span class="spec-label lang-de">Sommerkühlung</span>
+            <span class="spec-value">Free Cooling</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Availability</span>
-            <span class="spec-value">Immediate (2026/27)</span>
+            <span class="spec-label lang-en">Availability</span>
+            <span class="spec-label lang-de">Verfügbarkeit</span>
+            <span class="spec-value">2026 / 2027</span>
           </div>
         </div>
 
-        <ul class="option-list">
-          <li class="pro"><strong>Lowest annual running costs:</strong> High efficiency drastically reduces annual electricity bills.</li>
-          <li class="pro"><strong>Passive Free Cooling:</strong> Uses natural 8–12°C ground temp to cool apartments in summer with zero compressor power.</li>
-          <li class="pro"><strong>Longest asset lifespan:</strong> Geothermal probes last 50+ years; heat pump unit ~20 years.</li>
-          <li class="pro"><strong>Independent of tariffs:</strong> Shields owners from perpetual monopoly price hikes and fixed grid tariffs.</li>
-          <li class="con"><strong>Higher upfront CapEx:</strong> Requires drilling 3 boreholes (~150m each for #11) in the garden lawn outside the underground garage.</li>
-          <li class="con"><strong>Boiler room space:</strong> Tight footprint requires an inverter heat pump without buffer or a compact combi-cylinder.</li>
+        <ul class="option-list lang-en">
+          <li class="pro"><strong>Lowest ongoing operating cost:</strong> Superior seasonal COP minimizes power draw.</li>
+          <li class="pro"><strong>Passive Free Cooling:</strong> Uses 8–12°C ground brine to cool floors silently with zero compressor power.</li>
+          <li class="pro"><strong>Longest asset lifespan:</strong> Geothermal probes last 50+ years; heat pump lasts ~20 years.</li>
+          <li class="pro"><strong>Tariff independence:</strong> Protects co-owners against external monopoly price adjustments.</li>
+          <li class="con"><strong>Initial drilling CapEx:</strong> Requires 3 boreholes (~150 m each for #11) in the lawn outside garage slab.</li>
+          <li class="con"><strong>Boiler room fit:</strong> Requires a compact inverter system without buffer or a vertical combi-cylinder.</li>
+        </ul>
+
+        <ul class="option-list lang-de">
+          <li class="pro"><strong>Tiefste laufende Betriebskosten:</strong> Höchste Jahresarbeitszahl minimiert den Stromverbrauch.</li>
+          <li class="pro"><strong>Passives Free Cooling:</strong> Nutzt 8–12°C Erdreichtemperatur zur lautlosen Fussbodenkühlung ohne Kompressor.</li>
+          <li class="pro"><strong>Höchste Lebensdauer:</strong> Erdsonden halten 50+ Jahre; Wärmepumpenaggregat ~20 Jahre.</li>
+          <li class="pro"><strong>Unabhängigkeit von Monopoltarifen:</strong> Schützt Eigentümer vor jährlichen Grundpreiserhöhungen.</li>
+          <li class="con"><strong>Bohr-Investition:</strong> Benötigt 3 Bohrungen à ~150 m auf der Gartenfläche ausserhalb der Tiefgarage.</li>
+          <li class="con"><strong>Platz im Heizraum:</strong> Erfordert modulierende Inverterpumpe ohne Puffer oder schlanken Kombispeicher.</li>
         </ul>
       </div>
 
       <!-- Option 2: District Heating -->
       <div class="option-card">
         <div class="option-header">
-          <div class="option-type">Variante 4 / 5</div>
-          <h3 class="option-name">Fernwärme (ewz)</h3>
-          <div class="option-status">Altstetten Ost District Heating Grid</div>
+          <div class="option-type lang-en">Option 2 (Variante 4/5)</div>
+          <div class="option-type lang-de">Option 2 (Variante 4/5)</div>
+          <h3 class="option-name lang-en">District Heating (ewz)</h3>
+          <h3 class="option-name lang-de">Fernwärme (ewz)</h3>
+          <div class="option-status lang-en">Altstetten Ost Thermal Grid</div>
+          <div class="option-status lang-de">Energieverbund Altstetten Ost</div>
         </div>
 
         <div class="option-specs">
           <div class="spec-item">
-            <span class="spec-label">Arrival Date</span>
-            <span class="spec-value">Late 2032</span>
+            <span class="spec-label lang-en">Grid Arrival</span>
+            <span class="spec-label lang-de">Erschliessung</span>
+            <span class="spec-value">2032</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Renewable Share</span>
+            <span class="spec-label lang-en">Renewable Share</span>
+            <span class="spec-label lang-de">Erneuerbar</span>
             <span class="spec-value">75% or 100%</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Summer Cooling</span>
-            <span class="spec-value">None (Residential)</span>
+            <span class="spec-label lang-en">Summer Cooling</span>
+            <span class="spec-label lang-de">Sommerkühlung</span>
+            <span class="spec-value lang-en">None</span><span class="spec-value lang-de">Keine</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Boiler Room Footprint</span>
-            <span class="spec-value">Minimal</span>
+            <span class="spec-label lang-en">Boiler Room Footprint</span>
+            <span class="spec-label lang-de">Platzbedarf</span>
+            <span class="spec-value lang-en">Minimal</span><span class="spec-value lang-de">Minimal</span>
           </div>
         </div>
 
-        <ul class="option-list">
-          <li class="pro"><strong>Low indoor footprint:</strong> Heat exchanger station (*Übergabestation*) takes minimal space; no compressor.</li>
-          <li class="pro"><strong>No drilling or garden impact:</strong> Everything arrives via underground street pipe from Zwyssigstrasse.</li>
-          <li class="pro"><strong>Hands-off operation:</strong> Upstream maintenance and generation managed by ewz.</li>
-          <li class="con"><strong>6-Year Gap Risk:</strong> Street pipes will not be laid until <strong>2032</strong>. Requires bridging until the 2013 boiler is 19 years old.</li>
-          <li class="con"><strong>High recurring base cost:</strong> Perpetual fixed *Grundpreis* (~CHF 2,567/yr) makes ongoing operating costs significantly higher.</li>
-          <li class="con"><strong>No cooling:</strong> Underfloor heating cannot be used to cool in hot summer months.</li>
+        <ul class="option-list lang-en">
+          <li class="pro"><strong>Minimal indoor space:</strong> Compact heat exchanger substation (*Übergabestation*); no compressor.</li>
+          <li class="pro"><strong>Zero garden intervention:</strong> Connected via street piping under Zwyssigstrasse.</li>
+          <li class="pro"><strong>Low local maintenance:</strong> Generation equipment serviced and maintained by ewz.</li>
+          <li class="con"><strong>6-Year Transition Gap:</strong> Civil engineering in street not planned until <strong>2032</strong>.</li>
+          <li class="con"><strong>High perpetual base fee:</strong> Fixed *Grundpreis* (~CHF 2,567/yr) drives higher annual energy bills.</li>
+          <li class="con"><strong>No cooling capability:</strong> No summer comfort upgrade via floor cooling.</li>
+        </ul>
+
+        <ul class="option-list lang-de">
+          <li class="pro"><strong>Geringster Platzbedarf:</strong> Übergabestation ist kompakt; kein Kompressor oder Kältekreis im Haus.</li>
+          <li class="pro"><strong>Keine Eingriffe im Garten:</strong> Zuleitung erfolgt rein unterirdisch ab Zwyssigstrasse.</li>
+          <li class="pro"><strong>Geringer Wartungsaufwand:</strong> Zentrale Erzeugung wird durch ewz betrieben und erneuert.</li>
+          <li class="con"><strong>6 Jahre Wartezeit (2032):</strong> Erschliessung der Zwyssigstrasse erst 2032 – Risiko bei Kesselschaden vor 2032.</li>
+          <li class="con"><strong>Hohe jährliche Fixkosten:</strong> Fester Grundpreis (~CHF 2'567/a) führt zu dauerhaft höheren Jahreskosten.</li>
+          <li class="con"><strong>Keine Raumkühlung:</strong> Keine passive Sommerkühlung über die Fussbodenheizung möglich.</li>
         </ul>
       </div>
 
-      <!-- Option 3: Air-Source -->
+      <!-- Option 3: Air-Source Heat Pump -->
       <div class="option-card">
         <div class="option-header">
-          <div class="option-type">Variante 1</div>
-          <h3 class="option-name">Luft/Wasser-Wärmepumpe</h3>
-          <div class="option-status">Air-to-Water Heat Pump</div>
+          <div class="option-type lang-en">Option 3 (Variante 1)</div>
+          <div class="option-type lang-de">Option 3 (Variante 1)</div>
+          <h3 class="option-name lang-en">Air-to-Water Heat Pump</h3>
+          <h3 class="option-name lang-de">Luft/Wasser-Wärmepumpe</h3>
+          <div class="option-status lang-en">Split Outdoor Unit System</div>
+          <div class="option-status lang-de">Aussengeräte-Splitsystem</div>
         </div>
 
         <div class="option-specs">
           <div class="spec-item">
-            <span class="spec-label">Seasonal Efficiency</span>
-            <span class="spec-value">COP ~3.0 – 3.5</span>
+            <span class="spec-label lang-en">Efficiency (COP)</span>
+            <span class="spec-label lang-de">Effizienz (JAZ)</span>
+            <span class="spec-value">~3.0 – 3.5</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Noise Constraints</span>
+            <span class="spec-label lang-en">Acoustic Limits</span>
+            <span class="spec-label lang-de">Schallschutz</span>
             <span class="spec-value">LSV Art. 7 (Strict)</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Summer Cooling</span>
-            <span class="spec-value">Active Only (Noisy)</span>
+            <span class="spec-label lang-en">Summer Cooling</span>
+            <span class="spec-label lang-de">Sommerkühlung</span>
+            <span class="spec-value lang-en">Active Only</span><span class="spec-value lang-de">Nur aktiv</span>
           </div>
           <div class="spec-item">
-            <span class="spec-label">Installation Location</span>
-            <span class="spec-value">Outdoor Yard / Roof</span>
+            <span class="spec-label lang-en">Unit Location</span>
+            <span class="spec-label lang-de">Standort</span>
+            <span class="spec-value lang-en">Outdoor Lawn / Roof</span><span class="spec-value lang-de">Vorgarten / Dach</span>
           </div>
         </div>
 
-        <ul class="option-list">
-          <li class="pro">Moderate upfront equipment cost; no ground drilling needed.</li>
-          <li class="con"><strong>Noise & Neighbor Conflicts:</strong> Heavy acoustic emissions from outdoor fans near private terraces/windows.</li>
-          <li class="con"><strong>Visual & Garden Spoil:</strong> Outdoor split units clutter the garden or garage entrance area.</li>
-          <li class="con"><strong>Lowest winter efficiency:</strong> Delivers lowest COP precisely during cold sub-zero Zurich winter weeks.</li>
-          <li class="con"><strong>No passive cooling:</strong> Active cooling is energy-intensive and increases summer outdoor fan noise.</li>
+        <ul class="option-list lang-en">
+          <li class="pro">Moderate upfront equipment CapEx; no geotechnical boreholes required.</li>
+          <li class="con"><strong>Noise compliance conflicts:</strong> Acoustic fan emissions near private terraces clash with Swiss LSV limits.</li>
+          <li class="con"><strong>Visual garden clutter:</strong> Bulky split heat exchangers in front yard or parking ramp zone.</li>
+          <li class="con"><strong>Drop in winter efficiency:</strong> Lowest COP on coldest winter days when heating load peaks.</li>
+          <li class="con"><strong>No passive cooling:</strong> Active cooling draws compressor power and increases summer outdoor noise.</li>
+        </ul>
+
+        <ul class="option-list lang-de">
+          <li class="pro">Moderate Investitionskosten der Geräte; keine Tiefenbohrungen im Untergrund erforderlich.</li>
+          <li class="con"><strong>Lärmschutzkonflikte:</strong> Ventilatorgeräusche nahe Terrassen/Schlafzimmerfenstern (LSV Art. 7).</li>
+          <li class="con"><strong>Optische Beeinträchtigung:</strong> Grosse Aussengeräte im Vorgarten oder an der Tiefgaragenrampe.</li>
+          <li class="con"><strong>Schlechtere Wintereffizienz:</strong> Niedrigste Arbeitszahl bei eisigen Aussentemperaturen.</li>
+          <li class="con"><strong>Kein passives Kühlen:</strong> Aktive Kühlung verbraucht viel Strom und erzeugt Sommerlärm im Garten.</li>
         </ul>
       </div>
     </div>
 
-    <!-- Solar Reality Callout -->
+    <!-- ── Photovoltaic / Solar Integration Context ───────────── -->
     <div class="callout blue">
       <div class="callout-icon">☀️</div>
       <div>
-        <div class="callout-title">Rooftop Reality: What About Solar PV & The Neighbor's Link?</div>
-        <div class="callout-body">
-          A neighbor recently circulated a link from <em>mission-gruener-wohnen.ch</em>. 
-          Technical inspection reveals this is an affiliate lead-generation advertorial. 
-          More importantly, the city energy coach noted on pages 7 and 10 that 
-          <strong>the building’s flat roof waterproofing (1999) is at the end of its 25-year lifespan</strong>. 
-          Installing solar panels prior to roof renovation (*Dachsanierung*) is strongly advised against, 
-          as any future roof repair would require expensive dismantling and re-installation of the PV panels. 
-          <strong>Strategy:</strong> Complete the heating replacement first; schedule roof renovation + extensive green roof (*Dachbegrünung*) + solar PV as a bundled project in 3–5 years.
+        <div class="callout-title lang-en">Photovoltaic Integration & Roof Assessment</div>
+        <div class="callout-title lang-de">Photovoltaik-Einbindung & Dachzustandsanalyse</div>
+        <div class="callout-body lang-en">
+          While modern solar lead platforms and promotional assessments (see e.g. <a href="https://mission-gruener-wohnen.ch/solar-ch-outbrain-v4/" target="_blank" rel="noopener">reference solar-check overview</a>) advocate immediate PV installations, 
+          the city engineering inspection revealed that <strong>the building’s flat roof waterproofing (original 1999) has reached the end of its 25-year service life</strong>. 
+          Installing a solar array prior to roof renovation creates severe risk: any roof maintenance within 3–5 years would require expensive dismantling and re-installation of the PV panels. 
+          <br><br>
+          <strong>Strategic Recommendation:</strong> Decouple the heating transition from rooftop solar. Address the heating system in 2026/2027; bundle <strong>Roof Waterproofing + Extensive Green Roof (*Dachbegrünung*) + Solar PV</strong> as a coordinated building envelope package in 3–5 years.
+        </div>
+        <div class="callout-body lang-de">
+          Während allgemeine Beratungsportale und Förder-Checks (vgl. z.B. <a href="https://mission-gruener-wohnen.ch/solar-ch-outbrain-v4/" target="_blank" rel="noopener">Referenz-Solar-Check</a>) einen sofortigen PV-Zubau propagieren, 
+          zeigt die Begutachtung durch den Energiecoach: <strong>Die Flachdachabdichtung (Baujahr 1999) nähert sich nach 25 Jahren dem Ende ihrer Nutzungsdauer</strong>. 
+          Eine PV-Installation vor der Dachsanierung birgt das Risiko hoher Folgekosten für Demontage und Wiedermontage im Falle einer Undichtigkeit. 
+          <br><br>
+          <strong>Strategische Empfehlung:</strong> Heizungsersatz und PV zeitlich entkoppeln. Heizung 2026/2027 umsetzen; die Kombination <strong>Dachsanierung + Dachbegrünung + Photovoltaik</strong> als geschlossenes Projekt in 3–5 Jahren einplanen.
         </div>
       </div>
     </div>
@@ -814,184 +938,224 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
   <!-- ── Financial Model ─────────────────────────────────────── -->
   <section class="section" id="financials">
     <div class="section-header">
-      <div class="section-tag">Economics & Tax Optimization</div>
-      <h2 class="section-title">Comprehensive Financial Breakdown</h2>
-      <p class="section-desc">Detailed comparison per building and per individual apartment (4 units per building).</p>
+      <div class="section-tag lang-en">Financial Architecture</div>
+      <div class="section-tag lang-de">Finanzierungsmodell</div>
+      <h2 class="section-title lang-en">Comprehensive Investment & Operating Cost Model</h2>
+      <h2 class="section-title lang-de">Investitions- und Betriebskostenvergleich</h2>
+      <p class="section-desc lang-en">Itemized CapEx and OpEx per building and per individual condominium unit (4 apartments per building).</p>
+      <p class="section-desc lang-de">Detaillierte Investitions- und Betriebskosten pro Gebäude und pro Stockwerkeigentümer (4 Wohnungen pro Gebäude).</p>
     </div>
 
+    <!-- Capital Expenditure Table -->
     <div class="table-card">
       <table>
         <thead>
           <tr>
-            <th>Cost Element</th>
-            <th class="num">Erdsonde (Single #11)</th>
-            <th class="num">Erdsonde (Joint #11+#13)</th>
-            <th class="num">Fernwärme (Single 2032)</th>
-            <th class="num">Fernwärme (Joint 2032)</th>
+            <th><span class="lang-en">Cost Component</span><span class="lang-de">Kostenkomponente</span></th>
+            <th class="num"><span class="lang-en">Erdsonde (#11 Single)</span><span class="lang-de">Erdsonde (#11 Einzel)</span></th>
+            <th class="num"><span class="lang-en">Erdsonde (#11+#13 Joint)</span><span class="lang-de">Erdsonde (Gemeinsam)</span></th>
+            <th class="num"><span class="lang-en">Fernwärme (Single 2032)</span><span class="lang-de">Fernwärme (Einzel 2032)</span></th>
+            <th class="num"><span class="lang-en">Fernwärme (Joint 2032)</span><span class="lang-de">Fernwärme (Gemeinsam)</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Equipment & Internal Installation</td>
-            <td class="num">CHF 55,000</td>
-            <td class="num">CHF 50,000</td>
-            <td class="num">CHF 20,000</td>
-            <td class="num">CHF 15,000</td>
+            <td><span class="lang-en">Equipment & Interior Hydraulic Works</span><span class="lang-de">Anlagentechnik & interne Installation</span></td>
+            <td class="num">CHF 55'000</td>
+            <td class="num">CHF 50'000</td>
+            <td class="num">CHF 20'000</td>
+            <td class="num">CHF 15'000</td>
           </tr>
           <tr>
-            <td>Geothermal Drilling / ewz Grid Connection</td>
-            <td class="num">CHF 60,000</td>
-            <td class="num">CHF 55,000</td>
-            <td class="num">CHF 39,040</td>
-            <td class="num">CHF 20,840</td>
+            <td><span class="lang-en">Borehole Drilling / ewz Grid Connection Fee</span><span class="lang-de">Erdsondenbohrungen / ewz-Anschlusspreis</span></td>
+            <td class="num">CHF 60'000</td>
+            <td class="num">CHF 55'000</td>
+            <td class="num">CHF 39'040</td>
+            <td class="num">CHF 20'840</td>
           </tr>
           <tr>
-            <td><strong>Total Gross Investment (per building)</strong></td>
-            <td class="num"><strong>CHF 115,000</strong></td>
-            <td class="num"><strong>CHF 105,000</strong></td>
-            <td class="num"><strong>CHF 59,040</strong></td>
-            <td class="num"><strong>CHF 35,840</strong></td>
+            <td><strong><span class="lang-en">Total Gross CapEx (per building)</span><span class="lang-de">Bruttoinvestition (pro Gebäude)</span></strong></td>
+            <td class="num"><strong>CHF 115'000</strong></td>
+            <td class="num"><strong>CHF 105'000</strong></td>
+            <td class="num"><strong>CHF 59'040</strong></td>
+            <td class="num"><strong>CHF 35'840</strong></td>
           </tr>
           <tr style="color: var(--green);">
-            <td>Deduct: Canton & City Subsidies (incl. early bonus)</td>
-            <td class="num">-CHF 11,800</td>
-            <td class="num">-CHF 10,500</td>
-            <td class="num">-CHF 4,500</td>
-            <td class="num">-CHF 3,500</td>
+            <td><span class="lang-en">Subsidies (Canton + City + Early Replacement Bonus)</span><span class="lang-de">Förderbeiträge (Kanton + Stadt + Bonus)</span></td>
+            <td class="num">-CHF 11'800</td>
+            <td class="num">-CHF 10'500</td>
+            <td class="num">-CHF 4'500</td>
+            <td class="num">-CHF 3'500</td>
           </tr>
           <tr>
-            <td><strong>Net CapEx per Building</strong></td>
-            <td class="num"><strong>CHF 103,200</strong></td>
-            <td class="num"><strong>CHF 94,500</strong></td>
-            <td class="num"><strong>CHF 54,540</strong></td>
-            <td class="num"><strong>CHF 32,340</strong></td>
+            <td><strong><span class="lang-en">Net Investment (per building)</span><span class="lang-de">Nettoinvestition (pro Gebäude)</span></strong></td>
+            <td class="num"><strong>CHF 103'200</strong></td>
+            <td class="num"><strong>CHF 94'500</strong></td>
+            <td class="num"><strong>CHF 54'540</strong></td>
+            <td class="num"><strong>CHF 32'340</strong></td>
           </tr>
           <tr class="highlight-row">
-            <td><strong>Net Investment per Apartment (÷ 4)</strong></td>
-            <td class="num"><strong>CHF 25,800</strong></td>
-            <td class="num"><strong>CHF 23,625</strong></td>
-            <td class="num"><strong>CHF 13,635</strong></td>
-            <td class="num"><strong>CHF 8,085</strong></td>
+            <td><strong><span class="lang-en">Net CapEx per Apartment (÷ 4 units)</span><span class="lang-de">Nettoinvestition pro Wohnung (÷ 4)</span></strong></td>
+            <td class="num"><strong>CHF 25'800</strong></td>
+            <td class="num"><strong>CHF 23'625</strong></td>
+            <td class="num"><strong>CHF 13'635</strong></td>
+            <td class="num"><strong>CHF 8'085</strong></td>
           </tr>
           <tr style="color: var(--brass);">
-            <td>Estimated Income Tax Savings (~30% marginal rate)</td>
-            <td class="num">-CHF 7,740</td>
-            <td class="num">-CHF 7,087</td>
-            <td class="num">-CHF 4,090</td>
-            <td class="num">-CHF 2,425</td>
+            <td><span class="lang-en">Income Tax Deduction (~30% marginal tax rate)</span><span class="lang-de">Steuerersparnis (Annahme ~30% Grenzsteuersatz)</span></td>
+            <td class="num">-CHF 7'740</td>
+            <td class="num">-CHF 7'087</td>
+            <td class="num">-CHF 4'090</td>
+            <td class="num">-CHF 2'425</td>
           </tr>
           <tr class="highlight-row">
-            <td><strong>True Out-of-Pocket Cost per Owner</strong></td>
-            <td class="num"><strong>~CHF 18,060</strong></td>
-            <td class="num"><strong>~CHF 16,538</strong></td>
-            <td class="num"><strong>~CHF 9,545</strong></td>
-            <td class="num"><strong>~CHF 5,660</strong></td>
+            <td><strong><span class="lang-en">Effective Out-of-Pocket Cost per Owner</span><span class="lang-de">Effektiver Nettoaufwand pro Eigentümer</span></strong></td>
+            <td class="num"><strong>~CHF 18'060</strong></td>
+            <td class="num"><strong>~CHF 16'538</strong></td>
+            <td class="num"><strong>~CHF 9'545</strong></td>
+            <td class="num"><strong>~CHF 5'660</strong></td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Annual Operating Cost Comparison -->
-    <div style="margin-top: 32px;">
-      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">Annual Operating Costs & 20-Year Horizon (Per Apartment)</h3>
+    <!-- Operating Costs Table -->
+    <div style="margin-top: 36px;">
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;" class="lang-en">Annual Operating Expenditure & 20-Year Lifecycle Horizon (Per Apartment)</h3>
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;" class="lang-de">Jährliche Betriebskosten & 20-Jahre-Lebenszyklus (Pro Wohnung)</h3>
+      
       <div class="table-card">
         <table>
           <thead>
             <tr>
-              <th>Annual Cost Component</th>
-              <th class="num">Erdsonde (Geothermal)</th>
-              <th class="num">Fernwärme (75% Renewable)</th>
-              <th class="num">Fernwärme (100% Renewable)</th>
+              <th><span class="lang-en">Annual Operating Item</span><span class="lang-de">Betriebskostenposition</span></th>
+              <th class="num"><span class="lang-en">Erdsonde (Inverter Heat Pump)</span><span class="lang-de">Erdsonden-Wärmepumpe</span></th>
+              <th class="num"><span class="lang-en">Fernwärme (75% Renewable)</span><span class="lang-de">Fernwärme (75% erneuerbar)</span></th>
+              <th class="num"><span class="lang-en">Fernwärme (100% Renewable)</span><span class="lang-de">Fernwärme (100% erneuerbar)</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Fixed Base Fee (*Grundpreis*)</td>
+              <td><span class="lang-en">Fixed Base Tariff (*Grundpreis*)</span><span class="lang-de">Fester Grundpreis</span></td>
               <td class="num">CHF 0</td>
-              <td class="num">CHF 642 / yr</td>
-              <td class="num">CHF 642 / yr</td>
+              <td class="num">CHF 642 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+              <td class="num">CHF 642 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
             </tr>
             <tr>
-              <td>Energy Consumption (Heat + Domestic Hot Water)</td>
-              <td class="num">~CHF 800 / yr</td>
-              <td class="num">CHF 993 / yr</td>
-              <td class="num">CHF 1,372 / yr</td>
+              <td><span class="lang-en">Energy Consumed (Heating + Hot Water)</span><span class="lang-de">Arbeitspreis (Raumwärme & Warmwasser)</span></td>
+              <td class="num">~CHF 800 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+              <td class="num">CHF 993 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+              <td class="num">CHF 1'372 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
             </tr>
             <tr>
-              <td>Maintenance & Mandatory Service Contracts</td>
-              <td class="num">~CHF 200 / yr</td>
-              <td class="num">~CHF 100 / yr</td>
-              <td class="num">~CHF 100 / yr</td>
+              <td><span class="lang-en">Maintenance & Periodic Servicing</span><span class="lang-de">Wartung & Servicevertrag</span></td>
+              <td class="num">~CHF 200 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+              <td class="num">~CHF 100 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
+              <td class="num">~CHF 100 / <span class="lang-en">yr</span><span class="lang-de">a</span></td>
             </tr>
             <tr style="color: var(--green);">
-              <td>Summer Floor Cooling Electricity</td>
-              <td class="num"><strong>~CHF 25 / yr</strong></td>
-              <td class="num"><em>Not available</em></td>
-              <td class="num"><em>Not available</em></td>
+              <td><span class="lang-en">Summer Floor Cooling Power (Pumps only)</span><span class="lang-de">Stromkosten Sommerkühlung (nur Pumpen)</span></td>
+              <td class="num"><strong>~CHF 25 / <span class="lang-en">yr</span><span class="lang-de">a</span></strong></td>
+              <td class="num"><em><span class="lang-en">Not supported</span><span class="lang-de">Nicht möglich</span></em></td>
+              <td class="num"><em><span class="lang-en">Not supported</span><span class="lang-de">Nicht möglich</span></em></td>
             </tr>
             <tr class="highlight-row">
-              <td><strong>Total Operating Cost per Year</strong></td>
-              <td class="num"><strong>~CHF 1,025 / yr</strong></td>
-              <td class="num"><strong>~CHF 1,735 / yr</strong></td>
-              <td class="num"><strong>~CHF 2,114 / yr</strong></td>
+              <td><strong><span class="lang-en">Total Annual Operating Cost / Apartment</span><span class="lang-de">Gesamte Jahresbetriebskosten / Whg.</span></strong></td>
+              <td class="num"><strong>~CHF 1'025 / <span class="lang-en">yr</span><span class="lang-de">a</span></strong></td>
+              <td class="num"><strong>~CHF 1'735 / <span class="lang-en">yr</span><span class="lang-de">a</span></strong></td>
+              <td class="num"><strong>~CHF 2'114 / <span class="lang-en">yr</span><span class="lang-de">a</span></strong></td>
             </tr>
             <tr>
-              <td><strong>20-Year Cumulative Operating Expense</strong></td>
-              <td class="num"><strong>~CHF 20,500</strong></td>
-              <td class="num"><strong>~CHF 34,700</strong></td>
-              <td class="num"><strong>~CHF 42,280</strong></td>
+              <td><strong><span class="lang-en">20-Year Cumulative Operating Expense</span><span class="lang-de">Kumulierte Betriebskosten (20 Jahre)</span></strong></td>
+              <td class="num"><strong>~CHF 20'500</strong></td>
+              <td class="num"><strong>~CHF 34'700</strong></td>
+              <td class="num"><strong>~CHF 42'280</strong></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size: 0.82rem; color: var(--text-2); margin-top: 10px;">
-        <em>Financial Conclusion:</em> Over 20 years, an owner with an Erdsonden heat pump saves <strong>CHF 14,200 to CHF 21,780</strong> in operating costs compared to Fernwärme. 
-        This operational surplus completely repays the initial CapEx delta, while providing free summer cooling and long-term asset appreciation.
+
+      <p style="font-size: 0.82rem; color: var(--text-2); margin-top: 12px;" class="lang-en">
+        <em>Financial Takeaway:</em> Over a 20-year horizon, an owner with a geothermal heat pump saves <strong>CHF 14,200 to CHF 21,780</strong> in operating costs compared to district heating. 
+        This operational savings directly repays the initial capital delta while providing free passive summer cooling and asset value protection.
+      </p>
+      <p style="font-size: 0.82rem; color: var(--text-2); margin-top: 12px;" class="lang-de">
+        <em>Fazit zur Wirtschaftlichkeit:</em> Über 20 Jahre spart jeder Stockwerkeigentümer mit einer Erdsonden-Wärmepumpe <strong>CHF 14'200 bis CHF 21'780</strong> an laufenden Betriebskosten gegenüber der Fernwärme. 
+        Diese Betriebsersparnis amortisiert die höhere Anfangsinvestition vollständig – bei gleichzeitigem Gewinn der passiven Raumkühlung und langfristigem Werterhalt.
       </p>
     </div>
   </section>
 
-  <!-- ── Deep Dives: Free Cooling & Space ─────────────────────── -->
+  <!-- ── Technical Focus: Cooling & Boiler Room ──────────────── -->
   <section class="section" id="cooling">
     <div class="section-header">
-      <div class="section-tag">Technology Spotlight</div>
-      <h2 class="section-title">Passive Free Cooling & Boiler Room Engineering</h2>
-      <p class="section-desc">How geothermal heat pumps deliver superior indoor comfort and fit within our compact basement.</p>
+      <div class="section-tag lang-en">Engineering Deep Dives</div>
+      <div class="section-tag lang-de">Technische Detailprüfung</div>
+      <h2 class="section-title lang-en">Passive Free Cooling & Mechanical Room Integration</h2>
+      <h2 class="section-title lang-de">Passives Free Cooling & Heizraumintegration</h2>
+      <p class="section-desc lang-en">Addressing the physical space constraints in the basement and maximizing summer indoor comfort.</p>
+      <p class="section-desc lang-de">Lösung der Platzverhältnisse im Untergeschoss und Realisierung des sommerlichen Komfortgewinns.</p>
     </div>
 
     <div class="options-grid">
-      <!-- Deep Dive: Free Cooling -->
+      <!-- Free Cooling Deep Dive -->
       <div class="option-card">
         <div class="option-header">
-          <div class="option-type">Summer Comfort</div>
+          <div class="option-type lang-en">Thermal Comfort</div>
+          <div class="option-type lang-de">Sommerlicher Komfort</div>
           <h3 class="option-name">Passive Free Cooling</h3>
-          <div class="option-status">Silent, draft-free, near-zero electricity</div>
+          <div class="option-status lang-en">Silent, draft-free floor cooling</div>
+          <div class="option-status lang-de">Lautlose, zugfreie Fussbodenkühlung</div>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;">
-          At 100–190 meters underground, the earth remains at a steady 8–12°C year-round. 
-          During hot summer weeks, cold brine fluid is circulated directly through a heat exchanger into the underfloor heating pipes.
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;" class="lang-en">
+          At depths between 100 and 190 meters, bedrock maintains a stable temperature of 8–12°C year-round. 
+          During hot summer spells, cold brine fluid is circulated directly through a heat exchanger into the underfloor heating pipes.
         </p>
-        <ul class="option-list">
-          <li class="pro"><strong>Compressor remains off:</strong> Only low-wattage circulation pumps run, consuming negligible electricity (~CHF 20–30/summer for the whole building).</li>
-          <li class="pro"><strong>No draft, no noise:</strong> Unlike noisy AC wall splits, cooling is evenly and silently absorbed by the anthracite stone floor tiles.</li>
-          <li class="pro"><strong>Thermal Ground Regeneration:</strong> Heat extracted from the apartments is pumped into the ground, warming the borehole bed and increasing heat pump efficiency for the subsequent winter.</li>
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;" class="lang-de">
+          Das Erdreich in 100 bis 190 m Tiefe weist ganzjährig eine konstante Temperatur von 8 bis 12°C auf. 
+          An heissen Sommertagen wird dieses natürliche Kältereservoir über einen Wärmetauscher direkt in die Fussbodenheizung geleitet.
+        </p>
+
+        <ul class="option-list lang-en">
+          <li class="pro"><strong>Compressor remains shut off:</strong> Only high-efficiency circulation pumps run, consuming minimal electricity (~CHF 20–30/season for the entire building).</li>
+          <li class="pro"><strong>Zero draft, zero noise:</strong> Heat is absorbed evenly into the stone floor tiles without drafts or noisy air fans.</li>
+          <li class="pro"><strong>Ground Regeneration:</strong> Excess heat extracted from the building is pumped back into the earth, reheating the borehole bed and increasing heat pump COP for the subsequent winter.</li>
+        </ul>
+
+        <ul class="option-list lang-de">
+          <li class="pro"><strong>Kompressor bleibt ausgeschaltet:</strong> Nur hocheffiziente Umwälzpumpen laufen; minimaler Strombedarf (~CHF 20–30 pro Sommer für das gesamte Haus).</li>
+          <li class="pro"><strong>Zugfrei und geräuschlos:</strong> Die Wärme wird sanft über die anthrazitfarbenen Steinböden aufgenommen – ohne Zugluft oder störende Ventilatoren.</li>
+          <li class="pro"><strong>Sondenregeneration:</strong> Dem Gebäude entzogene Wärme wird ins Erdreich rückgeführt, regeneriert die Sonde und steigert die Heizleistung im nächsten Winter.</li>
         </ul>
       </div>
 
-      <!-- Deep Dive: Space Constraints -->
+      <!-- Boiler Room Space Deep Dive -->
       <div class="option-card" id="space">
         <div class="option-header">
-          <div class="option-type">Spatial Integration</div>
-          <h3 class="option-name">Boiler Room Footprint</h3>
-          <div class="option-status">Solving the tight mechanical room challenge</div>
+          <div class="option-type lang-en">Spatial Optimization</div>
+          <div class="option-type lang-de">Räumliche Optimierung</div>
+          <h3 class="option-name lang-en">Boiler Room Footprint</h3>
+          <h3 class="option-name lang-de">Platzbedarf im Heizraum</h3>
+          <div class="option-status lang-en">Overcoming mechanical room constraints</div>
+          <div class="option-status lang-de">Lösungsansätze für den kompakten Bestand</div>
         </div>
-        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;">
-          The existing heating room is compact. Fitting a separate heat pump unit, a domestic hot water (DHW) storage tank, and a heating buffer was flagged by the city coach.
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;" class="lang-en">
+          The existing heating room is compact. Fitting a heat pump unit, a domestic hot water cylinder, and a heating buffer tank was highlighted in the city audit as a key planning item.
         </p>
-        <ul class="option-list">
-          <li class="pro"><strong>Solution 1: Modulating Inverter without Buffer:</strong> Underfloor heating concrete screed acts as a massive thermal reservoir. Modern inverter heat pumps dynamically throttle output, eliminating the need for a separate heating buffer.</li>
-          <li class="pro"><strong>Solution 2: Compact Kombispeicher:</strong> A 2-in-1 vertical cylinder that combines DHW hygiene tank with a compact hydraulic separator in a single 80×80 cm footprint.</li>
-          <li class="pro"><strong>Electrical Grid:</strong> ewz confirmed the existing 63A building main can be upgraded to 100A with zero street excavation, only a flat network contribution.</li>
+        <p style="font-size: 0.85rem; color: var(--text-2); margin-bottom: 14px;" class="lang-de">
+          Der bestehende Heizraum ist kompakt dimensioniert. Die Unterbringung von Wärmepumpe, Warmwasserspeicher und Pufferspeicher wurde im Beratungsbericht als Planungsaufgabe identifiziert.
+        </p>
+
+        <ul class="option-list lang-en">
+          <li class="pro"><strong>Inverter Technology without Buffer:</strong> Modern modulating inverter heat pumps throttle output dynamically to demand. The underfloor heating screed across all 4 floors provides massive thermal storage, rendering large buffer tanks obsolete.</li>
+          <li class="pro"><strong>Vertical Combi-Cylinder:</strong> A stacked 2-in-1 tank combining domestic hot water on top and a small decoupling buffer underneath in a single 80×80 cm footprint.</li>
+          <li class="pro"><strong>Electrical Grid Capacity:</strong> ewz confirmed the existing 63A building main can be upgraded to 100A with zero street excavation, requiring only the standard network contribution.</li>
+        </ul>
+
+        <ul class="option-list lang-de">
+          <li class="pro"><strong>Inverterbetrieb ohne Pufferspeicher:</strong> Moderne, modulierende Wärmepumpen passen die Leistung stufenlos an. Der Estrich der Fussbodenheizung fungiert als riesiger Speicher; ein grosser Puffer ist nicht zwingend nötig.</li>
+          <li class="pro"><strong>Kombispeicher-Lösung:</strong> Vertikaler 2-in-1 Speicher, der Warmwasser und einen kompakten hydraulischen Trennspeicher auf nur 80×80 cm Stellfläche vereint.</li>
+          <li class="pro"><strong>Stromanschluss:</strong> ewz bestätigte, dass die Erhöhung von 63A auf 100A ohne Tiefbauarbeiten im Strassenbereich möglich ist (nur Netzkostenbeitrag).</li>
         </ul>
       </div>
     </div>
@@ -1000,41 +1164,60 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
   <!-- ── Action Plan & Roadmap ───────────────────────────────── -->
   <section class="section" id="roadmap">
     <div class="section-header">
-      <div class="section-tag">Implementation Roadmap</div>
-      <h2 class="section-title">Action Plan for the Owners Association (STWE)</h2>
-      <p class="section-desc">Concrete sequential steps to align co-owners and execute before 2027.</p>
+      <div class="section-tag lang-en">Execution Timeline</div>
+      <div class="section-tag lang-de">Umsetzungsfahrplan</div>
+      <h2 class="section-title lang-en">Action Plan for the Owners Association (STWE)</h2>
+      <h2 class="section-title lang-de">Massnahmenplan für die Stockwerkeigentümer (STWE)</h2>
+      <p class="section-desc lang-en">Recommended sequential roadmap to ensure alignment, secure city subsidies, and execute before 2027.</p>
+      <p class="section-desc lang-de">Empfohlene Meilensteine zur Abstimmung, Fördermittelsicherung und Inbetriebnahme vor 2027.</p>
     </div>
 
     <div class="timeline">
       <div class="timeline-step">
         <div class="timeline-step-num">1</div>
-        <div class="timeline-step-title">Q3 2026: STWE Alignment</div>
-        <div class="timeline-step-desc">
-          Engage property manager Martin Meier (az-verwaltung.ch) to place the heating strategy on the agenda for #11 and coordinate with #13 for joint tender.
+        <div class="timeline-step-title lang-en">Q3 2026: STWE Alignment</div>
+        <div class="timeline-step-title lang-de">Q3 2026: STWE-Abstimmung</div>
+        <div class="timeline-step-desc lang-en">
+          Coordinate with property management Martin Meier (az-verwaltung.ch) to place the heating strategy on the agenda for #11 and initiate joint talks with #13.
+        </div>
+        <div class="timeline-step-desc lang-de">
+          Abstimmung mit der Verwaltung Martin Meier (az-verwaltung.ch), Traktandierung der Heizungserneuerung und Kontaktaufnahme mit den Miteigentümern von Haus 13.
         </div>
       </div>
 
       <div class="timeline-step">
         <div class="timeline-step-num">2</div>
-        <div class="timeline-step-title">Q4 2026: Contractor Bids</div>
-        <div class="timeline-step-desc">
-          Request turnkey offers from 2–3 certified Swiss installers (e.g. CTA, Stiebel Eltron, Viessmann partners) including AWEL drilling and boiler room layout.
+        <div class="timeline-step-title lang-en">Q4 2026: Engineering Bids</div>
+        <div class="timeline-step-title lang-de">Q4 2026: Offerten einholen</div>
+        <div class="timeline-step-desc lang-en">
+          Tender for 2–3 turnkey bids from certified Swiss heating contractors (e.g. CTA, Stiebel Eltron, Viessmann partners) including AWEL drilling and inverter integration.
+        </div>
+        <div class="timeline-step-desc lang-de">
+          Einholen von 2–3 Richtofferten zertifizierter Erdsonden-Fachbetriebe (z.B. CTA, Stiebel Eltron, Viessmann Partner) inklusive AWEL-Bohrbewilligung und Heizraumplanung.
         </div>
       </div>
 
       <div class="timeline-step">
         <div class="timeline-step-num">3</div>
-        <div class="timeline-step-title">Q1 2027: Grants & Permits</div>
-        <div class="timeline-step-desc">
-          Submit the subsidy application to the Stadt Zürich / Kanton portal <em>prior to contract signing</em> to secure the early replacement bonus (~CHF 1,800).
+        <div class="timeline-step-title lang-en">Q1 2027: Subsidies & Permits</div>
+        <div class="timeline-step-title lang-de">Q1 2027: Fördergesuche & Bewilligung</div>
+        <div class="timeline-step-desc lang-en">
+          Submit the subsidy application to Stadt Zürich / Canton portal <em>prior to contract signing</em> to lock in the early replacement bonus (~CHF 1,800).
+        </div>
+        <div class="timeline-step-desc lang-de">
+          Einreichen der Fördergesuche bei Stadt Zürich und Kanton <em>vor Vergabe der Aufträge</em>, um den vorzeitigen Ersatzbonus (~CHF 1'800) definitiv zu sichern.
         </div>
       </div>
 
       <div class="timeline-step">
         <div class="timeline-step-num">4</div>
-        <div class="timeline-step-title">Q2 2027: Execution</div>
-        <div class="timeline-step-desc">
-          Drill boreholes in the garden lawn outside the underground car park, install inverter system, and commission Free Cooling for summer 2027.
+        <div class="timeline-step-title lang-en">Q2 2027: Installation & Go-Live</div>
+        <div class="timeline-step-title lang-de">Q2 2027: Bohrung & Inbetriebnahme</div>
+        <div class="timeline-step-desc lang-en">
+          Execute drilling in the lawn outside garage boundary, install inverter geothermal unit, and commission Free Cooling for summer 2027.
+        </div>
+        <div class="timeline-step-desc lang-de">
+          Ausführung der Erdsondenbohrungen im Gartenbereich, Einbau der Inverter-Wärmepumpe und termingerechte Inbetriebnahme des Free Coolings für den Sommer 2027.
         </div>
       </div>
     </div>
@@ -1042,11 +1225,17 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
     <div class="callout green" style="margin-top: 32px;">
       <div class="callout-icon">📋</div>
       <div>
-        <div class="callout-title">Summary Recommendation for Co-Owners</div>
-        <div class="callout-body">
-          Both buildings should collectively pursue <strong>Variante 3 (Joint Erdsonden-Wärmepumpe)</strong> or <strong>Variante 2 (Single Erdsonden-Wärmepumpe)</strong>. 
-          District heating's 2032 arrival date creates unacceptable operational and financial risk for our 2011/2013 boilers. 
-          By commissioning an inverter heat pump with Free Cooling now, every owner gains superior summer comfort, locks in maximum subsidies, and claims thousands in immediate income tax deductions.
+        <div class="callout-title lang-en">Summary Conclusion for Co-Owners</div>
+        <div class="callout-title lang-de">Zusammenfassendes Fazit für die Eigentümer</div>
+        <div class="callout-body lang-en">
+          Both buildings should collectively pursue <strong>Option 1 (Erdsonden-Wärmepumpe)</strong>, either as a joint system or coordinated parallel installations. 
+          Waiting for district heating until 2032 exposes owners to severe transition risks, ongoing high base tariffs, and zero summer cooling. 
+          By commissioning an inverter ground-source heat pump now, owners secure maximum city subsidies, gain passive summer cooling, and unlock substantial immediate tax deductions.
+        </div>
+        <div class="callout-body lang-de">
+          Beide Liegenschaften sollten gemeinsam <strong>Variante 2 bzw. 3 (Erdsonden-Wärmepumpe)</strong> anstreben. 
+          Das Zuwarten auf die Fernwärme bis 2032 birgt erhebliche Ausfallrisiken für die bestehenden Gaskessel, hohe dauerhafte Grundgebühren und bietet keine Raumkühlung. 
+          Mit einer Erdsonden-Wärmepumpe sichern sich die Eigentümer maximale Fördergelder, passives Free Cooling im Sommer und erhebliche steuerliche Abzugsmöglichkeiten.
         </div>
       </div>
     </div>
@@ -1055,20 +1244,39 @@ title: "Zwyssigstrasse 11 & 13 — Heating Strategy & Energy Transformation"
   <!-- ── Footer ──────────────────────────────────────────────── -->
   <footer class="footer">
     <div>
-      <strong>Zwyssigstrasse 11 & 13</strong> · Energy Transformation Strategy
+      <strong>Zwyssigstrasse 11 & 13</strong> · <span class="lang-en">Energy & Decarbonization Assessment</span><span class="lang-de">Energetische Bewertung & Strategie</span>
     </div>
     <div>
-      <a href="/design/">Interior Design Dashboard</a> · 
-      <a href="https://sunmeet.ca">Sunmeet Singh</a>
+      <span class="lang-en">City of Zurich Energy Advisory Reference · Altstetten Ost</span>
+      <span class="lang-de">Referenz: Energieberatung Stadt Zürich · Altstetten Ost</span>
     </div>
   </footer>
 
 </div>
 
-<!-- ── Scripts ─────────────────────────────────────────────── -->
+<!-- ── Language & Theme Controller ─────────────────────────── -->
 <script>
-  // Theme toggle
-  (function() {
+  // Language Switcher Controller
+  function setLanguage(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    localStorage.setItem('doc_lang', lang);
+    
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-de').classList.toggle('active', lang === 'de');
+  }
+
+  (function initLanguage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramLang = urlParams.get('lang');
+    const storedLang = localStorage.getItem('doc_lang');
+    const browserLang = navigator.language && navigator.language.startsWith('de') ? 'de' : 'en';
+
+    const activeLang = paramLang || storedLang || browserLang || 'en';
+    setLanguage(activeLang);
+  })();
+
+  // Dark/Light Theme Controller
+  (function initTheme() {
     const btn = document.getElementById('theme-toggle');
     const root = document.documentElement;
     const stored = localStorage.getItem('theme');
