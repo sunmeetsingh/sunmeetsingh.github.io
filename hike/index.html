@@ -1,0 +1,1800 @@
+---
+layout: null
+permalink: /hike/
+title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiss Hike Planner · Zürich & Bern Rendezvous</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  {% if jekyll.environment == "production" and site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+  <style>
+    /* ── Color & Layout Tokens ─────────────────────────────────────────── */
+    :root {
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-display: 'Plus Jakarta Sans', var(--font-body);
+      
+      --bg-page: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-soft: #f1f5f9;
+      --bg-surface-elevated: #ffffff;
+      
+      --border-subtle: #e2e8f0;
+      --border-strong: #cbd5e1;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-faint: #94a3b8;
+      
+      --brand-primary: #059669; /* Alpine emerald green */
+      --brand-primary-hover: #047857;
+      --brand-primary-light: #ecfdf5;
+      --brand-primary-border: #a7f3d0;
+      
+      --accent-terracotta: #ea580c;
+      --accent-terracotta-light: #fff7ed;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #f0f9ff;
+      --accent-purple: #7c3aed;
+      --accent-purple-light: #f5f3ff;
+
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+    }
+
+    [data-theme="dark"] {
+      --bg-page: #0b1120;
+      --bg-surface: #131d33;
+      --bg-surface-soft: #1e293b;
+      --bg-surface-elevated: #1a2540;
+      
+      --border-subtle: #243452;
+      --border-strong: #334971;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-faint: #64748b;
+      
+      --brand-primary: #10b981;
+      --brand-primary-hover: #34d399;
+      --brand-primary-light: rgba(16, 185, 129, 0.12);
+      --brand-primary-border: rgba(16, 185, 129, 0.3);
+      
+      --accent-terracotta: #f97316;
+      --accent-terracotta-light: rgba(249, 115, 22, 0.12);
+      --accent-blue: #38bdf8;
+      --accent-blue-light: rgba(56, 189, 248, 0.12);
+      --accent-purple: #a78bfa;
+      --accent-purple-light: rgba(167, 139, 250, 0.12);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 12px 28px -6px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ── Base & Reset ─────────────────────────────────────────────────── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: var(--brand-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Container ────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Top Bar / Header ─────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background-color: rgba(248, 250, 252, 0.82);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+
+    [data-theme="dark"] .site-nav {
+      background-color: rgba(11, 17, 32, 0.82);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .nav-brand:hover {
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--brand-primary), #0284c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text-main);
+      background-color: var(--bg-surface-soft);
+      text-decoration: none;
+    }
+
+    .theme-toggle-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--text-main);
+      border-color: var(--border-strong);
+      transform: rotate(15deg);
+    }
+
+    /* ── Hero Section ─────────────────────────────────────────────────── */
+    .hero-section {
+      padding: 56px 0 40px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: var(--brand-primary-light);
+      border: 1px solid var(--brand-primary-border);
+      border-radius: 9999px;
+      color: var(--brand-primary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--text-main);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--brand-primary), #0284c7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .metric-chip {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .metric-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ── Quick Copy Card ──────────────────────────────────────────────── */
+    .copy-banner {
+      background: linear-gradient(135deg, var(--bg-surface), var(--bg-surface-soft));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      margin: 28px 0 48px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .copy-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--brand-primary);
+    }
+
+    .copy-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .copy-label {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-copy {
+      background-color: var(--brand-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+    }
+
+    .btn-copy:hover {
+      background-color: var(--brand-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .copy-text {
+      background-color: var(--bg-page);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      white-space: pre-line;
+      font-family: inherit;
+    }
+
+    /* ── Section Headers ──────────────────────────────────────────────── */
+    .section-title-wrap {
+      margin-bottom: 28px;
+    }
+
+    .section-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-primary);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ── Route Matrix Grid ────────────────────────────────────────────── */
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-bottom: 56px;
+    }
+
+    .route-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .route-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-strong);
+    }
+
+    .route-card.featured {
+      border-color: var(--brand-primary);
+      background: linear-gradient(180deg, var(--bg-surface), var(--bg-surface-elevated));
+      box-shadow: 0 4px 18px rgba(16, 185, 129, 0.12);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: var(--brand-primary);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+    }
+
+    .card-top {
+      margin-bottom: 18px;
+    }
+
+    .route-number {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-faint);
+      margin-bottom: 6px;
+    }
+
+    .route-name {
+      font-family: var(--font-display);
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .route-hook {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand-primary);
+      background-color: var(--brand-primary-light);
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .route-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      background-color: var(--bg-surface-soft);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-faint);
+      font-weight: 600;
+    }
+
+    .stat-val {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .transit-balance {
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 14px;
+      margin-top: 8px;
+    }
+
+    .transit-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      margin-bottom: 6px;
+    }
+
+    .transit-city {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .transit-time {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .date-perk-box {
+      margin-top: 14px;
+      background-color: var(--bg-surface-soft);
+      border-left: 3px solid var(--accent-terracotta);
+      padding: 8px 12px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .btn-view-details {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 18px;
+      padding: 9px 0;
+      background-color: var(--bg-surface-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .btn-view-details:hover {
+      background-color: var(--brand-primary);
+      color: #ffffff;
+      border-color: var(--brand-primary);
+      text-decoration: none;
+    }
+
+    /* ── Featured Deep-Dive: Weissenstein & Röti ─────────────────────── */
+    .deep-dive-card {
+      background-color: var(--bg-surface);
+      border: 2px solid var(--brand-primary-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 36px;
+      margin-bottom: 64px;
+      position: relative;
+    }
+
+    .deep-dive-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 24px;
+    }
+
+    .deep-dive-title-group h3 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.2;
+    }
+
+    .deep-dive-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .deep-dive-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--brand-primary-light);
+      color: var(--brand-primary);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1px solid var(--brand-primary-border);
+    }
+
+    /* Transit Rendezvous Grid */
+    .rendezvous-box {
+      background: linear-gradient(135deg, var(--bg-surface-soft), var(--bg-surface));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .rendezvous-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .transit-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .transit-col {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px;
+    }
+
+    .transit-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .transit-col-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .transit-col-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background-color: var(--accent-blue-light);
+      color: var(--accent-blue);
+    }
+
+    .transit-step {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── Tabbed Options ───────────────────────────────────────────────── */
+    .tabs-container {
+      margin-bottom: 28px;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border-subtle);
+      padding-bottom: 2px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background-color: var(--bg-surface-soft);
+    }
+
+    .tab-btn.active {
+      color: var(--brand-primary);
+      background-color: var(--brand-primary-light);
+    }
+
+    .tab-btn.active::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--brand-primary);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .tab-content-pane {
+      display: none;
+      padding: 24px 0 0;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .tab-content-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .variant-card {
+      background-color: var(--bg-surface-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .variant-stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .vstat {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: 0.88rem;
+    }
+
+    .vstat strong {
+      color: var(--text-main);
+    }
+
+    .vstat span {
+      color: var(--text-faint);
+      margin-right: 6px;
+    }
+
+    .step-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .step-timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 9px;
+      width: 2px;
+      background-color: var(--border-strong);
+    }
+
+    .timeline-node {
+      position: relative;
+    }
+
+    .timeline-node::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: -28px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--brand-primary);
+      border: 3px solid var(--bg-surface-soft);
+    }
+
+    .node-title {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .node-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Post-Hike Box */
+    .post-hike-card {
+      background: linear-gradient(135deg, var(--accent-terracotta-light), var(--bg-surface));
+      border: 1px solid rgba(234, 88, 12, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 22px 26px;
+      margin-top: 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .post-hike-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .post-hike-content h4 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .post-hike-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ── Detailed Cards for Candidates 2, 3, 4 ───────────────────────── */
+    .candidate-details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+      margin-bottom: 64px;
+    }
+
+    .candidate-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .candidate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .candidate-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .candidate-tag {
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+    }
+
+    .candidate-tag.cliff {
+      background-color: var(--accent-blue-light);
+      color: var(--accent-blue);
+    }
+
+    .candidate-tag.alpine {
+      background-color: var(--accent-purple-light);
+      color: var(--accent-purple);
+    }
+
+    .candidate-tag.panorama {
+      background-color: var(--accent-terracotta-light);
+      color: var(--accent-terracotta);
+    }
+
+    .candidate-body {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 800px) {
+      .candidate-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .candidate-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .candidate-sidebar {
+      background-color: var(--bg-surface-soft);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .cand-stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.86rem;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cand-stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .cand-stat-label {
+      color: var(--text-faint);
+    }
+
+    .cand-stat-val {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* ── Packing & Logistics Checklist ────────────────────────────────── */
+    .logistics-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 56px;
+    }
+
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .check-box-icon {
+      color: var(--brand-primary);
+      font-size: 1.1rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    .page-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 32px 0 48px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-faint);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+
+    /* ── Toast Notification ───────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* ── Responsive adjustments ───────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      .deep-dive-card {
+        padding: 22px;
+      }
+      .tab-bar {
+        gap: 4px;
+      }
+      .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Nav ──────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-brand">
+        <div class="brand-icon">🏔</div>
+        <span>Sunmeet's Rendezvous</span>
+      </a>
+      <div class="nav-actions">
+        <a href="#matrix" class="nav-link">Options</a>
+        <a href="#weissenstein" class="nav-link">Top Pick</a>
+        <a href="#candidates" class="nav-link">Alternatives</a>
+        <button class="theme-toggle-btn" id="theme-btn" aria-label="Toggle Dark Mode" title="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <!-- ── Hero ───────────────────────────────────────────────────────── -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span>🇨🇭</span> Switzerland Day Hikes · Zürich × Bern
+      </div>
+      <h1 class="hero-title">
+        The <span>Midpoint Rendezvous</span> Hike Guide
+      </h1>
+      <p class="hero-subtitle">
+        Four curated moderate hikes (2.5 to 4 hours) striking a fair travel balance between Zürich and Bern. High scenic payoff, panoramic ridge crests, and post-hike riverside drinks.
+      </p>
+
+      <div class="hero-metrics">
+        <div class="metric-chip">
+          <span class="metric-icon">⏱</span>
+          <span><strong>2.5 – 4 Hours</strong> trail time</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-icon">📈</span>
+          <span><strong>Moderate</strong> fitness level</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-icon">🚆</span>
+          <span><strong>SBB Direct</strong> train connections</span>
+        </div>
+        <div class="metric-chip">
+          <span class="metric-icon">🥂</span>
+          <span><strong>Great Date Perk</strong> post-hike chill</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Quick Message Copier ───────────────────────────────────────── -->
+    <section class="copy-banner">
+      <div class="copy-header">
+        <div class="copy-label">
+          <span>💬</span> Quick Message to Send Her
+        </div>
+        <button class="btn-copy" onclick="copyMessage()">
+          <span id="copy-icon">📋</span>
+          <span id="copy-text-btn">Copy to Clipboard</span>
+        </button>
+      </div>
+      <div class="copy-text" id="share-message">Hey, I scoped out a few hike ideas roughly between Zürich and Bern that have great views, take around 2.5 to 3.5 hours, and give us a solid workout without being an all-day trek.
+
+Any of these jump out at you?
+
+1. Weissenstein & Röti Ridge (Solothurn)
+The dead-center option: ~35 min from Bern, ~50 min from Zürich. Open ridge walk with views across the plateau to the entire Alpine chain, and we can grab a drink by the river in Solothurn afterward.
+
+2. Niederbauen-Chulm (Lake Lucerne)
+The dramatic cliff option: ~1h20 for me, ~1h45 for you. A proper alpine trail leading up to a summit that drops straight down into the lake. Very scenic and quieter than the tourist hubs.
+
+3. Stanserhorn Ridge (near Lucerne)
+The panoramic ridge option: ~1h for me, ~1h20 for you. A sporty ridge route with 360° views over 10 lakes, plus an open-air double-decker cable car down if our knees want a break.
+
+4. Stockhorn & Mountain Lakes (Simmental)
+The high-alpine option: Closer to you (~35 min from Bern, ~1h45 from Zürich). Rugged limestone trails passing two turquoise mountain lakes with front-row views of the Eiger, Mönch, and Jungfrau.
+
+Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mountain lakes?</div>
+    </section>
+
+    <!-- ── Options Matrix ─────────────────────────────────────────────── -->
+    <section id="matrix">
+      <div class="section-title-wrap">
+        <div class="section-tag">Overview Comparison</div>
+        <h2 class="section-title">The Four Candidate Hikes</h2>
+        <p class="section-desc">Travel balance from Zürich and Bern, elevation gain, and distinct mountain character.</p>
+      </div>
+
+      <div class="routes-grid">
+        
+        <!-- Route 1: Weissenstein (Featured) -->
+        <div class="route-card featured">
+          <div class="featured-badge">Top Recommendation</div>
+          <div class="card-top">
+            <div class="route-number">Option 01 · Jura Crest</div>
+            <h3 class="route-name">Weissenstein & Röti Ridge</h3>
+            <span class="route-hook">The Dead-Center Balancer</span>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+              Limestone outcrops, wildflower meadows, and unobstructed panoramas from Säntis to Mont Blanc.
+            </p>
+            <div class="route-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Distance</span>
+                <span class="stat-val">7.5 – 9.5 km</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Duration</span>
+                <span class="stat-val">2.5 – 3.5 hrs</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Elevation</span>
+                <span class="stat-val">+220 to +740m</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Difficulty</span>
+                <span class="stat-val">Moderate (T2)</span>
+              </div>
+            </div>
+            <div class="transit-balance">
+              <div class="transit-row">
+                <span class="transit-city">📍 From Zürich HB</span>
+                <span class="transit-time">53 min (direct IC 5)</span>
+              </div>
+              <div class="transit-row">
+                <span class="transit-city">📍 From Bern HB</span>
+                <span class="transit-time">37 min (direct IR 17)</span>
+              </div>
+            </div>
+            <div class="date-perk-box">
+              <strong>Date Perk:</strong> Drinks by the Aare in Solothurn’s baroque old town (Solheure terrace).
+            </div>
+          </div>
+          <a href="#weissenstein" class="btn-view-details">Explore Full Itinerary ↓</a>
+        </div>
+
+        <!-- Route 2: Niederbauen-Chulm -->
+        <div class="route-card">
+          <div class="card-top">
+            <div class="route-number">Option 02 · Central Switzerland</div>
+            <h3 class="route-name">Niederbauen-Chulm</h3>
+            <span class="route-hook" style="color: var(--accent-blue); background: var(--accent-blue-light);">Dramatic Lake Cliff</span>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+              Towering sheer cliff dropping straight down into the fjord-like waters of Lake Lucerne and Urnersee.
+            </p>
+            <div class="route-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Distance</span>
+                <span class="stat-val">~6.0 km</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Duration</span>
+                <span class="stat-val">2.5 – 3.0 hrs</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Elevation</span>
+                <span class="stat-val">±360 m</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Difficulty</span>
+                <span class="stat-val">Moderate (T2)</span>
+              </div>
+            </div>
+            <div class="transit-balance">
+              <div class="transit-row">
+                <span class="transit-city">📍 From Zürich</span>
+                <span class="transit-time">~1h 20m</span>
+              </div>
+              <div class="transit-row">
+                <span class="transit-city">📍 From Bern</span>
+                <span class="transit-time">~1h 45m</span>
+              </div>
+            </div>
+            <div class="date-perk-box">
+              <strong>Date Perk:</strong> Cozier, uncrowded summit cross & mountain cheese at Alp Tritt.
+            </div>
+          </div>
+          <a href="#niederbauen" class="btn-view-details">View Details ↓</a>
+        </div>
+
+        <!-- Route 3: Stockhorn -->
+        <div class="route-card">
+          <div class="card-top">
+            <div class="route-number">Option 03 · Bernese Oberland</div>
+            <h3 class="route-name">Stockhorn & Lakes</h3>
+            <span class="route-hook" style="color: var(--accent-purple); background: var(--accent-purple-light);">High Alpine & Lakes</span>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+              Karst limestone trails, two turquoise mountain lakes, and prime vistas of Eiger, Mönch & Jungfrau.
+            </p>
+            <div class="route-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Distance</span>
+                <span class="stat-val">~6.5 km</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Duration</span>
+                <span class="stat-val">3.0 – 3.5 hrs</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Elevation</span>
+                <span class="stat-val">+550 m / -550 m</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Difficulty</span>
+                <span class="stat-val">Sporty (T2/T3)</span>
+              </div>
+            </div>
+            <div class="transit-balance">
+              <div class="transit-row">
+                <span class="transit-city">📍 From Zürich</span>
+                <span class="transit-time">~1h 45m</span>
+              </div>
+              <div class="transit-row">
+                <span class="transit-city">📍 From Bern</span>
+                <span class="transit-time">35 min (direct)</span>
+              </div>
+            </div>
+            <div class="date-perk-box">
+              <strong>Date Perk:</strong> Hike up to the peak on foot, take the panoramic cable car down to save knees.
+            </div>
+          </div>
+          <a href="#stockhorn" class="btn-view-details">View Details ↓</a>
+        </div>
+
+        <!-- Route 4: Stanserhorn -->
+        <div class="route-card">
+          <div class="card-top">
+            <div class="route-number">Option 04 · Nidwalden</div>
+            <h3 class="route-name">Stanserhorn Ridge</h3>
+            <span class="route-hook" style="color: var(--accent-terracotta); background: var(--accent-terracotta-light);">Panoramic & CabriO</span>
+            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+              Pre-alpine open crest walking overlooking 10 Swiss lakes, capped by an open-air double-decker cable car ride.
+            </p>
+            <div class="route-stats-grid">
+              <div class="stat-item">
+                <span class="stat-label">Distance</span>
+                <span class="stat-val">6.0 – 8.0 km</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Duration</span>
+                <span class="stat-val">2.5 – 3.5 hrs</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Elevation</span>
+                <span class="stat-val">+450m to +650m</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Difficulty</span>
+                <span class="stat-val">Sporty Moderate</span>
+              </div>
+            </div>
+            <div class="transit-balance">
+              <div class="transit-row">
+                <span class="transit-city">📍 From Zürich</span>
+                <span class="transit-time">1h 05m</span>
+              </div>
+              <div class="transit-row">
+                <span class="transit-city">📍 From Bern</span>
+                <span class="transit-time">1h 20m</span>
+              </div>
+            </div>
+            <div class="date-perk-box">
+              <strong>Date Perk:</strong> Ride the open-air upper deck of the iconic CabriO cable car on the way down.
+            </div>
+          </div>
+          <a href="#stanserhorn" class="btn-view-details">View Details ↓</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Detailed Itinerary: Weissenstein & Röti ────────────────────── -->
+    <section id="weissenstein" class="deep-dive-card">
+      <div class="deep-dive-header">
+        <div class="deep-dive-title-group">
+          <div class="hero-badge" style="margin-bottom: 8px;">Recommended First Pick</div>
+          <h3>Weissenstein & Röti Ridge Walk</h3>
+          <p class="deep-dive-subtitle">First Jura ridge high above Solothurn · Unbroken Alpine panorama & riverside finale</p>
+        </div>
+        <div class="deep-dive-rating">
+          <span>★ 4.6</span>
+          <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-muted);">(Mountain Peak)</span>
+        </div>
+      </div>
+
+      <!-- Meeting Point & Transit Section -->
+      <div class="rendezvous-box">
+        <div class="rendezvous-title">
+          <span>🚉</span> Meeting Point: Solothurn Hauptbahnhof
+        </div>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
+          Solothurn is the geographic sweet spot between Zürich and Bern. Trains from both cities arrive with near-perfect 30-minute symmetry:
+        </p>
+
+        <div class="transit-cols">
+          <div class="transit-col">
+            <div class="transit-col-header">
+              <span class="transit-col-title">From Zürich HB</span>
+              <span class="transit-col-badge">53 min</span>
+            </div>
+            <div class="transit-step">
+              Direct <strong>IC 5</strong> (direction Neuchâtel / Lausanne / Genève). Departures every 30 minutes. Fast and comfortable along the Jura south foot.
+            </div>
+          </div>
+
+          <div class="transit-col">
+            <div class="transit-col-header">
+              <span class="transit-col-title">From Bern HB</span>
+              <span class="transit-col-badge">37 min</span>
+            </div>
+            <div class="transit-step">
+              Direct <strong>IR 17</strong> or <strong>RE</strong> train toward Olten / Solothurn. Departures every 30 minutes.
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.86rem; color: var(--text-faint); margin-top: 14px;">
+          💡 <em>Meeting plan:</em> Meet on the Solothurn station platform or station café, then proceed together to the local bus or S-Bahn connection.
+        </p>
+      </div>
+
+      <!-- Route Variations Tabs -->
+      <div class="tabs-container">
+        <h4 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 12px;">
+          Choose Your Trail Variation
+        </h4>
+
+        <div class="tab-bar">
+          <button class="tab-btn active" onclick="switchTab('variant-gondola')">
+            🚡 Option 1: With Gondola (Classic Ridge)
+          </button>
+          <button class="tab-btn" onclick="switchTab('variant-balmberg')">
+            🥾 Option 2: No Gondola (Balmberg Loop)
+          </button>
+          <button class="tab-btn" onclick="switchTab('variant-sporty')">
+            ⛰ Option 3: No Gondola (Sporty Valley Ascent)
+          </button>
+        </div>
+
+        <!-- Pane 1: Gondola -->
+        <div class="tab-content-pane active" id="variant-gondola">
+          <div class="variant-card">
+            <div class="variant-stats-bar">
+              <div class="vstat"><span>Distance:</span> <strong>~7.5 km</strong></div>
+              <div class="vstat"><span>Duration:</span> <strong>2.5 hours</strong></div>
+              <div class="vstat"><span>Ascent / Descent:</span> <strong>+220 m / -430 m</strong></div>
+              <div class="vstat"><span>Level:</span> <strong>Moderate (Forgiving on knees)</strong></div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+              <strong>The Vibe:</strong> Skips the steep forest climb by taking the scenic 10-minute panoramic cable car from Oberdorf, maximizing your time along the sunlit open crest and dramatic limestone bluffs.
+            </p>
+
+            <div class="step-timeline">
+              <div class="timeline-node">
+                <div class="node-title">1. Solothurn → Oberdorf SO → Weissenstein</div>
+                <div class="node-desc">
+                  Take local train <strong>S21</strong> (13 min) to Oberdorf SO. Walk 2 minutes to the valley gondola station. Ride <em>Seilbahn Weissenstein</em> directly up to 1,284 m (10 min; CHF 10 one-way with Halbtax / GA).
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">2. Weissenstein (1,284 m) → Röti Summit (1,395 m)</div>
+                <div class="node-desc">
+                  Take in the panoramic view of the Swiss Alps from the mountain hotel terrace. Follow the well-marked yellow trail eastward on a gradual, scenic 40-minute ascent to <strong>Röti (1,395 m)</strong>, the highest point of the ridge. 360° views across the Swiss plateau to Mont Blanc, Säntis, and north to the Black Forest.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">3. Röti → Nesselbodenröti → Oberbalmberg</div>
+                <div class="node-desc">
+                  Continue eastward along the gentle limestone crest past Nesselbodenröti, then make a forgiving descent through open alpine meadows down to <strong>Oberbalmberg, Kurhaus (1,078 m)</strong>.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">4. Return to Solothurn via PostBus 12</div>
+                <div class="node-desc">
+                  Board <strong>PostBus Line 12</strong> right at Oberbalmberg, Kurhaus back down to Solothurn station (26 min, runs hourly).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 2: Balmberg Loop -->
+        <div class="tab-content-pane" id="variant-balmberg">
+          <div class="variant-card">
+            <div class="variant-stats-bar">
+              <div class="vstat"><span>Distance:</span> <strong>8.0 km</strong></div>
+              <div class="vstat"><span>Duration:</span> <strong>2.5 – 3 hours</strong></div>
+              <div class="vstat"><span>Ascent / Descent:</span> <strong>+420 m / -420 m</strong></div>
+              <div class="vstat"><span>Level:</span> <strong>Solid Moderate (Pure on-foot)</strong></div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+              <strong>The Vibe:</strong> 100% on foot without paying for cable cars, yet avoiding a tedious 700 m low-altitude forest slog. Uses the high pass bus to start directly at 1,078 m (official SchweizMobil Route 502).
+            </p>
+
+            <div class="step-timeline">
+              <div class="timeline-node">
+                <div class="node-title">1. Solothurn → Oberbalmberg, Kurhaus via PostBus 12</div>
+                <div class="node-desc">
+                  From Solothurn HB, take <strong>PostBus Line 12</strong> directly to the pass terminus at Oberbalmberg, Kurhaus (26 minutes).
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">2. Balmberg (1,078 m) → Nesselbodenröti → Röti (1,395 m)</div>
+                <div class="node-desc">
+                  Climb the well-graded mountain trail up to the pass saddle at Nesselbodenröti, then follow the crest directly to the summit cross at Röti.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">3. Röti → Hotel Weissenstein Terrace (1,284 m)</div>
+                <div class="node-desc">
+                  Stroll west along the high ridge toward Weissenstein. Relax on the sun terrace at Hotel Weissenstein for coffee or a cold drink overlooking the Alps.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">4. Return Loop via Schofgraben → Balmberg</div>
+                <div class="node-desc">
+                  Follow the circular route back along the northern forest and meadow flank (via Schofgraben) to return smoothly to Oberbalmberg, and take PostBus 12 back to Solothurn.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pane 3: Sporty Ascent -->
+        <div class="tab-content-pane" id="variant-sporty">
+          <div class="variant-card">
+            <div class="variant-stats-bar">
+              <div class="vstat"><span>Distance:</span> <strong>~9.5 km</strong></div>
+              <div class="vstat"><span>Duration:</span> <strong>3.5 – 4 hours</strong></div>
+              <div class="vstat"><span>Ascent / Descent:</span> <strong>+740 m / -320 m</strong></div>
+              <div class="vstat"><span>Level:</span> <strong>Sporty Moderate (Full workout)</strong></div>
+            </div>
+
+            <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+              <strong>The Vibe:</strong> For when you want to earn your views with a good sweat. Climbs all the way from the valley floor up through cool beech forests and limestone cliffs to the crest.
+            </p>
+
+            <div class="step-timeline">
+              <div class="timeline-node">
+                <div class="node-title">1. Solothurn → Oberdorf SO (655 m)</div>
+                <div class="node-desc">
+                  S21 train to Oberdorf SO (13 minutes). Walk to trail start.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">2. Valley Ascent via Stiegenlos & Nesselboden (+630 m)</div>
+                <div class="node-desc">
+                  Winding forest trail climbing past limestone bluffs up to Weissenstein plateau (1,284 m; ~1h45 to 2 hours of steady uphill walking).
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">3. Weissenstein → Röti Peak (1,395 m)</div>
+                <div class="node-desc">
+                  Continue along the crest trail for the final +110 m ascent to the Röti summit marker (35 min) for the reward panorama.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">4. Descent to Balmberg → PostBus 12 to Solothurn</div>
+                <div class="node-desc">
+                  Traverse the ridge down to Oberbalmberg, Kurhaus (1h gentle downhill descent), then catch PostBus 12 back to Solothurn HB.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Post-Hike Date Perk -->
+      <div class="post-hike-card">
+        <div class="post-hike-icon">🥂</div>
+        <div class="post-hike-content">
+          <h4>The Post-Hike Finale in Solothurn Old Town</h4>
+          <p>
+            All three route variants drop you back at Solothurn HB by mid-to-late afternoon. From the station, it is an easy <strong>5-minute walk across the bridge into Solothurn’s baroque old town</strong>. Grab a glass of wine or craft beer right along the Aare riverfront at <strong>Solheure</strong> (Landhausquai) or one of the cozy outdoor cafés before catching direct trains back home to Zürich (53 min) and Bern (37 min).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Detailed Cards for Candidates 2, 3, 4 ─────────────────────── -->
+    <section id="candidates">
+      <div class="section-title-wrap">
+        <div class="section-tag">Alternative Candidates</div>
+        <h2 class="section-title">Other Scoped Destinations</h2>
+        <p class="section-desc">If you prefer sheer lake cliffs, higher alpine lakes, or panoramic cable car rides.</p>
+      </div>
+
+      <div class="candidate-details-grid">
+
+        <!-- Candidate 2: Niederbauen-Chulm -->
+        <div class="candidate-card" id="niederbauen">
+          <div class="candidate-header">
+            <div>
+              <h3 class="candidate-title">Niederbauen-Chulm Panorama Loop</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Emmetten · Lake Lucerne & Urnersee</p>
+            </div>
+            <span class="candidate-tag cliff">★ 4.8 · Dramatic Cliff Setting</span>
+          </div>
+          <div class="candidate-body">
+            <div class="candidate-desc">
+              <p style="margin-bottom: 12px;">
+                Niederbauen-Chulm delivers one of the most sheer vantage points in Switzerland. The summit perches on a vertical limestone wall plunging straight into the turquoise, fjord-like waters of the Urnersee.
+              </p>
+              <p style="margin-bottom: 12px;">
+                Taking the charming 8-passenger cable car from Emmetten brings you straight onto alpine pastureland. The trail loops through high meadows before zig-zagging up the rocky crest to the summit cross.
+              </p>
+              <p>
+                <strong>Date Perk:</strong> Far less touristy than Rigi or Pilatus. Stop at Berggasthaus Niederbauen near the cable car station for fresh alpine cheese, rösti, and iced tea with cliff views.
+              </p>
+            </div>
+            <div class="candidate-sidebar">
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Stats</span>
+                <span class="cand-stat-val">~6 km · 2.5–3 hrs</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Elevation</span>
+                <span class="cand-stat-val">±360 m ascent & descent</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Zürich</span>
+                <span class="cand-stat-val">~1h 20m (IR to Luzern/Stans + Bus)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Bern</span>
+                <span class="cand-stat-val">~1h 45m (IR via Luzern)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Type</span>
+                <span class="cand-stat-val">Alpine Loop (T2)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Candidate 3: Stockhorn -->
+        <div class="candidate-card" id="stockhorn">
+          <div class="candidate-header">
+            <div>
+              <h3 class="candidate-title">Stockhorn & Oberstockensee Loop</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Erlenbach im Simmental · Gateway to Bernese Alps</p>
+            </div>
+            <span class="candidate-tag alpine">★ 4.8 · High Alpine & Lakes</span>
+          </div>
+          <div class="candidate-body">
+            <div class="candidate-desc">
+              <p style="margin-bottom: 12px;">
+                An imposing limestone pyramid overlooking the Simmental valley. The trail begins at the Chrindi mid-station, looping around the pristine alpine lakes of <em>Hinterstockensee</em> and <em>Oberstockensee</em> before ascending toward the rocky summit.
+              </p>
+              <p style="margin-bottom: 12px;">
+                The summit platform delivers a breathtaking 360-degree panorama directly confronting the icy north faces of the Eiger, Mönch, and Jungfrau, contrasting with the rolling Swiss plateau below.
+              </p>
+              <p>
+                <strong>Date Perk:</strong> Closer to her (35 min from Bern). Tackle the uphill on foot and take the summit cable car back down to Chrindi or the valley to spare your knees.
+              </p>
+            </div>
+            <div class="candidate-sidebar">
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Stats</span>
+                <span class="cand-stat-val">~6.5 km · 3–3.5 hrs</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Elevation</span>
+                <span class="cand-stat-val">+550 m (or +350m lake loop)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Zürich</span>
+                <span class="cand-stat-val">~1h 45m (via Bern/Spiez)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Bern</span>
+                <span class="cand-stat-val">~35 min (direct BLS train)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Type</span>
+                <span class="cand-stat-val">Rocky Karst & Lake Trail (T2/T3)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Candidate 4: Stanserhorn -->
+        <div class="candidate-card" id="stanserhorn">
+          <div class="candidate-header">
+            <div>
+              <h3 class="candidate-title">Stanserhorn Ridge Trail & CabriO</h3>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Stans · Central Swiss Lake Region</p>
+            </div>
+            <span class="candidate-tag panorama">★ 4.8 · 360° Lake Panorama</span>
+          </div>
+          <div class="candidate-body">
+            <div class="candidate-desc">
+              <p style="margin-bottom: 12px;">
+                Stanserhorn towers above Lake Lucerne with an unobstructed 360-degree horizon taking in ten Swiss lakes and roughly 100 kilometers of the Alpine chain.
+              </p>
+              <p style="margin-bottom: 12px;">
+                Rather than riding the cable car both ways, hiking up from mid-mountain (e.g. from Wiesenberg or Wirzweli) or extending along the summit ridge to Chli Horn creates a sporty, rewarding outing with continuous crest panoramas.
+              </p>
+              <p>
+                <strong>Date Perk:</strong> Ride down on the world’s first double-decker open-top <em>CabriO</em> cable car, feeling the fresh alpine wind on the upper deck.
+              </p>
+            </div>
+            <div class="candidate-sidebar">
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Stats</span>
+                <span class="cand-stat-val">6–8 km · 2.5–3.5 hrs</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Elevation</span>
+                <span class="cand-stat-val">+450 m to +650 m</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Zürich</span>
+                <span class="cand-stat-val">1h 05m (IR via Luzern)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">From Bern</span>
+                <span class="cand-stat-val">1h 20m (IR via Luzern)</span>
+              </div>
+              <div class="cand-stat-row">
+                <span class="cand-stat-label">Trail Type</span>
+                <span class="cand-stat-val">Pre-alpine Ridge (T2)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Packing & Logistics Checklist ────────────────────────────── -->
+    <section class="logistics-card">
+      <div class="section-tag">Daypack Essentials</div>
+      <h3 style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">
+        What to Pack for a Moderate Swiss Day Hike
+      </h3>
+      <p style="font-size: 0.92rem; color: var(--text-muted);">Keep it light and comfortable. Key items for a relaxed 3-hour outing:</p>
+
+      <div class="checklist-grid">
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>Trail runners or light hiking shoes</span>
+        </div>
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>Wind/rain shell & light warm layer</span>
+        </div>
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>1.0 – 1.5 L water per person</span>
+        </div>
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>Trail snacks (nuts, chocolate, fruit)</span>
+        </div>
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>Sun protection (sunglasses, sunscreen)</span>
+        </div>
+        <div class="check-item">
+          <span class="check-box-icon">✓</span>
+          <span>SwissPass / Halbtax / SBB Mobile App</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="page-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <span>·</span>
+        <a href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB Timetable</a>
+        <span>·</span>
+        <a href="https://www.meteoswiss.admin.ch" target="_blank" rel="noopener">MeteoSwiss Weather</a>
+        <span>·</span>
+        <a href="https://www.schweizmobil.ch/en/hiking-in-switzerland.html" target="_blank" rel="noopener">SchweizMobil</a>
+      </div>
+      <p>© 2026 Sunmeet Singh · Curated Hike Ideas for Zürich & Bern Rendezvous</p>
+    </div>
+  </footer>
+
+  <!-- ── Toast ────────────────────────────────────────────────────────── -->
+  <div id="toast">
+    <span>✓</span> Message copied to clipboard!
+  </div>
+
+  <!-- ── Interactive Scripts ──────────────────────────────────────────── -->
+  <script>
+    // Tab Switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content-pane').forEach(pane => pane.classList.remove('active'));
+      
+      const activePane = document.getElementById(tabId);
+      if (activePane) {
+        activePane.classList.add('active');
+      }
+
+      event.currentTarget.classList.add('active');
+    }
+
+    // Copy to Clipboard
+    function copyMessage() {
+      const msg = document.getElementById('share-message').innerText;
+      navigator.clipboard.writeText(msg).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        
+        const btnText = document.getElementById('copy-text-btn');
+        const origText = btnText.innerText;
+        btnText.innerText = 'Copied!';
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+          btnText.innerText = origText;
+        }, 2500);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Dark Mode Theme Controller
+    const themeBtn = document.getElementById('theme-btn');
+    const themeIcon = document.getElementById('theme-icon');
+
+    function setTheme(isDark) {
+      if (isDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.innerText = '☀️';
+        localStorage.setItem('site-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.innerText = '🌙';
+        localStorage.setItem('site-theme', 'light');
+      }
+    }
+
+    // Init theme
+    const savedTheme = localStorage.getItem('site-theme');
+    const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+      setTheme(true);
+    } else {
+      setTheme(false);
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+    });
+  </script>
+</body>
+</html>
