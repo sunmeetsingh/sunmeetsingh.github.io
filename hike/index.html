@@ -219,7 +219,7 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
 
     /* ── Hero Section ─────────────────────────────────────────────────── */
     .hero-section {
-      padding: 56px 0 40px;
+      padding: 48px 0 28px;
       text-align: center;
     }
 
@@ -255,7 +255,7 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
 
     .hero-subtitle {
       max-width: 680px;
-      margin: 0 auto 32px;
+      margin: 0 auto 28px;
       font-size: 1.15rem;
       color: var(--text-muted);
       line-height: 1.6;
@@ -287,19 +287,20 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       font-size: 1.2rem;
     }
 
-    /* ── Quick Copy Card ──────────────────────────────────────────────── */
-    .copy-banner {
+    /* ── Warm Intro Note ──────────────────────────────────────────────── */
+    .welcome-note {
       background: linear-gradient(135deg, var(--bg-surface), var(--bg-surface-soft));
       border: 1px solid var(--border-strong);
       border-radius: var(--radius-lg);
-      padding: 24px 28px;
-      margin: 28px 0 48px;
-      box-shadow: var(--shadow-md);
+      padding: 22px 26px;
+      margin: 24px auto 44px;
+      max-width: 820px;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
       position: relative;
-      overflow: hidden;
     }
 
-    .copy-banner::before {
+    .welcome-note::before {
       content: "";
       position: absolute;
       top: 0;
@@ -307,58 +308,24 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       width: 4px;
       height: 100%;
       background: var(--brand-primary);
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
     }
 
-    .copy-header {
+    .welcome-note-header {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .copy-label {
+      gap: 8px;
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .btn-copy {
-      background-color: var(--brand-primary);
-      color: #ffffff;
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 8px 16px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
-    }
-
-    .btn-copy:hover {
-      background-color: var(--brand-primary-hover);
-      transform: translateY(-1px);
-    }
-
-    .copy-text {
-      background-color: var(--bg-page);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      font-size: 0.94rem;
+    .welcome-note-text {
+      font-size: 0.98rem;
       color: var(--text-muted);
-      line-height: 1.6;
-      white-space: pre-line;
-      font-family: inherit;
+      line-height: 1.65;
     }
 
     /* ── Section Headers ──────────────────────────────────────────────── */
@@ -387,6 +354,29 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       font-size: 1.02rem;
       color: var(--text-muted);
       margin-top: 6px;
+    }
+
+    /* ── Location & Pin Badges ────────────────────────────────────────── */
+    .map-pin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      background: var(--accent-blue-light);
+      padding: 3px 9px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .map-pin-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      text-decoration: none;
+      transform: translateY(-1px);
     }
 
     /* ── Route Matrix Grid ────────────────────────────────────────────── */
@@ -441,11 +431,17 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       margin-bottom: 18px;
     }
 
+    .route-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
     .route-number {
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-faint);
-      margin-bottom: 6px;
     }
 
     .route-name {
@@ -522,7 +518,7 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       color: var(--text-main);
     }
 
-    .date-perk-box {
+    .trail-perk-box {
       margin-top: 14px;
       background-color: var(--bg-surface-soft);
       border-left: 3px solid var(--accent-terracotta);
@@ -571,9 +567,9 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       align-items: flex-start;
       gap: 24px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 24px;
+      padding-bottom: 20px;
     }
 
     .deep-dive-title-group h3 {
@@ -590,6 +586,13 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       margin-top: 6px;
     }
 
+    .deep-dive-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
     .deep-dive-rating {
       display: inline-flex;
       align-items: center;
@@ -601,6 +604,97 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       padding: 6px 14px;
       border-radius: 9999px;
       border: 1px solid var(--brand-primary-border);
+    }
+
+    /* ── Trail Photo Banner ───────────────────────────────────────────── */
+    .trail-photo-banner {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: 22px 0 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      background-color: var(--bg-surface-soft);
+    }
+
+    .trail-photo-banner img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .trail-photo-caption {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.05), rgba(15, 23, 42, 0.85));
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #ffffff;
+      padding: 24px 20px 12px;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .trail-photo-caption span {
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    /* ── Journey Locations Strip ──────────────────────────────────────── */
+    .journey-stops-wrap {
+      margin: 24px 0 30px;
+    }
+
+    .journey-stops-title {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-faint);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .journey-stops-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .journey-stop-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      background-color: var(--bg-surface-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .journey-stop-pill:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+      background-color: var(--brand-primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+    }
+
+    .journey-stop-pill .pill-pin {
+      color: var(--accent-terracotta);
+      font-size: 0.95rem;
     }
 
     /* Transit Rendezvous Grid */
@@ -620,6 +714,8 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       margin-bottom: 14px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 10px;
     }
 
@@ -798,6 +894,11 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       font-size: 0.98rem;
       color: var(--text-main);
       margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
 
     .node-desc {
@@ -835,6 +936,72 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.55;
+    }
+
+    /* Curated Resources Box */
+    .resources-box {
+      margin-top: 28px;
+      padding: 22px 24px;
+      background-color: var(--bg-surface-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+    }
+
+    .resources-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .resources-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .resource-link-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .resource-link-btn:hover {
+      border-color: var(--brand-primary);
+      color: var(--brand-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+    }
+
+    .resource-link-btn .res-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .resource-link-btn .res-label {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+    }
+
+    .resource-link-btn .res-sub {
+      font-size: 0.76rem;
+      color: var(--text-faint);
+      font-weight: 400;
     }
 
     /* ── Detailed Cards for Candidates 2, 3, 4 ───────────────────────── */
@@ -983,32 +1150,6 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
       margin-bottom: 14px;
     }
 
-    /* ── Toast Notification ───────────────────────────────────────────── */
-    #toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background-color: #0f172a;
-      color: #ffffff;
-      padding: 12px 20px;
-      border-radius: var(--radius-md);
-      font-size: 0.9rem;
-      font-weight: 500;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 999;
-    }
-
-    #toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
     /* ── Responsive adjustments ───────────────────────────────────────── */
     @media (max-width: 640px) {
       .hero-title {
@@ -1034,7 +1175,7 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
     <div class="container nav-inner">
       <a href="/" class="nav-brand">
         <div class="brand-icon">🏔</div>
-        <span>Sunmeet's Rendezvous</span>
+        <span>Midpoint Hikes</span>
       </a>
       <div class="nav-actions">
         <a href="#matrix" class="nav-link">Options</a>
@@ -1052,7 +1193,7 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
     <!-- ── Hero ───────────────────────────────────────────────────────── -->
     <section class="hero-section">
       <div class="hero-badge">
-        <span>🇨🇭</span> Switzerland Day Hikes · Zürich × Bern
+        <span>🇨🇭</span> Swiss Day Hikes · Zürich × Bern Rendezvous
       </div>
       <h1 class="hero-title">
         The <span>Midpoint Rendezvous</span> Hike Guide
@@ -1072,44 +1213,24 @@ title: "Swiss Hike Ideas — Zürich & Bern Rendezvous"
         </div>
         <div class="metric-chip">
           <span class="metric-icon">🚆</span>
-          <span><strong>SBB Direct</strong> train connections</span>
+          <span><strong>SBB Direct</strong> balanced transit</span>
         </div>
         <div class="metric-chip">
-          <span class="metric-icon">🥂</span>
-          <span><strong>Great Date Perk</strong> post-hike chill</span>
+          <span class="metric-icon">☕</span>
+          <span><strong>Post-Hike Chill</strong> riverside cafés & drinks</span>
         </div>
       </div>
     </section>
 
-    <!-- ── Quick Message Copier ───────────────────────────────────────── -->
-    <section class="copy-banner">
-      <div class="copy-header">
-        <div class="copy-label">
-          <span>💬</span> Quick Message to Send Her
-        </div>
-        <button class="btn-copy" onclick="copyMessage()">
-          <span id="copy-icon">📋</span>
-          <span id="copy-text-btn">Copy to Clipboard</span>
-        </button>
+    <!-- ── Warm Welcoming Note ─────────────────────────────────────────── -->
+    <div class="welcome-note">
+      <div class="welcome-note-header">
+        <span>👋</span> Hey there!
       </div>
-      <div class="copy-text" id="share-message">Hey, I scoped out a few hike ideas roughly between Zürich and Bern that have great views, take around 2.5 to 3.5 hours, and give us a solid workout without being an all-day trek.
-
-Any of these jump out at you?
-
-1. Weissenstein & Röti Ridge (Solothurn)
-The dead-center option: ~35 min from Bern, ~50 min from Zürich. Open ridge walk with views across the plateau to the entire Alpine chain, and we can grab a drink by the river in Solothurn afterward.
-
-2. Niederbauen-Chulm (Lake Lucerne)
-The dramatic cliff option: ~1h20 for me, ~1h45 for you. A proper alpine trail leading up to a summit that drops straight down into the lake. Very scenic and quieter than the tourist hubs.
-
-3. Stanserhorn Ridge (near Lucerne)
-The panoramic ridge option: ~1h for me, ~1h20 for you. A sporty ridge route with 360° views over 10 lakes, plus an open-air double-decker cable car down if our knees want a break.
-
-4. Stockhorn & Mountain Lakes (Simmental)
-The high-alpine option: Closer to you (~35 min from Bern, ~1h45 from Zürich). Rugged limestone trails passing two turquoise mountain lakes with front-row views of the Eiger, Mönch, and Jungfrau.
-
-Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mountain lakes?</div>
-    </section>
+      <p class="welcome-note-text">
+        I scoped out a few hike ideas roughly between Zürich and Bern that have rewarding viewpoints, take around 2.5 to 3.5 hours, and give us a solid workout without being an all-day trek. Take a look below at the options, trail profiles, and journey stops — let me know what kind of vibe you lean toward (dramatic lake cliffs, a breezy Jura ridge walk, or alpine mountain lakes)!
+      </p>
+    </div>
 
     <!-- ── Options Matrix ─────────────────────────────────────────────── -->
     <section id="matrix">
@@ -1125,7 +1246,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <div class="route-card featured">
           <div class="featured-badge">Top Recommendation</div>
           <div class="card-top">
-            <div class="route-number">Option 01 · Jura Crest</div>
+            <div class="route-meta-row">
+              <span class="route-number">Option 01 · Jura Crest</span>
+              <a href="https://maps.google.com/?q=Weissenstein+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+            </div>
             <h3 class="route-name">Weissenstein & Röti Ridge</h3>
             <span class="route-hook">The Dead-Center Balancer</span>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -1159,8 +1283,8 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 <span class="transit-time">37 min (direct IR 17)</span>
               </div>
             </div>
-            <div class="date-perk-box">
-              <strong>Date Perk:</strong> Drinks by the Aare in Solothurn’s baroque old town (Solheure terrace).
+            <div class="trail-perk-box">
+              <strong>Post-Hike Reward:</strong> Drinks by the Aare in Solothurn’s baroque old town (Solheure terrace).
             </div>
           </div>
           <a href="#weissenstein" class="btn-view-details">Explore Full Itinerary ↓</a>
@@ -1169,7 +1293,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <!-- Route 2: Niederbauen-Chulm -->
         <div class="route-card">
           <div class="card-top">
-            <div class="route-number">Option 02 · Central Switzerland</div>
+            <div class="route-meta-row">
+              <span class="route-number">Option 02 · Central Switzerland</span>
+              <a href="https://maps.google.com/?q=Niederbauen-Chulm" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+            </div>
             <h3 class="route-name">Niederbauen-Chulm</h3>
             <span class="route-hook" style="color: var(--accent-blue); background: var(--accent-blue-light);">Dramatic Lake Cliff</span>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -1203,8 +1330,8 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 <span class="transit-time">~1h 45m</span>
               </div>
             </div>
-            <div class="date-perk-box">
-              <strong>Date Perk:</strong> Cozier, uncrowded summit cross & mountain cheese at Alp Tritt.
+            <div class="trail-perk-box">
+              <strong>Post-Hike Reward:</strong> Cozier, uncrowded summit cross & fresh mountain cheese at Alp Tritt.
             </div>
           </div>
           <a href="#niederbauen" class="btn-view-details">View Details ↓</a>
@@ -1213,7 +1340,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <!-- Route 3: Stockhorn -->
         <div class="route-card">
           <div class="card-top">
-            <div class="route-number">Option 03 · Bernese Oberland</div>
+            <div class="route-meta-row">
+              <span class="route-number">Option 03 · Bernese Oberland</span>
+              <a href="https://maps.google.com/?q=Stockhorn+Erlenbach" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+            </div>
             <h3 class="route-name">Stockhorn & Lakes</h3>
             <span class="route-hook" style="color: var(--accent-purple); background: var(--accent-purple-light);">High Alpine & Lakes</span>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -1247,8 +1377,8 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 <span class="transit-time">35 min (direct)</span>
               </div>
             </div>
-            <div class="date-perk-box">
-              <strong>Date Perk:</strong> Hike up to the peak on foot, take the panoramic cable car down to save knees.
+            <div class="trail-perk-box">
+              <strong>Post-Hike Reward:</strong> Hike up to the peak on foot, take the panoramic cable car down to save knees.
             </div>
           </div>
           <a href="#stockhorn" class="btn-view-details">View Details ↓</a>
@@ -1257,7 +1387,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <!-- Route 4: Stanserhorn -->
         <div class="route-card">
           <div class="card-top">
-            <div class="route-number">Option 04 · Nidwalden</div>
+            <div class="route-meta-row">
+              <span class="route-number">Option 04 · Nidwalden</span>
+              <a href="https://maps.google.com/?q=Stanserhorn" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+            </div>
             <h3 class="route-name">Stanserhorn Ridge</h3>
             <span class="route-hook" style="color: var(--accent-terracotta); background: var(--accent-terracotta-light);">Panoramic & CabriO</span>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
@@ -1291,8 +1424,8 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 <span class="transit-time">1h 20m</span>
               </div>
             </div>
-            <div class="date-perk-box">
-              <strong>Date Perk:</strong> Ride the open-air upper deck of the iconic CabriO cable car on the way down.
+            <div class="trail-perk-box">
+              <strong>Post-Hike Reward:</strong> Ride the open-air upper deck of the iconic CabriO cable car on the way down.
             </div>
           </div>
           <a href="#stanserhorn" class="btn-view-details">View Details ↓</a>
@@ -1309,19 +1442,72 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
           <h3>Weissenstein & Röti Ridge Walk</h3>
           <p class="deep-dive-subtitle">First Jura ridge high above Solothurn · Unbroken Alpine panorama & riverside finale</p>
         </div>
-        <div class="deep-dive-rating">
-          <span>★ 4.6</span>
-          <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-muted);">(Mountain Peak)</span>
+        <div class="deep-dive-meta">
+          <div class="deep-dive-rating">
+            <span>★ 4.6</span>
+            <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-muted);">(Mountain Peak)</span>
+          </div>
+          <a href="https://maps.google.com/?q=Weissenstein+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Open in Google Maps</a>
+        </div>
+      </div>
+
+      <!-- Photo Banner Preview -->
+      <div class="trail-photo-banner">
+        <img src="https://swissfamilyfun.com/wp-content/uploads/2021/05/weissenstein-balmflue-view2-feature.jpg" alt="Balmfluechöpfli cliff view overlooking the Swiss plateau and Alps" loading="lazy">
+        <div class="trail-photo-caption">
+          <span><strong>Balmfluechöpfli Cliff Viewpoint (1,290 m):</strong> Sheer limestone drop-off looking out across the Aare valley and the entire Alpine chain.</span>
+          <a href="https://maps.google.com/?q=Balmfluech%C3%B6pfli" target="_blank" rel="noopener" style="color: #fff; font-weight: 600; text-decoration: underline;">📍 Pin on Maps</a>
+        </div>
+      </div>
+
+      <!-- Journey Stops Strip -->
+      <div class="journey-stops-wrap">
+        <div class="journey-stops-title">
+          <span>🗺</span> Key Journey Stops & Coordinates
+        </div>
+        <div class="journey-stops-grid">
+          <a href="https://maps.google.com/?q=Solothurn+Bahnhof" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🚉</span>
+            <span>Solothurn HB (Meeting Point)</span>
+          </a>
+          <a href="https://maps.google.com/?q=Seilbahn+Weissenstein" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🚡</span>
+            <span>Oberdorf Valley Gondola</span>
+          </a>
+          <a href="https://maps.google.com/?q=Hotel+Weissenstein" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🏔</span>
+            <span>Hotel Weissenstein (1,284 m)</span>
+          </a>
+          <a href="https://maps.google.com/?q=R%C3%B6ti+Solothurn" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">⛰</span>
+            <span>Röti Summit Cross (1,395 m)</span>
+          </a>
+          <a href="https://maps.google.com/?q=Balmfluech%C3%B6pfli" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🧗</span>
+            <span>Balmfluechöpfli Cliffs (1,290 m)</span>
+          </a>
+          <a href="https://maps.google.com/?q=Oberbalmberg+Kurhaus" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🚏</span>
+            <span>Oberbalmberg Pass (1,078 m)</span>
+          </a>
+          <a href="https://maps.google.com/?q=Solheure+Solothurn" target="_blank" rel="noopener" class="journey-stop-pill">
+            <span class="pill-pin">🍹</span>
+            <span>Solheure Aare Lounge</span>
+          </a>
         </div>
       </div>
 
       <!-- Meeting Point & Transit Section -->
       <div class="rendezvous-box">
         <div class="rendezvous-title">
-          <span>🚉</span> Meeting Point: Solothurn Hauptbahnhof
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span>🚉</span>
+            <span>Meeting Point: Solothurn Hauptbahnhof (4.0★)</span>
+          </div>
+          <a href="https://maps.google.com/?q=Solothurn+Bahnhof" target="_blank" rel="noopener" class="map-pin-btn">📍 Open in Google Maps</a>
         </div>
         <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 16px;">
-          Solothurn is the geographic sweet spot between Zürich and Bern. Trains from both cities arrive with near-perfect 30-minute symmetry:
+          Solothurn is the geographic sweet spot between Zürich and Bern. Direct express trains from both cities arrive with near-perfect 30-minute symmetry:
         </p>
 
         <div class="transit-cols">
@@ -1347,7 +1533,7 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         </div>
 
         <p style="font-size: 0.86rem; color: var(--text-faint); margin-top: 14px;">
-          💡 <em>Meeting plan:</em> Meet on the Solothurn station platform or station café, then proceed together to the local bus or S-Bahn connection.
+          💡 <em>Plan:</em> Meet on the Solothurn station platform or station café, then head to the local connecting train or bus together.
         </p>
       </div>
 
@@ -1362,7 +1548,7 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
             🚡 Option 1: With Gondola (Classic Ridge)
           </button>
           <button class="tab-btn" onclick="switchTab('variant-balmberg')">
-            🥾 Option 2: No Gondola (Balmberg Loop)
+            🥾 Option 2: No Gondola (Route 502 Loop)
           </button>
           <button class="tab-btn" onclick="switchTab('variant-sporty')">
             ⛰ Option 3: No Gondola (Sporty Valley Ascent)
@@ -1385,28 +1571,50 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
 
             <div class="step-timeline">
               <div class="timeline-node">
-                <div class="node-title">1. Solothurn → Oberdorf SO → Weissenstein</div>
+                <div class="node-title">
+                  <span>1. Solothurn → Oberdorf SO → Weissenstein</span>
+                  <a href="https://maps.google.com/?q=Seilbahn+Weissenstein" target="_blank" rel="noopener" class="map-pin-btn">📍 Oberdorf Valley Station</a>
+                </div>
                 <div class="node-desc">
                   Take local train <strong>S21</strong> (13 min) to Oberdorf SO. Walk 2 minutes to the valley gondola station. Ride <em>Seilbahn Weissenstein</em> directly up to 1,284 m (10 min; CHF 10 one-way with Halbtax / GA).
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">2. Weissenstein (1,284 m) → Röti Summit (1,395 m)</div>
+                <div class="node-title">
+                  <span>2. Weissenstein (1,284 m) → Röti Summit (1,395 m)</span>
+                  <a href="https://maps.google.com/?q=R%C3%B6ti+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Röti Peak Pin</a>
+                </div>
                 <div class="node-desc">
                   Take in the panoramic view of the Swiss Alps from the mountain hotel terrace. Follow the well-marked yellow trail eastward on a gradual, scenic 40-minute ascent to <strong>Röti (1,395 m)</strong>, the highest point of the ridge. 360° views across the Swiss plateau to Mont Blanc, Säntis, and north to the Black Forest.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">3. Röti → Nesselbodenröti → Oberbalmberg</div>
+                <div class="node-title">
+                  <span>3. Cliff Viewpoint Detour: Balmfluechöpfli (1,290 m)</span>
+                  <a href="https://maps.google.com/?q=Balmfluech%C3%B6pfli" target="_blank" rel="noopener" class="map-pin-btn">📍 Balmfluechöpfli Pin</a>
+                </div>
+                <div class="node-desc">
+                  <em>Scenic highlight (+25 min):</em> From Röti, follow yellow signs toward <strong>Balmfluechöpfli</strong>. The trail skirts impressive limestone drop-offs overlooking Solothurn and the Aare valley. From here, you can either continue along the crest to Balmberg or loop through the forest down to <strong>Nesselboden middle station</strong> to ride the cable car down.
+                </div>
+              </div>
+
+              <div class="timeline-node">
+                <div class="node-title">
+                  <span>4. Röti / Balmfluechöpfli → Nesselbodenröti → Oberbalmberg</span>
+                  <a href="https://maps.google.com/?q=Oberbalmberg+Kurhaus" target="_blank" rel="noopener" class="map-pin-btn">📍 Oberbalmberg Pin</a>
+                </div>
                 <div class="node-desc">
                   Continue eastward along the gentle limestone crest past Nesselbodenröti, then make a forgiving descent through open alpine meadows down to <strong>Oberbalmberg, Kurhaus (1,078 m)</strong>.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">4. Return to Solothurn via PostBus 12</div>
+                <div class="node-title">
+                  <span>5. Return to Solothurn via PostBus 12</span>
+                  <a href="https://maps.google.com/?q=Solothurn+Bahnhof" target="_blank" rel="noopener" class="map-pin-btn">📍 Solothurn HB</a>
+                </div>
                 <div class="node-desc">
                   Board <strong>PostBus Line 12</strong> right at Oberbalmberg, Kurhaus back down to Solothurn station (26 min, runs hourly).
                 </div>
@@ -1419,42 +1627,55 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <div class="tab-content-pane" id="variant-balmberg">
           <div class="variant-card">
             <div class="variant-stats-bar">
-              <div class="vstat"><span>Distance:</span> <strong>8.0 km</strong></div>
-              <div class="vstat"><span>Duration:</span> <strong>2.5 – 3 hours</strong></div>
+              <div class="vstat"><span>Route:</span> <strong>SchweizMobil 502</strong></div>
+              <div class="vstat"><span>Distance:</span> <strong>8.9 km</strong></div>
+              <div class="vstat"><span>Duration:</span> <strong>~2h 45m – 3h</strong></div>
               <div class="vstat"><span>Ascent / Descent:</span> <strong>+420 m / -420 m</strong></div>
               <div class="vstat"><span>Level:</span> <strong>Solid Moderate (Pure on-foot)</strong></div>
             </div>
 
             <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
-              <strong>The Vibe:</strong> 100% on foot without paying for cable cars, yet avoiding a tedious 700 m low-altitude forest slog. Uses the high pass bus to start directly at 1,078 m (official SchweizMobil Route 502).
+              <strong>The Vibe:</strong> Official national trail <em>Weissenstein-Röti-Weg</em> (SchweizMobil Route 502). 100% on foot without paying for cable cars, yet avoiding a tedious 700 m low-altitude forest slog. Follows green "502" stickers on yellow Swiss trail markers, starting at 1,078 m.
             </p>
 
             <div class="step-timeline">
               <div class="timeline-node">
-                <div class="node-title">1. Solothurn → Oberbalmberg, Kurhaus via PostBus 12</div>
+                <div class="node-title">
+                  <span>1. Solothurn → Oberbalmberg, Kurhaus via PostBus 12</span>
+                  <a href="https://maps.google.com/?q=Oberbalmberg+Kurhaus" target="_blank" rel="noopener" class="map-pin-btn">📍 Oberbalmberg Pin</a>
+                </div>
                 <div class="node-desc">
                   From Solothurn HB, take <strong>PostBus Line 12</strong> directly to the pass terminus at Oberbalmberg, Kurhaus (26 minutes).
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">2. Balmberg (1,078 m) → Nesselbodenröti → Röti (1,395 m)</div>
+                <div class="node-title">
+                  <span>2. Balmberg (1,078 m) → Nesselbodenröti → Röti (1,395 m)</span>
+                  <a href="https://maps.google.com/?q=R%C3%B6ti+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Röti Peak Pin</a>
+                </div>
                 <div class="node-desc">
                   Climb the well-graded mountain trail up to the pass saddle at Nesselbodenröti, then follow the crest directly to the summit cross at Röti.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">3. Röti → Hotel Weissenstein Terrace (1,284 m)</div>
+                <div class="node-title">
+                  <span>3. Röti → Hotel Weissenstein Terrace (1,284 m)</span>
+                  <a href="https://maps.google.com/?q=Hotel+Weissenstein" target="_blank" rel="noopener" class="map-pin-btn">📍 Hotel Terrace</a>
+                </div>
                 <div class="node-desc">
                   Stroll west along the high ridge toward Weissenstein. Relax on the sun terrace at Hotel Weissenstein for coffee or a cold drink overlooking the Alps.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">4. Return Loop via Schofgraben → Balmberg</div>
+                <div class="node-title">
+                  <span>4. Return Loop via Schofgraben → Balmberg</span>
+                  <a href="https://maps.google.com/?q=Oberbalmberg+Kurhaus" target="_blank" rel="noopener" class="map-pin-btn">📍 Pass Bus Stop</a>
+                </div>
                 <div class="node-desc">
-                  Follow the circular route back along the northern forest and meadow flank (via Schofgraben) to return smoothly to Oberbalmberg, and take PostBus 12 back to Solothurn.
+                  Follow the official 502 circular route back along the northern forest and meadow flank (via Schofgraben) to return smoothly to Oberbalmberg, and take PostBus 12 back to Solothurn.
                 </div>
               </div>
             </div>
@@ -1477,28 +1698,40 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
 
             <div class="step-timeline">
               <div class="timeline-node">
-                <div class="node-title">1. Solothurn → Oberdorf SO (655 m)</div>
+                <div class="node-title">
+                  <span>1. Solothurn → Oberdorf SO (655 m)</span>
+                  <a href="https://maps.google.com/?q=Oberdorf+SO+Bahnhof" target="_blank" rel="noopener" class="map-pin-btn">📍 Oberdorf Station</a>
+                </div>
                 <div class="node-desc">
                   S21 train to Oberdorf SO (13 minutes). Walk to trail start.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">2. Valley Ascent via Stiegenlos & Nesselboden (+630 m)</div>
+                <div class="node-title">
+                  <span>2. Valley Ascent via Stiegenlos & Nesselboden (+630 m)</span>
+                  <a href="https://maps.google.com/?q=Nesselboden+Weissenstein" target="_blank" rel="noopener" class="map-pin-btn">📍 Mid-Mountain</a>
+                </div>
                 <div class="node-desc">
                   Winding forest trail climbing past limestone bluffs up to Weissenstein plateau (1,284 m; ~1h45 to 2 hours of steady uphill walking).
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">3. Weissenstein → Röti Peak (1,395 m)</div>
+                <div class="node-title">
+                  <span>3. Weissenstein → Röti Peak (1,395 m)</span>
+                  <a href="https://maps.google.com/?q=R%C3%B6ti+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Röti Summit</a>
+                </div>
                 <div class="node-desc">
                   Continue along the crest trail for the final +110 m ascent to the Röti summit marker (35 min) for the reward panorama.
                 </div>
               </div>
 
               <div class="timeline-node">
-                <div class="node-title">4. Descent to Balmberg → PostBus 12 to Solothurn</div>
+                <div class="node-title">
+                  <span>4. Descent to Balmberg → PostBus 12 to Solothurn</span>
+                  <a href="https://maps.google.com/?q=Oberbalmberg+Kurhaus" target="_blank" rel="noopener" class="map-pin-btn">📍 Oberbalmberg Bus</a>
+                </div>
                 <div class="node-desc">
                   Traverse the ridge down to Oberbalmberg, Kurhaus (1h gentle downhill descent), then catch PostBus 12 back to Solothurn HB.
                 </div>
@@ -1509,14 +1742,65 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
 
       </div>
 
-      <!-- Post-Hike Date Perk -->
+      <!-- Post-Hike Chill Spot -->
       <div class="post-hike-card">
-        <div class="post-hike-icon">🥂</div>
+        <div class="post-hike-icon">🍹</div>
         <div class="post-hike-content">
-          <h4>The Post-Hike Finale in Solothurn Old Town</h4>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <h4>The Post-Hike Chill in Solothurn Old Town</h4>
+            <a href="https://maps.google.com/?q=Solheure+Solothurn" target="_blank" rel="noopener" class="map-pin-btn">📍 Solheure on Google Maps</a>
+          </div>
           <p>
-            All three route variants drop you back at Solothurn HB by mid-to-late afternoon. From the station, it is an easy <strong>5-minute walk across the bridge into Solothurn’s baroque old town</strong>. Grab a glass of wine or craft beer right along the Aare riverfront at <strong>Solheure</strong> (Landhausquai) or one of the cozy outdoor cafés before catching direct trains back home to Zürich (53 min) and Bern (37 min).
+            All three route variants drop you back at Solothurn HB by mid-to-late afternoon. From the station, it is an easy <strong>5-minute walk across the bridge into Solothurn’s baroque old town</strong>. Grab a cold craft beer, spritz, or coffee right along the Aare riverfront at <strong>Solheure</strong> (Landhausquai) or one of the sunny outdoor riverside spots before catching direct trains back home to Zürich (53 min) and Bern (37 min).
           </p>
+        </div>
+      </div>
+
+      <!-- Curated Resources & Links -->
+      <div class="resources-box">
+        <div class="resources-title">
+          <span>📚</span> Curated Guides, Live Webcams & Official Maps
+        </div>
+        <div class="resources-links-grid">
+          <a href="https://schweizmobil.ch/en/hiking-in-switzerland/route-502" target="_blank" rel="noopener" class="resource-link-btn">
+            <span class="res-icon">🇨🇭</span>
+            <div class="res-label">
+              <span>SchweizMobil Route 502</span>
+              <span class="res-sub">Official Weissenstein-Röti-Weg map & altitude profile</span>
+            </div>
+          </a>
+
+          <a href="https://swissfamilyfun.com/weissenstein-roti/" target="_blank" rel="noopener" class="resource-link-btn">
+            <span class="res-icon">📸</span>
+            <div class="res-label">
+              <span>Swiss Family Fun Field Guide</span>
+              <span class="res-sub">Photo report, Balmfluechöpfli cliffs & middle station loop</span>
+            </div>
+          </a>
+
+          <a href="https://seilbahnweissenstein.roundshot.com/" target="_blank" rel="noopener" class="resource-link-btn">
+            <span class="res-icon">📹</span>
+            <div class="res-label">
+              <span>Weissenstein 360° Livecam</span>
+              <span class="res-sub">Live Alpine horizon view & cloud sea monitor</span>
+            </div>
+          </a>
+
+          <a href="https://seilbahn-weissenstein.ch/" target="_blank" rel="noopener" class="resource-link-btn">
+            <span class="res-icon">🚡</span>
+            <div class="res-label">
+              <span>Seilbahn Weissenstein</span>
+              <span class="res-sub">Gondola operating hours (8:30–17:30) & Halbtax fares</span>
+            </div>
+          </a>
+
+          <a href="https://www.komoot.com/tour/366314832" target="_blank" rel="noopener" class="resource-link-btn">
+            <span class="res-icon">🧭</span>
+            <div class="res-label">
+              <span>Komoot Interactive Tour</span>
+              <span class="res-sub">GPS track & downloadable offline phone navigation</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -1535,7 +1819,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <div class="candidate-card" id="niederbauen">
           <div class="candidate-header">
             <div>
-              <h3 class="candidate-title">Niederbauen-Chulm Panorama Loop</h3>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 class="candidate-title">Niederbauen-Chulm Panorama Loop</h3>
+                <a href="https://maps.google.com/?q=Niederbauen-Chulm" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+              </div>
               <p style="color: var(--text-muted); font-size: 0.92rem;">Emmetten · Lake Lucerne & Urnersee</p>
             </div>
             <span class="candidate-tag cliff">★ 4.8 · Dramatic Cliff Setting</span>
@@ -1549,7 +1836,7 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 Taking the charming 8-passenger cable car from Emmetten brings you straight onto alpine pastureland. The trail loops through high meadows before zig-zagging up the rocky crest to the summit cross.
               </p>
               <p>
-                <strong>Date Perk:</strong> Far less touristy than Rigi or Pilatus. Stop at Berggasthaus Niederbauen near the cable car station for fresh alpine cheese, rösti, and iced tea with cliff views.
+                <strong>The Payoff:</strong> Far less touristy than Rigi or Pilatus. Stop at Berggasthaus Niederbauen near the cable car station for fresh alpine cheese, rösti, and iced tea with cliff views.
               </p>
             </div>
             <div class="candidate-sidebar">
@@ -1581,7 +1868,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <div class="candidate-card" id="stockhorn">
           <div class="candidate-header">
             <div>
-              <h3 class="candidate-title">Stockhorn & Oberstockensee Loop</h3>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 class="candidate-title">Stockhorn & Oberstockensee Loop</h3>
+                <a href="https://maps.google.com/?q=Stockhorn+Erlenbach" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+              </div>
               <p style="color: var(--text-muted); font-size: 0.92rem;">Erlenbach im Simmental · Gateway to Bernese Alps</p>
             </div>
             <span class="candidate-tag alpine">★ 4.8 · High Alpine & Lakes</span>
@@ -1595,7 +1885,7 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 The summit platform delivers a breathtaking 360-degree panorama directly confronting the icy north faces of the Eiger, Mönch, and Jungfrau, contrasting with the rolling Swiss plateau below.
               </p>
               <p>
-                <strong>Date Perk:</strong> Closer to her (35 min from Bern). Tackle the uphill on foot and take the summit cable car back down to Chrindi or the valley to spare your knees.
+                <strong>The Payoff:</strong> Super convenient from Bern (35 min direct). You can tackle the uphill on foot and take the summit cable car back down to Chrindi or the valley to spare your knees.
               </p>
             </div>
             <div class="candidate-sidebar">
@@ -1627,7 +1917,10 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <div class="candidate-card" id="stanserhorn">
           <div class="candidate-header">
             <div>
-              <h3 class="candidate-title">Stanserhorn Ridge Trail & CabriO</h3>
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 class="candidate-title">Stanserhorn Ridge Trail & CabriO</h3>
+                <a href="https://maps.google.com/?q=Stanserhorn" target="_blank" rel="noopener" class="map-pin-btn">📍 Google Maps</a>
+              </div>
               <p style="color: var(--text-muted); font-size: 0.92rem;">Stans · Central Swiss Lake Region</p>
             </div>
             <span class="candidate-tag panorama">★ 4.8 · 360° Lake Panorama</span>
@@ -1641,7 +1934,7 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
                 Rather than riding the cable car both ways, hiking up from mid-mountain (e.g. from Wiesenberg or Wirzweli) or extending along the summit ridge to Chli Horn creates a sporty, rewarding outing with continuous crest panoramas.
               </p>
               <p>
-                <strong>Date Perk:</strong> Ride down on the world’s first double-decker open-top <em>CabriO</em> cable car, feeling the fresh alpine wind on the upper deck.
+                <strong>The Payoff:</strong> Ride down on the world’s first double-decker open-top <em>CabriO</em> cable car, feeling the fresh alpine wind on the upper deck.
               </p>
             </div>
             <div class="candidate-sidebar">
@@ -1722,14 +2015,9 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
         <span>·</span>
         <a href="https://www.schweizmobil.ch/en/hiking-in-switzerland.html" target="_blank" rel="noopener">SchweizMobil</a>
       </div>
-      <p>© 2026 Sunmeet Singh · Curated Hike Ideas for Zürich & Bern Rendezvous</p>
+      <p>© 2026 Sunmeet Singh · Curated Midpoint Hike Ideas for Zürich & Bern</p>
     </div>
   </footer>
-
-  <!-- ── Toast ────────────────────────────────────────────────────────── -->
-  <div id="toast">
-    <span>✓</span> Message copied to clipboard!
-  </div>
 
   <!-- ── Interactive Scripts ──────────────────────────────────────────── -->
   <script>
@@ -1744,26 +2032,6 @@ Do you lean more toward dramatic lake cliffs, a breezy ridge walk, or alpine mou
       }
 
       event.currentTarget.classList.add('active');
-    }
-
-    // Copy to Clipboard
-    function copyMessage() {
-      const msg = document.getElementById('share-message').innerText;
-      navigator.clipboard.writeText(msg).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        
-        const btnText = document.getElementById('copy-text-btn');
-        const origText = btnText.innerText;
-        btnText.innerText = 'Copied!';
-
-        setTimeout(() => {
-          toast.classList.remove('show');
-          btnText.innerText = origText;
-        }, 2500);
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
     }
 
     // Dark Mode Theme Controller
