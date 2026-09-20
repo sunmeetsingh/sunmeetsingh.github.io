@@ -383,17 +383,24 @@ title: "Bar Console & Beverage Station — Zwyssigstrasse 11"
     <div id="visuals" class="view-card">
       <div class="view-card-header">
         <div class="view-tabs">
-          <button class="view-tab active" onclick="switchView('render', this)">3D Photorealistic Render</button>
-          <button class="view-tab" onclick="switchView('elevation', this)">2D Architectural Elevation (mm)</button>
+          <button class="view-tab active" onclick="switchView('render-oak', this)">3D Render — Warm Oak</button>
+          <button class="view-tab" onclick="switchView('render-walnut', this)">3D Render — Walnut (Original)</button>
+          <button class="view-tab" onclick="switchView('elevation', this)">2D Elevation &amp; Dimensions</button>
         </div>
-        <a href="dossier.html" target="_blank" class="dossier-btn">Open Full Schreiner-Dossier (Printable) →</a>
+        <a href="dossier.html" target="_blank" class="dossier-btn">Open Schreiner-Dossier (PDF) →</a>
       </div>
       <div class="view-content">
-        <div id="panel-render" class="view-panel active">
-          <img src="render.jpg" alt="3D Photorealistic Render of Beverage Station" style="max-height: 640px;">
+        <div id="panel-render-oak" class="view-panel active">
+          <img src="render_oak.jpg" alt="Warm Oak 3D Render" style="max-height: 640px;">
+          <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-2);"><strong>Option A (Warm Oak &amp; Full Drawers):</strong> Natural oiled oak finish matching the apartment's OAKO desk, 3 enclosed soft-close drawers, light quartz countertop, dark anthracite tile integration.</p>
+        </div>
+        <div id="panel-render-walnut" class="view-panel">
+          <img src="render_walnut.jpg" alt="Walnut Original Concept Render" style="max-height: 640px;">
+          <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-2);"><strong>Option B (American Walnut &amp; Open Shelf):</strong> Rich walnut grain, 2 top drawers with an open display niche below for artisan tea/coffee tins, warm champagne-gold machine accents.</p>
         </div>
         <div id="panel-elevation" class="view-panel">
           <img src="elevation.svg" alt="Architectural Elevation Drawing" style="background: #ffffff; padding: 16px; border-radius: 8px; width: 100%; max-width: 950px;">
+          <p style="margin-top: 12px; font-size: 0.82rem; color: var(--text-2);"><strong>Technical Elevation:</strong> 1200 mm width, 600/600 mm split, 900 mm working height, 580 mm machine clearance, 100 mm ventilated plinth.</p>
         </div>
       </div>
     </div>
