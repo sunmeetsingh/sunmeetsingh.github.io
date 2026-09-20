@@ -1,0 +1,551 @@
+---
+layout: null
+permalink: /design/bar/
+title: "Bar Console & Beverage Station — Zwyssigstrasse 11"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bar &amp; Coffee Console — Zwyssigstrasse 11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #F5F0EB;
+      --surface:      #FFFFFF;
+      --surface-2:    #EDE8E1;
+      --border:       #DDD6CC;
+      --border-light: #EAE4DC;
+      --text:         #1C1A18;
+      --text-2:       #6B6058;
+      --text-3:       #9C9088;
+      --brass:        #B08B4E;
+      --brass-bg:     #FBF5EB;
+      --steel:        #3D3D3D;
+      --green:        #2D4A3E;
+      --green-bg:     #EAF0ED;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.06);
+      --shadow:       0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg:    0 8px 32px rgba(0,0,0,0.12);
+      --radius:       12px;
+      --radius-sm:    8px;
+    }
+    [data-theme="dark"] {
+      --bg:           #141312;
+      --surface:      #1E1C1A;
+      --surface-2:    #292623;
+      --border:       #383430;
+      --border-light: #2C2926;
+      --text:         #EDE8E2;
+      --text-2:       #A89F95;
+      --text-3:       #6B645D;
+      --brass:        #C9A96E;
+      --brass-bg:     #2A241A;
+      --steel:        #B0A8A0;
+      --green:        #5E9E82;
+      --green-bg:     #17241E;
+      --shadow-sm:    0 1px 4px rgba(0,0,0,0.24);
+      --shadow:       0 2px 12px rgba(0,0,0,0.32);
+      --shadow-lg:    0 8px 32px rgba(0,0,0,0.40);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245, 240, 235, 0.90);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="dark"] .nav { background: rgba(20, 19, 18, 0.90); }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 54px;
+    }
+    .nav-brand {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-brand span { color: var(--text-3); font-weight: 400; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: all 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-2);
+      transition: all 0.15s;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--text-3); }
+
+    /* Page */
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 32px 100px; }
+    .header { margin-bottom: 40px; }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brass);
+      margin-bottom: 8px;
+    }
+    .title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 750px;
+      line-height: 1.6;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .pill {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+    /* Visual Section: Tabs & Grid */
+    .view-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .view-card-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .view-tabs {
+      display: flex;
+      gap: 6px;
+    }
+    .view-tab {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-2);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); background: var(--surface-2); }
+    .view-tab.active { color: var(--text); background: var(--surface-2); }
+    .dossier-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brass-bg);
+      color: var(--brass);
+      border: 1px solid rgba(176, 139, 78, 0.35);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .dossier-btn:hover {
+      background: var(--brass);
+      color: #FFFFFF;
+    }
+
+    .view-content {
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--surface-2);
+      min-height: 520px;
+    }
+    .view-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+    }
+    .view-panel { width: 100%; display: none; }
+    .view-panel.active { display: block; text-align: center; }
+
+    /* Modules Grid */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text-2);
+    }
+    .badge-brass { background: var(--brass-bg); color: var(--brass); }
+    .feature-list {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--text-2);
+    }
+    .feature-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--brass);
+      font-weight: 600;
+    }
+    .feature-list strong { color: var(--text); font-weight: 600; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border-light);
+      text-align: left;
+    }
+    th {
+      background: var(--surface-2);
+      font-weight: 600;
+      color: var(--text);
+    }
+    td strong { color: var(--text); }
+
+    /* Footer callout */
+    .callout {
+      background: var(--brass-bg);
+      border: 1px solid rgba(176, 139, 78, 0.3);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .callout-content h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .callout-content p {
+      font-size: 0.88rem;
+      color: var(--text-2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/design/" class="nav-brand">
+        Zwyssigstrasse 11 <span>/ Design / Bar Console</span>
+      </a>
+      <div class="nav-links">
+        <a href="/design/">← Main Dashboard</a>
+        <a href="#visuals" class="active">Plans &amp; 3D</a>
+        <a href="#specs">Specifications</a>
+        <a href="#hardware">Schreiner Brief</a>
+        <a href="dossier.html" target="_blank" class="dossier-btn">Print PDF 🖨️</a>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 8.5A5 5 0 0 1 5.5 3a5 5 0 1 0 5.5 5.5z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="eyebrow">Warm Contemporary · Bespoke Joinery</div>
+      <h1 class="title">Beverage Station (Coffee &amp; Bar Console)</h1>
+      <p class="subtitle">
+        A custom 1200 mm "Day-to-Night" hospitality console fitted into the corridor south niche. Espresso workflow by morning, illuminated wine and cocktail salon by evening.
+      </p>
+      <div class="pills">
+        <span class="pill"><span class="pill-dot" style="background:#B08B4E;"></span>1200 mm 60/60 Split</span>
+        <span class="pill"><span class="pill-dot" style="background:#2D4A3E;"></span>Dual-Zone Wine Cooler</span>
+        <span class="pill"><span class="pill-dot" style="background:#5C5248;"></span>Oiled Oak &amp; Smoked Glass</span>
+        <span class="pill"><span class="pill-dot" style="background:#888;"></span>Blum Legrabox Softclose</span>
+      </div>
+    </header>
+
+    <!-- Visual Switcher -->
+    <div id="visuals" class="view-card">
+      <div class="view-card-header">
+        <div class="view-tabs">
+          <button class="view-tab active" onclick="switchView('render', this)">3D Photorealistic Render</button>
+          <button class="view-tab" onclick="switchView('elevation', this)">2D Architectural Elevation (mm)</button>
+        </div>
+        <a href="dossier.html" target="_blank" class="dossier-btn">Open Full Schreiner-Dossier (Printable) →</a>
+      </div>
+      <div class="view-content">
+        <div id="panel-render" class="view-panel active">
+          <img src="render.jpg" alt="3D Photorealistic Render of Beverage Station" style="max-height: 640px;">
+        </div>
+        <div id="panel-elevation" class="view-panel">
+          <img src="elevation.svg" alt="Architectural Elevation Drawing" style="background: #ffffff; padding: 16px; border-radius: 8px; width: 100%; max-width: 950px;">
+        </div>
+      </div>
+    </div>
+
+    <!-- Modules Breakdown -->
+    <div id="specs">
+      <h2 class="section-title">📐 Functional Module Architecture</h2>
+      <div class="grid-2">
+
+        <!-- Module 1: Base Split -->
+        <div class="card">
+          <div class="card-title">
+            <span>Base Cabinet (60 / 60 Split)</span>
+            <span class="badge badge-brass">H: 900 mm · D: 600 mm</span>
+          </div>
+          <ul class="feature-list">
+            <li><strong>Left 600 mm Niche:</strong> Houses a flush undercounter dual-zone wine cooler (~34–46 bottles). Front-breathing intake via 100 mm plinth ventilation grille.</li>
+            <li><strong>Right 600 mm Drawer System:</strong>
+              <ul style="padding-left: 16px; margin: 6px 0; list-style: circle;">
+                <li><em>Top Drawer (130 mm):</em> Solid oak divider for tamping mat, 58mm tamper, WDT tool, scales, sommelier corkscrews.</li>
+                <li><em>Middle Drawer (240 mm):</em> Fellow Atmos coffee bean canisters, filter papers, tea tins.</li>
+                <li><em>Bottom Drawer (410 mm):</em> Heavy-duty pullout for tall spirits (whisky, gin, vermouth) and wine decanters.</li>
+              </ul>
+            </li>
+            <li><strong>Hardware:</strong> Blum Legrabox pure matte black with Blumotion soft-close.</li>
+          </ul>
+        </div>
+
+        <!-- Module 2: Counter & Splash -->
+        <div class="card">
+          <div class="card-title">
+            <span>Countertop &amp; Splashback</span>
+            <span class="badge">Non-Porous Mineral</span>
+          </div>
+          <ul class="feature-list">
+            <li><strong>Material:</strong> 20 mm engineered Quartz or Dekton (matte off-white/warm grey, echoing the BoConcept Santiago ceramic table).</li>
+            <li><strong>Durability:</strong> Highly resistant to espresso hot oils, acidic red wine spills, and tamping pressure.</li>
+            <li><strong>150 mm Upstand:</strong> Matching stone backsplash protecting the drywall from steam and espresso splashes.</li>
+            <li><strong>Workflow:</strong> 55 cm dedicated to espresso machine + burr grinder; 65 cm clear staging area for pouring and decanting.</li>
+          </ul>
+        </div>
+
+        <!-- Module 3: Upper Display -->
+        <div class="card">
+          <div class="card-title">
+            <span>Smoked Glass Upper Display</span>
+            <span class="badge badge-brass">W: 1200 · H: 450 · D: 320 mm</span>
+          </div>
+          <ul class="feature-list">
+            <li><strong>Doors:</strong> 2 × hinged doors with ultra-slim matte black anodized aluminium profiles (20 mm) and 4 mm toughened smoked glass (*Rauchglas*).</li>
+            <li><strong>Interior:</strong> Adjustable 8 mm glass shelf illuminated by a subtle concealed 2700K warm LED wash.</li>
+            <li><strong>Stemware Rails:</strong> 5 rows of brushed brass undermount tracks holding 15–20 inverted wine and champagne glasses.</li>
+            <li><strong>Headroom:</strong> Shallow 320 mm depth leaves generous sightlines and headroom when operating the prosumer machine.</li>
+          </ul>
+        </div>
+
+        <!-- Module 4: Acoustic Wall -->
+        <div class="card">
+          <div class="card-title">
+            <span>Acoustic Slatted Backdrop</span>
+            <span class="badge">Floor to Ceiling (~2420 mm)</span>
+          </div>
+          <ul class="feature-list">
+            <li><strong>Structure:</strong> 27×12 mm natural oiled oak slats mounted on 9 mm black recycled acoustic PET felt.</li>
+            <li><strong>Acoustics:</strong> Dampens high-frequency grinder motor vibrations and espresso pump resonance in the open corridor.</li>
+            <li><strong>Hidden Wiring:</strong> Allows completely invisible conduit routing for machine quad-outlets and LED drivers without chiseling concrete/drywall.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sourced Wine Coolers Table -->
+    <div id="hardware" style="margin-bottom: 48px;">
+      <h2 class="section-title">🍷 60 cm Undercounter Wine Fridge Shortlist (Swiss Market)</h2>
+      <div class="card" style="overflow-x: auto; padding: 0;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Dimensions (W × D × H)</th>
+              <th>Capacity &amp; Zones</th>
+              <th>Noise</th>
+              <th>Key Advantage &amp; Est. CHF</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Liebherr UWTes 1672 Vinidor</strong></td>
+              <td>59.7 × 57.7 × 82.0–87.0 cm</td>
+              <td>~34 bottles · 2 zones</td>
+              <td>~36–38 dB</td>
+              <td>Charcoal air filter, beechwood telescopic rails · ~2,400 CHF (Galaxus/Fust)</td>
+            </tr>
+            <tr>
+              <td><strong>Swisscave WIB-60DF</strong></td>
+              <td>59.5 × 57.5 × 82.0 cm</td>
+              <td>~26–29 bottles · 2 zones</td>
+              <td>~38 dB</td>
+              <td>Swiss engineering, raw sapele mahogany racks · ~2,200 CHF</td>
+            </tr>
+            <tr>
+              <td><strong>Miele KWTUS 7096 E</strong></td>
+              <td>59.7 × 57.9 × 81.9 cm</td>
+              <td>~34 bottles · 2 zones</td>
+              <td>~37 dB</td>
+              <td>FlexiFrame adjustable slats for wide Burgundy bottles · ~2,600 CHF</td>
+            </tr>
+            <tr>
+              <td><strong>Caso WineChef Pro 40</strong></td>
+              <td>59.5 × 57.5 × 82.0 cm</td>
+              <td>~40 bottles · 2 zones</td>
+              <td>~39 dB</td>
+              <td>Best value undercounter unit with front plinth exhaust · ~1,100 CHF</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Callout to Carpenter Dossier -->
+    <div class="callout">
+      <div class="callout-content">
+        <h3>Ready to Request Quotes from Carpenters?</h3>
+        <p>Open the standalone bilingual Schreiner-Dossier formatted for A4 printing or PDF export.</p>
+      </div>
+      <a href="dossier.html" target="_blank" class="dossier-btn" style="padding: 10px 22px; font-size: 0.9rem;">
+        View &amp; Print Tender Dossier (PDF) 📄
+      </a>
+    </div>
+
+  </div>
+
+  <script>
+    function switchView(type, btn) {
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + type).classList.add('active');
+    }
+
+    // Theme Toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    themeBtn.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      localStorage.setItem('theme', currentTheme);
+    });
+  </script>
+</body>
+</html>

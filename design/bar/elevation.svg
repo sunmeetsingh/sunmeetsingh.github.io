@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 850" width="100%" height="100%" style="background:#ffffff; font-family: 'Inter', -apple-system, sans-serif;">
+  <defs>
+    <!-- Patterns -->
+    <pattern id="oakSlats" width="10" height="20" patternUnits="userSpaceOnUse">
+      <rect width="6" height="20" fill="#B39369"/>
+      <rect x="6" width="4" height="20" fill="#1C1C1C"/>
+    </pattern>
+    <pattern id="oakWood" width="100" height="100" patternUnits="userSpaceOnUse">
+      <rect width="100" height="100" fill="#B39369"/>
+      <path d="M0 25 Q50 30 100 25 M0 60 Q50 55 100 60 M0 85 Q50 90 100 85" stroke="#A48256" stroke-width="1.5" fill="none" opacity="0.6"/>
+    </pattern>
+    <linearGradient id="smokedGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#141414" stop-opacity="0.94"/>
+    </linearGradient>
+    <linearGradient id="warmLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEACC" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFEACC" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="stoneTop" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EAE6E1"/>
+      <stop offset="50%" stop-color="#F2EFEB"/>
+      <stop offset="100%" stop-color="#E5E1DC"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title Header -->
+  <text x="50" y="45" font-size="20" font-weight="700" fill="#1C1A18">BEVERAGE STATION — SCHREINER TECHNICAL ELEVATION</text>
+  <text x="50" y="68" font-size="13" font-weight="500" fill="#6B6058">Zwyssigstrasse 11, Zürich · Scale: Architectural Reference (Dimensions in mm) · Split: 600 / 600 mm</text>
+
+  <!-- ==================== FRONT ELEVATION ==================== -->
+  <g id="front-elevation" transform="translate(140, 90)">
+    <!-- Elevation Label -->
+    <text x="240" y="25" text-anchor="middle" font-size="14" font-weight="600" fill="#1C1A18" letter-spacing="0.05em">FRONT ELEVATION</text>
+
+    <!-- Floor Line & Ceiling Line -->
+    <line x1="-30" y1="670" x2="510" y2="670" stroke="#1C1A18" stroke-width="2"/>
+    <text x="515" y="674" font-size="11" font-weight="600" fill="#6B6058">FFL ±0 (0 mm)</text>
+    <line x1="-30" y1="50" x2="510" y2="50" stroke="#9C9088" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <text x="515" y="54" font-size="11" font-weight="500" fill="#6B6058">Ceiling (~2420 mm)</text>
+
+    <!-- Acoustic Slats Background -->
+    <rect x="0" y="50" width="480" height="620" fill="url(#oakSlats)"/>
+
+    <!-- Light Wash under upper cabinet -->
+    <polygon points="0,290 480,290 480,440 0,440" fill="url(#warmLight)"/>
+
+    <!-- Countertop Backsplash (150 mm Upstand) -->
+    <rect x="0" y="400" width="480" height="30" fill="url(#stoneTop)" stroke="#DDD6CC" stroke-width="1"/>
+    <text x="240" y="420" text-anchor="middle" font-size="9" font-weight="500" fill="#78716A">150 mm Stone Upstand</text>
+
+    <!-- Coffee Equipment Silhouettes on Counter -->
+    <!-- Grinder (Right) -->
+    <rect x="375" y="325" width="45" height="105" rx="3" fill="#2B2B2B" stroke="#1C1C1C" stroke-width="1"/>
+    <circle cx="397" cy="318" r="14" fill="#C9A96E" opacity="0.85"/>
+    <!-- Espresso Machine (Center-Right) -->
+    <rect x="255" y="315" width="105" height="115" rx="4" fill="#E6DFD5" stroke="#78716A" stroke-width="1.5"/>
+    <rect x="265" y="325" width="85" height="40" fill="#3D3D3D" rx="2"/>
+    <circle cx="285" cy="345" r="7" fill="#C9A96E"/>
+    <circle cx="310" cy="345" r="5" fill="#FFFFFF"/>
+    <circle cx="330" cy="345" r="5" fill="#FFFFFF"/>
+    <rect x="290" y="380" width="35" height="12" rx="2" fill="#2B2B2B"/>
+    <rect x="270" y="415" width="75" height="12" fill="#9C9088"/>
+
+    <!-- Stemware Rack Under Cabinet (Inverted Wine Glasses) -->
+    <rect x="15" y="275" width="450" height="6" fill="#C9A96E"/>
+    <!-- Glasses -->
+    <g stroke="#666" stroke-width="1" fill="none" opacity="0.75">
+      <path d="M 45 281 L 45 295 Q 45 320 60 320 Q 75 320 75 295 L 75 281 Z"/>
+      <path d="M 125 281 L 125 295 Q 125 320 140 320 Q 155 320 155 295 L 155 281 Z"/>
+      <path d="M 205 281 L 205 295 Q 205 320 220 320 Q 235 320 235 295 L 235 281 Z"/>
+      <path d="M 285 281 L 285 295 Q 285 320 300 320 Q 315 320 315 295 L 315 281 Z"/>
+      <path d="M 365 281 L 365 295 Q 365 320 380 320 Q 395 320 395 295 L 395 281 Z"/>
+      <path d="M 445 281 L 445 295 Q 445 320 460 320 Q 475 320 475 295 L 475 281 Z"/>
+    </g>
+
+    <!-- Upper Smoked Glass Display Cabinet (H: 450 mm, W: 1200 mm) -->
+    <rect x="0" y="160" width="480" height="115" fill="url(#smokedGlass)" stroke="#1C1C1C" stroke-width="3"/>
+    <!-- Center divider for doors -->
+    <line x1="240" y1="160" x2="240" y2="275" stroke="#1C1C1C" stroke-width="3"/>
+    <!-- Glass interior shelf -->
+    <line x1="6" y1="215" x2="474" y2="215" stroke="#555555" stroke-width="2" stroke-dasharray="8,4"/>
+    <!-- Interior curated display outlines -->
+    <rect x="60" y="175" width="25" height="35" rx="3" fill="#A88344" opacity="0.4"/>
+    <rect x="150" y="170" width="30" height="42" rx="4" fill="#C9A96E" opacity="0.3"/>
+    <circle cx="310" cy="195" r="15" fill="#8C7355" opacity="0.3"/>
+    <rect x="390" y="175" width="25" height="36" rx="2" fill="#A88344" opacity="0.4"/>
+    <text x="240" y="245" text-anchor="middle" font-size="11" font-weight="600" fill="#EAE4DC" letter-spacing="0.05em">SMOKED GLASS DISPLAY (LED ILLUMINATED)</text>
+
+    <!-- Countertop (20 mm thickness, at 900 mm) -->
+    <rect x="-4" y="430" width="488" height="15" fill="url(#stoneTop)" stroke="#DDD6CC" stroke-width="1.5" rx="1"/>
+
+    <!-- BASE MODULE LEFT (Wine Cooler, 600 mm) -->
+    <rect x="0" y="445" width="240" height="205" fill="#1C1C1C" stroke="#2D2D2D" stroke-width="2"/>
+    <rect x="10" y="455" width="220" height="175" fill="#262626" stroke="#3D3D3D" stroke-width="1.5" rx="2"/>
+    <!-- Wine racks inside cooler -->
+    <line x1="20" y1="480" x2="220" y2="480" stroke="#B39369" stroke-width="3"/>
+    <line x1="20" y1="505" x2="220" y2="505" stroke="#B39369" stroke-width="3"/>
+    <line x1="20" y1="530" x2="220" y2="530" stroke="#B39369" stroke-width="3"/>
+    <line x1="20" y1="555" x2="220" y2="555" stroke="#B39369" stroke-width="3"/>
+    <line x1="20" y1="580" x2="220" y2="580" stroke="#B39369" stroke-width="3"/>
+    <line x1="20" y1="605" x2="220" y2="605" stroke="#B39369" stroke-width="3"/>
+    <text x="120" y="625" text-anchor="middle" font-size="10" font-weight="600" fill="#C9A96E">DUAL-ZONE WINE COOLER</text>
+    <!-- Handle -->
+    <rect x="215" y="480" width="4" height="80" fill="#9C9088" rx="1"/>
+
+    <!-- BASE MODULE RIGHT (Custom 3-Tier Oiled Oak Drawers, 600 mm) -->
+    <g id="drawers">
+      <!-- Drawer 1: Shallow tool drawer (~120 mm) -->
+      <rect x="242" y="446" width="238" height="38" fill="url(#oakWood)" stroke="#8A6E4B" stroke-width="1.5"/>
+      <rect x="330" y="448" width="60" height="4" fill="#C9A96E" rx="1"/> <!-- Brass Lip Pull -->
+      <text x="360" y="470" text-anchor="middle" font-size="9" font-weight="600" fill="#2E2419">Tamping &amp; Bar Tools</text>
+
+      <!-- Drawer 2: Coffee Beans & Tea (~220 mm) -->
+      <rect x="242" y="487" width="238" height="68" fill="url(#oakWood)" stroke="#8A6E4B" stroke-width="1.5"/>
+      <rect x="330" y="489" width="60" height="4" fill="#C9A96E" rx="1"/>
+      <text x="360" y="525" text-anchor="middle" font-size="9" font-weight="600" fill="#2E2419">Coffee Beans &amp; Filters</text>
+
+      <!-- Drawer 3: Deep Pullout for Bottles/Decanters (~360 mm) -->
+      <rect x="242" y="558" width="238" height="92" fill="url(#oakWood)" stroke="#8A6E4B" stroke-width="1.5"/>
+      <rect x="330" y="560" width="60" height="4" fill="#C9A96E" rx="1"/>
+      <text x="360" y="610" text-anchor="middle" font-size="9" font-weight="600" fill="#2E2419">Decanters &amp; Spirits</text>
+    </g>
+
+    <!-- Plinth (100 mm) -->
+    <rect x="0" y="650" width="240" height="20" fill="#1C1C1C"/>
+    <!-- Ventilation Grille on Left -->
+    <rect x="25" y="654" width="190" height="12" fill="#333333" stroke="#555555" stroke-width="1"/>
+    <line x1="45" y1="656" x2="45" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <line x1="75" y1="656" x2="75" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <line x1="105" y1="656" x2="105" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <line x1="135" y1="656" x2="135" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <line x1="165" y1="656" x2="165" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <line x1="195" y1="656" x2="195" y2="664" stroke="#888888" stroke-width="1.5"/>
+    <rect x="242" y="650" width="238" height="20" fill="#B39369"/>
+
+    <!-- ==================== DIMENSION STRINGS (FRONT) ==================== -->
+    <!-- Top Width: 1200 mm -->
+    <line x1="0" y1="35" x2="480" y2="35" stroke="#1C1A18" stroke-width="1"/>
+    <line x1="0" y1="30" x2="0" y2="40" stroke="#1C1A18" stroke-width="1"/>
+    <line x1="480" y1="30" x2="480" y2="40" stroke="#1C1A18" stroke-width="1"/>
+    <text x="240" y="30" text-anchor="middle" font-size="12" font-weight="700" fill="#1C1A18">1200 mm</text>
+
+    <!-- Bottom Split: 600 mm / 600 mm -->
+    <line x1="0" y1="695" x2="240" y2="695" stroke="#6B6058" stroke-width="1"/>
+    <line x1="0" y1="690" x2="0" y2="700" stroke="#6B6058" stroke-width="1"/>
+    <line x1="240" y1="690" x2="240" y2="700" stroke="#6B6058" stroke-width="1"/>
+    <text x="120" y="710" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6058">600 mm (Fridge)</text>
+
+    <line x1="240" y1="695" x2="480" y2="695" stroke="#6B6058" stroke-width="1"/>
+    <line x1="480" y1="690" x2="480" y2="700" stroke="#6B6058" stroke-width="1"/>
+    <text x="360" y="710" text-anchor="middle" font-size="11" font-weight="600" fill="#6B6058">600 mm (Drawers)</text>
+
+    <!-- Vertical Heights (Left Side) -->
+    <!-- Floor to Counter: 900 mm -->
+    <line x1="-55" y1="445" x2="-55" y2="670" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="445" x2="-50" y2="445" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="670" x2="-50" y2="670" stroke="#1C1A18" stroke-width="1.5"/>
+    <text x="-65" y="565" text-anchor="end" font-size="12" font-weight="700" fill="#1C1A18">900 mm</text>
+
+    <!-- Plinth: 100 mm -->
+    <line x1="-20" y1="650" x2="-20" y2="670" stroke="#6B6058" stroke-width="1"/>
+    <line x1="-25" y1="650" x2="-15" y2="650" stroke="#6B6058" stroke-width="1"/>
+    <line x1="-25" y1="670" x2="-15" y2="670" stroke="#6B6058" stroke-width="1"/>
+    <text x="-30" y="663" text-anchor="end" font-size="9" font-weight="600" fill="#6B6058">100</text>
+
+    <!-- Countertop to Upper: 580 mm -->
+    <line x1="-55" y1="275" x2="-55" y2="430" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="275" x2="-50" y2="275" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="430" x2="-50" y2="430" stroke="#1C1A18" stroke-width="1.5"/>
+    <text x="-65" y="360" text-anchor="end" font-size="12" font-weight="700" fill="#1C1A18">580 mm</text>
+
+    <!-- Upper Height: 450 mm -->
+    <line x1="-55" y1="160" x2="-55" y2="275" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="160" x2="-50" y2="160" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="-60" y1="275" x2="-50" y2="275" stroke="#1C1A18" stroke-width="1.5"/>
+    <text x="-65" y="222" text-anchor="end" font-size="12" font-weight="700" fill="#1C1A18">450 mm</text>
+  </g>
+
+  <!-- ==================== SIDE ELEVATION ==================== -->
+  <g id="side-elevation" transform="translate(800, 90)">
+    <!-- Elevation Label -->
+    <text x="120" y="25" text-anchor="middle" font-size="14" font-weight="600" fill="#1C1A18" letter-spacing="0.05em">SIDE SECTION</text>
+
+    <!-- Floor Line -->
+    <line x1="-30" y1="670" x2="280" y2="670" stroke="#1C1A18" stroke-width="2"/>
+    <line x1="-30" y1="50" x2="280" y2="50" stroke="#9C9088" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+    <!-- Wall Surface (Drywall) -->
+    <line x1="0" y1="50" x2="0" y2="670" stroke="#2B2B2B" stroke-width="3"/>
+    <text x="-10" y="100" text-anchor="end" font-size="10" font-weight="500" fill="#9C9088">Drywall</text>
+
+    <!-- Acoustic Slats (20 mm depth) -->
+    <rect x="0" y="50" width="10" height="620" fill="url(#oakSlats)"/>
+    <text x="-10" y="125" text-anchor="end" font-size="9" font-weight="600" fill="#B39369">21mm Slats</text>
+
+    <!-- Base Cabinet & Counter (600 mm depth) -->
+    <rect x="10" y="445" width="240" height="205" fill="url(#oakWood)" stroke="#8A6E4B" stroke-width="1.5"/>
+    <!-- Countertop 600 mm -->
+    <rect x="10" y="430" width="245" height="15" fill="url(#stoneTop)" stroke="#DDD6CC" stroke-width="1.5" rx="1"/>
+    <!-- Splashback (150 mm) -->
+    <rect x="10" y="400" width="8" height="30" fill="url(#stoneTop)" stroke="#DDD6CC" stroke-width="1"/>
+
+    <!-- Plinth with Recess -->
+    <rect x="30" y="650" width="210" height="20" fill="#1C1C1C"/>
+
+    <!-- Upper Cabinet (320 mm depth) -->
+    <rect x="10" y="160" width="128" height="115" fill="url(#smokedGlass)" stroke="#1C1C1C" stroke-width="2"/>
+    <!-- Stemware rails underside -->
+    <line x1="20" y1="275" x2="135" y2="275" stroke="#C9A96E" stroke-width="4"/>
+
+    <!-- Sightline / Head Clearance Arc -->
+    <path d="M 255 430 L 138 275" stroke="#C0A882" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="200" y="360" font-size="10" font-weight="500" fill="#B08B4E">Head Clearance</text>
+
+    <!-- Side Dimension Strings -->
+    <!-- Base Depth: 600 mm -->
+    <line x1="10" y1="695" x2="255" y2="695" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="10" y1="690" x2="10" y2="700" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="255" y1="690" x2="255" y2="700" stroke="#1C1A18" stroke-width="1.5"/>
+    <text x="132" y="712" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1A18">600 mm</text>
+
+    <!-- Upper Depth: 320 mm -->
+    <line x1="10" y1="140" x2="138" y2="140" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="10" y1="135" x2="10" y2="145" stroke="#1C1A18" stroke-width="1.5"/>
+    <line x1="138" y1="135" x2="138" y2="145" stroke="#1C1A18" stroke-width="1.5"/>
+    <text x="74" y="132" text-anchor="middle" font-size="11" font-weight="700" fill="#1C1A18">320 mm</text>
+  </g>
+
+  <!-- Footer Technical Notes -->
+  <g id="notes" transform="translate(100, 780)">
+    <rect x="0" y="0" width="900" height="48" fill="#FBF5EB" stroke="#DDD6CC" rx="6"/>
+    <text x="20" y="20" font-size="11" font-weight="700" fill="#1C1A18">KEY CARPENTER CHECKPOINTS:</text>
+    <text x="20" y="36" font-size="10.5" font-weight="400" fill="#6B6058">1. Wine Cooler cavity clear width must be min. 602 mm for built-in sliding fit · 2. Plinth requires open ventilation cutouts (min. 200 cm² air intake) · 3. Oiled natural oak flat-faced joinery with Blum Legrabox soft-close runners.</text>
+  </g>
+</svg>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schreiner-Dossier: Beverage Station (Kaffee & Bar Konsole) — Zwyssigstrasse 11</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #1C1A18;
+      --text-muted: #6B6058;
+      --border: #DCD6CD;
+      --accent-oak: #A88344;
+      --accent-brass: #C9A96E;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F5F0EB;
+      color: var(--text);
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+    .sheet {
+      max-width: 960px;
+      margin: 0 auto 40px auto;
+      background: var(--bg);
+      padding: 48px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 8px;
+    }
+    .header {
+      border-bottom: 2px solid var(--text);
+      padding-bottom: 20px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .meta-box {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .meta-box strong { color: var(--text); }
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 16px 0;
+    }
+    .render-container {
+      width: 100%;
+      text-align: center;
+      margin: 20px 0;
+      background: #FAFAFA;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .render-container img {
+      max-width: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .drawing-container {
+      width: 100%;
+      margin: 20px 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      background: #FFFFFF;
+    }
+    .drawing-container img, .drawing-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+    th {
+      background: #F9F7F4;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      background: #EDE8E1;
+      color: #3D3D3D;
+    }
+    .badge-brass { background: #FBF5EB; color: #9E7431; }
+    .checklist {
+      list-style: none;
+      margin: 12px 0;
+    }
+    .checklist li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-oak);
+      font-weight: 700;
+    }
+    .notice {
+      background: #FBF5EB;
+      border-left: 4px solid var(--accent-oak);
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 13px;
+    }
+    @media print {
+      body { background: #FFFFFF; padding: 0; }
+      .sheet { box-shadow: none; padding: 24px; margin-bottom: 0; page-break-after: always; }
+      .sheet:last-child { page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SHEET 1: OVERVIEW & 3D VISUALIZATION -->
+  <div class="sheet">
+    <div class="header">
+      <div>
+        <h1>SCHREINER-DOSSIER &amp; AUSSCHREIBUNG</h1>
+        <p>Einbau-Getränkestation (Kaffee &amp; Bar Konsole) · 1200 mm Nische</p>
+      </div>
+      <div class="meta-box">
+        <div><strong>Objekt:</strong> Zwyssigstrasse 11, 8047 Zürich</div>
+        <div><strong>Raum:</strong> Korridor Süd / Nische vor Wintergarten</div>
+        <div><strong>Datum:</strong> September 2026</div>
+      </div>
+    </div>
+
+    <h2>1. Visualisierung &amp; Designabsicht</h2>
+    <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 12px;">
+      Massgeschneiderte 1.20 m Getränkestation ("Day-to-Night"): Am Morgen professionelle Espressostation auf pflegeleichtem Quarzstein, am Abend beleuchtete Weinbar mit unterbaufähigem Weinkühler, Gläserhängeschienen und Rauchglas-Vitrinenoberschrank.
+    </p>
+
+    <div class="render-container">
+      <img src="render.jpg" alt="Photorealistic 3D Render of Beverage Station">
+    </div>
+
+    <h2>2. Kernmasse &amp; Raster (in mm)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Bauteil</th>
+          <th>Masse (B × T × H)</th>
+          <th>Funktion / Spezifikation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gesamt-Nischenmass</strong></td>
+          <td><strong>1200 × 600 × ~2420 mm</strong></td>
+          <td>Volle Raumhöhe bis Decke, vertikale Eichen-Akustiklamellen auf schwarzem Filz</td>
+        </tr>
+        <tr>
+          <td><strong>Arbeitsplatte (Countertop)</strong></td>
+          <td>1200 × 600 × 20 mm</td>
+          <td>Arbeitshöhe 900 mm OKFF. Quarzkomposit / Dekton matt, 150 mm Rückwand-Aufkantung</td>
+        </tr>
+        <tr>
+          <td><strong>Modul Links (600 mm)</strong></td>
+          <td>600 × 585 × 825 mm</td>
+          <td>Nische für unterbaufähigen 2-Zonen-Weinkühler (z.B. Liebherr / Swisscave / Miele)</td>
+        </tr>
+        <tr>
+          <td><strong>Modul Rechts (600 mm)</strong></td>
+          <td>600 × 580 × 800 mm</td>
+          <td>3 Schubladen mit Vollauszug (Blum Legrabox): Tools (130 mm), Bohnen (240 mm), Flaschen (410 mm)</td>
+        </tr>
+        <tr>
+          <td><strong>Oberschrank (Display)</strong></td>
+          <td>1200 × 320 × 450 mm</td>
+          <td>Schwarze Alurahmen-Glastüren mit 4 mm ESG Rauchglas, LED-Warmtonbeleuchtung (2700K)</td>
+        </tr>
+        <tr>
+          <td><strong>Gläserhalter (Undermount)</strong></td>
+          <td>5 Schienenreihen</td>
+          <td>Messing gebürstet, bündig unter Oberschrank montiert für Stielgläser (kopfüber)</td>
+        </tr>
+        <tr>
+          <td><strong>Sockel</strong></td>
+          <td>Höhe 100 mm</td>
+          <td>Mit integriertem schwarzen Lüftungsgitter links (min. 200 cm² Querschnitt)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SHEET 2: TECHNICAL DRAWINGS & DETAILS -->
+  <div class="sheet">
+    <div class="header">
+      <div>
+        <h1>WERKZEICHNUNG &amp; SCHNITT (MASSE IN MM)</h1>
+        <p>Frontansicht &amp; Seitenprofil · 600 / 600 mm Aufteilung</p>
+      </div>
+      <div class="meta-box">
+        <div><strong>Plannummer:</strong> ZW11-BAR-001</div>
+        <div><strong>Status:</strong> Freigabe zur Offertstellung</div>
+      </div>
+    </div>
+
+    <h2>3. Masspläne (Front- &amp; Seitenansicht)</h2>
+    <div class="drawing-container">
+      <img src="elevation.svg" alt="Technical Elevation Drawing">
+    </div>
+
+    <h2>4. Materialliste &amp; Beschläge (Schreiner-Vorgaben)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Komponente</th>
+          <th>Material / Ausführung</th>
+          <th>Hersteller / Modell</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fronten Schubladen</td>
+          <td>Echtholzfurnier Eiche natur, stumpf gefügt, matt geölt</td>
+          <td>Passend zu OAKO Eichen-Schreibtisch</td>
+        </tr>
+        <tr>
+          <td>Korpus Innen</td>
+          <td>19 mm Spanplatte melaminbeschichtet Anthrazit / Tiefschwarz</td>
+          <td>Egger U999 oder ähnlich</td>
+        </tr>
+        <tr>
+          <td>Schubkastenführungen</td>
+          <td>Vollauszug mit integrierter Dämpfung (Blumotion)</td>
+          <td>Blum Legrabox pure, Schwarz matt</td>
+        </tr>
+        <tr>
+          <td>Griffe</td>
+          <td>Diskrete Griffleisten oder gefräste Griffmulden Messing gebürstet</td>
+          <td>Profilgriff Messing matt</td>
+        </tr>
+        <tr>
+          <td>Rückwand</td>
+          <td>Akustik-Lamellenpaneel Eiche (27×12 mm Lamellen auf 9 mm Filz schwarz)</td>
+          <td>Woodppl / Akuwood oder werkseitig gefertigt</td>
+        </tr>
+        <tr>
+          <td>Vitrinenrahmen</td>
+          <td>Schlankes Aluminiumprofil, schwarz matt eloxiert</td>
+          <td>Alu-Systemrahmen 20 mm</td>
+        </tr>
+        <tr>
+          <td>Vitrinenverglasung</td>
+          <td>4 mm ESG Einscheiben-Sicherheitsglas, grau getönt (Rauchglas)</td>
+          <td>Rauchglas grau/bronze</td>
+        </tr>
+        <tr>
+          <td>LED-Beleuchtung</td>
+          <td>LED-Band 24V COB, 2700K warmweiss, CRI &gt;90 in Alu-Einbauprofil opal</td>
+          <td>Tastdimmer unsichtbar unter Oberschrank</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="notice">
+      <strong>Wichtiger Installationshinweis für die Kühlschranknische (Links 600 mm):</strong><br>
+      Der Weinkühler wird vom Bauherrn beigestellt (unterbaufähig mit Frontbelüftung). Das Nischen-Lichtmass muss exakt <strong>Breite 602–605 mm, Tiefe min. 585 mm, Höhe 825–870 mm</strong> betragen. Der Sockel muss eine Zuluft-Aussparung von mind. 200 cm² aufweisen.
+    </div>
+
+    <h2>5. Checkliste für Offertanfrage (An den Schreiner)</h2>
+    <ul class="checklist">
+      <li>Offerte inkl. Aufmass vor Ort, Werkstattfertigung, Lieferung und fachgerechter Montage in 8047 Zürich.</li>
+      <li>Option A: Lieferung inkl. 20 mm Quarzstein-Abdeckung mit 150 mm Aufkantung.</li>
+      <li>Option B: Vorbereitung für bauseitigen Steinmetz (nur Unterbau &amp; Schrankelemente).</li>
+      <li>Verkabelung: Bereitstellung von Kabelkanälen hinter den Akustiklamellen für bauseitige Elektrozuleitung.</li>
+    </ul>
+  </div>
+
+</body>
+</html>
