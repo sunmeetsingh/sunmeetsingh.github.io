@@ -929,6 +929,63 @@ title: "Zwyssigstrasse 11 & 13 — Heizungsersatz"
       </div>
     </div>
 
+    <!-- Energy Balance & Grid Exchange Table -->
+    <div style="margin-top: 24px;">
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;" class="lang-de">Rechnerischer Vergleich: Energiebilanz &amp; Netzaustausch</h3>
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;" class="lang-en">Mathematical Comparison: Energy Balance &amp; Grid Exchange</h3>
+
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th><span class="lang-de">Kriterium / Ausgangslage (56'480 kWh Nutzwärme &amp; Strom)</span><span class="lang-en">Criterion / Baseline (56,480 kWh useful heat &amp; power)</span></th>
+              <th><span class="lang-de">Weg A: Nur PV (mit Gas &amp; Heizstab)</span><span class="lang-en">Path A: PV Only (with gas &amp; heating rod)</span></th>
+              <th><span class="lang-de">Weg B: Erdsonde + PV (Wärmepumpe)</span><span class="lang-en">Path B: Geothermal + PV (heat pump)</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong><span class="lang-de">Haushaltsstrom (20'000 kWh)</span><span class="lang-en">Household electricity (20,000 kWh)</span></strong></td>
+              <td><span class="lang-de"><strong>~13'800 kWh gedeckt:</strong> 69% Autarkie auf Haushaltsstrom (6'200 kWh Netzbezug).</span><span class="lang-en"><strong>~13,800 kWh covered:</strong> 69% autarky on household power (6,200 kWh grid import).</span></td>
+              <td><span class="lang-de"><strong>~18'100 kWh gedeckt:</strong> Deckt Haushaltsstrom und Wärmepumpe direkt (11'540 kWh Netzbezug).</span><span class="lang-en"><strong>~18,100 kWh covered:</strong> Covers household power and heat pump directly (11,540 kWh grid import).</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Warmwasser (12'768 kWh)</span><span class="lang-en">Domestic hot water (12,768 kWh)</span></strong></td>
+              <td><span class="lang-de"><strong>~8'800 kWh via Heizstab:</strong> Nutzt Sommerüberschuss; ~4'000 kWh Wärme verbleiben im Winter bei Gas.</span><span class="lang-en"><strong>~8,800 kWh via heating rod:</strong> Uses summer solar surplus; ~4,000 kWh winter heat remains on gas.</span></td>
+              <td><span class="lang-de"><strong>100% ersetzt:</strong> Wärmepumpe benötigt dafür nur 3'990 kWh Strom (Gasbedarf: 0).</span><span class="lang-en"><strong>100% replaced:</strong> Heat pump requires only 3,990 kWh electricity for this (gas: 0).</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Raumwärme Winter (23'712 kWh)</span><span class="lang-en">Space heating (winter, 23,712 kWh)</span></strong></td>
+              <td><span class="lang-de"><strong>0 kWh ersetzt:</strong> Bleibt zu 100% bei Gas (27'400 kWh Gas), da im Winter kaum Solarüberschuss anfällt.</span><span class="lang-en"><strong>0 kWh replaced:</strong> Remains 100% on gas (27,400 kWh gas) due to the winter solar deficit.</span></td>
+              <td><span class="lang-de"><strong>100% ersetzt:</strong> Wärmepumpe benötigt dafür nur 5'650 kWh Strom (Gasbedarf: 0).</span><span class="lang-en"><strong>100% replaced:</strong> Heat pump requires only 5,650 kWh electricity for this (gas: 0).</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Netzaustausch (Faktor 0.4: 12 Rp. Export / 30 Rp. Import)</span><span class="lang-en">Grid exchange (0.4 factor: 12 Rp export / 30 Rp import)</span></strong></td>
+              <td><span class="lang-de">8'600 kWh Sommer-Export &times; 0.4 &rarr; <strong>finanziert 3'440 kWh</strong> Winterstrom.</span><span class="lang-en">8,600 kWh summer export &times; 0.4 &rarr; <strong>buys back 3,440 kWh</strong> of winter electricity.</span></td>
+              <td><span class="lang-de">13'100 kWh Sommer-Export &times; 0.4 &rarr; <strong>finanziert 5'250 kWh</strong> Winterstrom.</span><span class="lang-en">13,100 kWh summer export &times; 0.4 &rarr; <strong>buys back 5,250 kWh</strong> of winter electricity.</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Effektiv gedeckte Energie (inkl. 0.4 Netzaustausch)</span><span class="lang-en">Effective energy covered (incl. 0.4 grid factor)</span></strong></td>
+              <td><span class="lang-de"><strong>46.1% des Gesamtbedarfs</strong> (26'040 kWh von 56'480 kWh Nutzwärme &amp; Strom).</span><span class="lang-en"><strong>46.1% of total demand</strong> (26,040 kWh out of 56,480 kWh useful heat &amp; power).</span></td>
+              <td><span class="lang-de"><strong>78.8% des Gesamtstroms</strong> gedeckt (+ 26'840 kWh kostenlose Erdwärme aus dem Boden).</span><span class="lang-en"><strong>78.8% of total electricity</strong> covered (+ 26,840 kWh free geothermal heat from bedrock).</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Verbleibende Gasabhängigkeit</span><span class="lang-en">Remaining gas reliance</span></strong></td>
+              <td><span class="lang-de"><strong>~76% Gasbedarf bleibt</strong> (32'000 kWh Gas verbleiben; nur 24% Gas eingespart).</span><span class="lang-en"><strong>~76% gas reliance remains</strong> (32,000 kWh gas remaining; only 24% gas saved).</span></td>
+              <td><span class="lang-de"><strong>0%</strong> (Gas wird zu 100% per sofort eliminiert).</span><span class="lang-en"><strong>0%</strong> (Fossil gas is 100% eliminated immediately).</span></td>
+            </tr>
+            <tr>
+              <td><strong><span class="lang-de">Laufende Energiekosten (Haus 11 total)</span><span class="lang-en">Annual energy cost (Building 11 total)</span></strong></td>
+              <td><span class="lang-de"><strong>~CHF 4'500 / Jahr:</strong> CHF 830 Strom netto (nach Export) + CHF 3'680 Gas.</span><span class="lang-en"><strong>~CHF 4,500 / year:</strong> CHF 830 net electricity (after export) + CHF 3,680 gas.</span></td>
+              <td><span class="lang-de"><strong>~CHF 1'890 / Jahr:</strong> Netto-Stromkosten all-inclusive (Heizung, Warmwasser &amp; Haushalt).</span><span class="lang-en"><strong>~CHF 1,890 / year:</strong> Net electricity all-inclusive (heating, hot water &amp; household power).</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote lang-de">Hinweis zum Netzaustausch: Da die Rückliefervergütung (~12 Rp./kWh) deutlich unter dem Bezugstarif (~30 Rp./kWh) liegt, finanziert 1 kWh Sommerüberschuss rechnerisch nur 0.4 kWh Winterstrom (Faktor 0.4).</p>
+      <p class="footnote lang-en">Note on grid exchange: Because the feed-in tariff (~12 Rp./kWh) is well below the retail import tariff (~30 Rp./kWh), 1 kWh of summer solar export only buys back 0.4 kWh of winter electricity (0.4 factor).</p>
+    </div>
+
     <!-- Quote vs Coach Assessment Table -->
     <div style="margin-top: 24px;">
       <h3 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 10px;" class="lang-de">Gegenüberstellung: Offerte SP Smart Electronics vs. Einschätzung Energiecoach</h3>
